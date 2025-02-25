@@ -1,0 +1,178 @@
+{{ 'double-image.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="family-section ai-container"
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}background-image: url({{ section.settings.background_image | img_url: '2000x' }});{% endif %}
+    background-size: {{ section.settings.background_size }};
+    background-position: {{ section.settings.background_position }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+  "
+>
+  <div class="content">
+    <h2 style="font-size: {{ section.settings.heading_size }}px; color: {{ section.settings.heading_color }};">
+      {{ section.settings.heading }}
+    </h2>
+    <p style="font-size: {{ section.settings.description_size }}px; color: {{ section.settings.description_color }};">
+      {{ section.settings.description }}
+    </p>
+  </div>
+  <div class="images">
+    <img src="{{ section.settings.image1 | image_url  }}" width="" height="" alt="Image 1" class="img1">
+    <img src="{{ section.settings.image2 | image_url  }}" width="" height="" alt="Image 2" class="img2">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collab Images",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcoming Your Pooch Into Our Family"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Matt McInerney, the current owner of Annie’s Pooch Pops, named his childhood dog 'Annie' in homage to Little Orphan Annie. Annie was a rescued golden retriever/corgi mix with a strawberry-blonde coat. Matt and Annie were inseparable and truly embodied the phrase of man’s best friend. Acquiring the Annie’s Pooch Pops business was the perfect opportunity for Matt to honor the legacy of a revered family member."
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description Text Size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "image_picker",
+      "id": "image1",
+      "label": "First Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Second Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "background_size",
+      "label": "Background Size",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Background Position",
+      "options": [
+        {
+          "value": "left top",
+          "label": "Left Top"
+        },
+        {
+          "value": "center center",
+          "label": "Center Center"
+        },
+        {
+          "value": "right bottom",
+          "label": "Right Bottom"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

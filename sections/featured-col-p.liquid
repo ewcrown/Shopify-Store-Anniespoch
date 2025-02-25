@@ -1,0 +1,72 @@
+{{ 'UTY3Fg780zdn.css' | asset_url | stylesheet_tag }}
+<div id="shopify-section-template--{{section.id}}" class="shopify-section section-collection-tabs">
+  <div class="collection-tabs section-spacing section-spacing--disable-top">
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="section-header">
+          <div class="section-header--content">
+            <h2 class="he-section-title"></h2>
+            <h3 class="section-header--title">You may also</h3>
+            <div class="section-header--description rte">
+              <p>Combine your style with these products</p>
+            </div>
+          </div>
+          <scroll-shadow>
+            <collection-tabs
+              class="collection-tabs__list"
+              data-target="product-grid-template--{{section.id}}"
+            >
+              <a href="{{ section.settings.button_url }}" class="collection-tabs__list-link">
+                {{- section.settings.button_text -}}
+              </a>
+            </collection-tabs>
+          </scroll-shadow>
+        </div>
+        <div
+          id="product-grid-template--{{section.id}}"
+          data-id="template--{{section.id}}"
+          class="featured-col  small-up-2 medium-up-5"
+        >
+          {% for product in section.settings.collection.products limit: 5 %}
+            {% render 'ai-card', product: product %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'featured-grid.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "t:sections.featured-collection.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Click Here"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-collection.presets.name"
+    }
+  ]
+}
+{% endschema %}

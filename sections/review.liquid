@@ -1,0 +1,78 @@
+{{ 'loop-video.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .video-container-ai .row{
+      display:block !important;
+    }
+    .video-parent {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 3 videos per row */
+    grid-gap: 20px; /* Add spacing between the video containers */
+    justify-items: center;
+    padding: 20px;
+  }
+
+  .video-container {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .video {
+    width: 100%;
+    height: auto;
+  }
+</style>
+<div class="video-container-ai">
+  <div class="row">
+    <div
+      class="video-parent"
+    >
+      {% for block in section.blocks %}
+        <div class="video-container">
+          {{
+            block.settings.video
+            | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'video'
+          }}
+          <!--
+            <video class="video" controls loop>
+              <source src="{{ block.settings.video | video_tag }}" >
+              Your browser does not support the video tag.
+            </video>
+          -->
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "loop video",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+    "type" : "video",
+      "name": "video",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "video",
+          "id":"video",
+          "label": "Video URL"
+        }
+      ]
+  }],
+  "presets": [
+    {
+      "name": "loop video"
+    }
+  ]
+}
+{% endschema %}

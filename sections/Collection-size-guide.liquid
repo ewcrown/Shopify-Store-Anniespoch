@@ -1,0 +1,56 @@
+<section class="poch-collection-2-size" id="poch-collection-2-size">
+  <div class="poch-collection-2-size-row">
+    <div class="page-width">
+      <div class="poch-collection-2-size-col ">
+        <p class="poch-collection-size-title">{{ section.settings.head }}</p>
+
+        <div class="poch-collection-size-content poch-flex">
+          {% for block in section.blocks %}
+            {% if block.settings.img != blank %}
+              <img
+                src="{{ block.settings.img | img_url: 'master' }}"
+                alt="size guide"
+                class="img-responsive"
+              >
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Size Guide",
+  "settings": [
+    {
+    "type": "text",
+      "id": "head",
+      "label": "Heading",
+      "default":"Muttkins™ Ingredients and Size Guide"
+  }
+
+  ],
+  "blocks": [
+    {
+      "type": "img",
+      "name": "img",
+      "limit": 2,
+      "settings": [
+
+           {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Paste Image"
+            }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Size Guide"
+    }
+  ]
+}
+{% endschema %}

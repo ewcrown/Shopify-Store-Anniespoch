@@ -1,0 +1,65 @@
+{% comment %} medium-3 large-1/5 columns {% endcomment %}
+<div
+  class=" carousel__slide medium-3 large-1/5 columns pops-carousel__slide"
+  data-collection="collection-"
+>
+  <div class="carousel-slide-wrapper">
+    <product-card class="product-card text-left product-card--content-spacing-true product-card--border-true has-shadow--false">
+      <a href="{{ product.url }}">
+        <figure class="product-featured-image thb-hover">
+          <span
+            title=""
+            class="product-featured-image-link aspect-ratio aspect-ratio--adapt"
+            style="--padding-bottom: 100%;"
+          >
+            <img
+              class="product-secondary-image lazyautosizes lazyloaded"
+              width="1200"
+              height="1080"
+              data-sizes="auto"
+              srcset="
+                {%- if product.featured_image.width >= 165 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if product.featured_image.width >= 330 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if product.featured_image.width >= 535 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if product.featured_image.width >= 750 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if product.featured_image.width >= 1000 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if product.featured_image.width >= 1500 -%}{{ product.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {%- if product.featured_image.width >= 3000 -%}{{ product.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                {{ product.featured_image | image_url }} {{ product.featured_image.width }}w
+              "
+              src="{{ product.featured_image | image_url: width: 1500 }}"
+  
+              alt="{{ product.featured_image.alt | escape }}"
+  
+              fetchpriority="auto"
+              alt="{{ product.title }}"
+              sizes="164px"
+            >
+          </span>
+        </figure>
+        <div class="product-card-info">
+        <div class="product-card-vendor">
+          {% if product.collection and product.collection[0] %}
+            <span href="{{ product.url }}" title="Product vendor">{{ product.collection[0] }}</span>
+          {% endif %}
+        </div>
+        <span class="price">
+          {% if product.price %}
+            <ins>
+              <span class="amount ">{{ product.price | money }}</span>
+            </ins>
+          {% endif %}
+          <small class="unit-price hidden">
+            <span></span>
+            <span class="unit-price-separator">/</span>
+            <span></span>
+          </small>
+        </span>
+        {% if product.title %}
+          <span title="{{ product.title }}" class="product-card-title">{{ product.title }}</span>
+        {% endif %}
+      </div>
+      </a>
+    </product-card>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<style>
+  /* Container for the iframe section */
+  .iframe-section {
+    background:#EFE5CE; /* Replace with actual image path */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    color: #000;
+    position: relative;
+  }
+</style>
+
+<section class="iframe-section">
+  <div class="iframe-content">
+    <p class="iframe-description">
+      <iframe
+        height="2600"
+        width="640"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSf997PtAArrg7qdB-U7Pdr290W8hSudvNuQJwYof4xJEHSIWw/viewform?embedded=true"
+        marginwidth="0"
+        marginheight="0"
+        frameborder="0"
+      ></iframe>
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Iframe",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "Iframe"
+    }
+  ]
+}
+{% endschema %}

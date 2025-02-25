@@ -1,0 +1,254 @@
+{{ 'nU6IdwHEVoHw.css' | asset_url | stylesheet_tag }}
+
+{% stylesheet %}
+    --color-header-links:{{ section.settings.primary_color  }} ;
+    --font-navigation-scale;{{ section.settings.font-size }};
+  .thb-full-menu a,.thb-full-menu>li>a {
+     font-weight:{{ section.settings.font-weight }} ;
+     color: --color-header-links;
+     font-size:  --font-navigation-scale
+  }
+{% endstylesheet %}
+<div
+  id="shopify-section-sections--17879067197694__header"
+  class="shopify-section shopify-section-group-header-group header-section"
+>
+  <theme-header id="header" class="header style5 header--shadow-small transparent--false header-sticky--active">
+    <div class="header--inner">
+      <div class="thb-header-mobile-left">
+        <details class="mobile-toggle-wrapper">
+          <summary class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </summary>
+          <nav id="mobile-menu" class="mobile-menu-drawer" role="dialog" tabindex="-1">
+            <div class="mobile-menu-drawer--inner">
+              <ul class="mobile-menu">
+                {% for item in section.settings['mobile-menu'].links %}
+                  {% if forloop.first %}
+                    <li>
+                      <div
+                        title="{{ item.title }}"
+                        class="ai-menu-item ai-{{ forloop.index }}"
+                        style="display: block;"
+                      >
+                        <div class="mega-div">
+                          <span class="mega-t">{{- item.title -}}</span>
+
+                          <span class="ai-arrow">&gt;</span>
+                        </div>
+                        <div class="mega-menu-div">
+                          {% render 'mobile-mega-menu', allcollections: section.blocks %}
+                        </div>
+                      </div>
+                    </li>
+                  {% else %}
+                    <li>
+                      <a
+                        href="{{ item.url }}"
+                        title="{{ item.title }}"
+                        class="ai-menu-item ai-{{ forloop.index }}"
+                        style="display: block;"
+                      >
+                        {{- item.title -}}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+              <div class="thb-mobile-menu-footer">
+                <a class="thb-mobile-account-link" href="/account/login" title="Login">
+                  <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.47368 0C6.56842 0 4.21053 2.35789 4.21053 5.26316C4.21053 8.16842 6.56842 10.5263 9.47368 10.5263C12.3789 10.5263 14.7368 8.16842 14.7368 5.26316C14.7368 2.35789 12.3789 0 9.47368 0ZM9.47368 8.42105C7.72632 8.42105 6.31579 7.01053 6.31579 5.26316C6.31579 3.51579 7.72632 2.10526 9.47368 2.10526C11.2211 2.10526 12.6316 3.51579 12.6316 5.26316C12.6316 7.01053 11.2211 8.42105 9.47368 8.42105ZM18.9474 20V18.9474C18.9474 14.8737 15.6526 11.5789 11.5789 11.5789H7.36842C3.29474 11.5789 0 14.8737 0 18.9474V20H2.10526V18.9474C2.10526 16.0421 4.46316 13.6842 7.36842 13.6842H11.5789C14.4842 13.6842 16.8421 16.0421 16.8421 18.9474V20H18.9474Z" fill="var(--color-header-icons, --color-accent)"></path>
+                  </svg>
+                  Login
+                </a>
+              </div>
+            </div>
+          </nav>
+        </details>
+      </div>
+      <a class="logolink text-logo" href="{{ shop.url }}">
+        <img srcset="{{ settings.logo | image_url : width: '200px' }}" width="{{ settings.logo_width  }}" height="auto"
+      ></a>
+      <div class="thb-secondary-area thb-header-right">
+        <div class="thb-secondary-area-item">
+          {% render 'header-search' %}
+        </div>
+
+        <a
+          class="thb-secondary-area-item thb-secondary-myaccount"
+          href="{% if customer %}{{ routes.account_url}}{% else %}{{ routes.account_login_url }}{% endif %}"
+          title="My Account"
+        >
+          {% render 'icon-account' %}
+        </a>
+        <a class="thb-secondary-area-item thb-secondary-cart" href="/cart" id="cart-drawer-toggle">
+          <div class="thb-secondary-item-icon">
+            {% render 'cart-icon' %}
+            <span class="thb-item-count">0</span>
+          </div>
+        </a>
+      </div>
+      <full-menu class="full-menu">
+        <ul class="thb-full-menu" role="menubar">
+          {% for item in section.settings.menu.links %}
+            <li role="none" class="menu-item">
+              <a role="menuitem" href="{{ item.url }}">{{ item.title }}</a>
+              {% if forloop.first %}
+                {% render 'mega-menu', allcollections: section.blocks %}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </full-menu>
+    </div>
+    <style data-shopify="">
+      :root {
+        --logo-height: 26px;
+        --logo-height-mobile: 26px;
+      }
+    </style>
+  </theme-header>
+</div>
+
+<script
+  defer="defer"
+>
+  const searchInput = document.querySelector('.header__search input[type="search"]');
+  const predictiveSearchBox = document.querySelector('.predictive-search');
+
+  searchInput.addEventListener('input', function () {
+    const searchQuery = searchInput.value;
+
+    if (searchQuery.length > 2) {
+      fetch(`/search/suggest.json?q=${searchQuery}&resources[type]=product`)
+        .then(response => response.json())
+        .then(data => {
+          let searchResults = data.resources.results.products;
+          predictiveSearchBox.innerHTML = '';
+
+          if (searchResults.length > 0) {
+            searchResults.forEach(product => {
+              let productHtml = `
+                <div class="search-result-item">
+                  <a href="${product.url}" style="text-decoration:none">
+                    <img src="${product.featured_image.url}" alt="${product.title}">
+                    <div class="col-inner" >
+                        <span>${product.title}</span>
+                        <p class="price">
+                              <ins>
+                                <span class="amount ">$${product.price}</span>
+                              </ins>      
+                        </p>
+                    </div>
+                  </a>
+                </div>
+              `;
+              predictiveSearchBox.innerHTML += productHtml;
+            });
+            predictiveSearchBox.style.display = 'block';
+          } else {
+            predictiveSearchBox.style.display = 'none';
+          }
+        });
+    } else {
+      predictiveSearchBox.style.display = 'none';
+    }
+  });
+</script>
+{{ 'header-section.js' | asset_url | script_tag }}
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+          "type": "link_list",
+          "id": "mobile-menu",
+          "label": "Menu"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Menu Color",
+      "default": "#646464"
+    },
+    {
+      "type": "range",
+      "id": "font-size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "font size",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "font-weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "font weight",
+      "default": 400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Background"
+        },
+        {
+          "type": "text",
+          "id": "menu-title",
+          "default": "Title",
+          "label": "Title"
+        }
+      ]
+
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "t:sections.header.name",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

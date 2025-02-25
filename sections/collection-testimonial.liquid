@@ -1,0 +1,71 @@
+<section class="poch-collection-testimonials" id="poch-collection-testimonials">
+  <div class="poch-collection-testimonials-row">
+    <div class="page-width">
+      <div class="testimonials-section">
+        <div class="testimonials-container">
+          {% for block in section.blocks %}
+            <div class="testimonial">
+              <div class="stars">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0710/0950/1430/files/5stars-e1625084085214-300x62_jpeg.png?v=1723720604"
+                  alt="stars"
+                >
+              </div>
+              <p>"{{ block.settings.txt }}"</p>
+              <span>{{ block.settings.author }}</span>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="side-content">
+          <img
+            src="{{ section.settings.img | img_url: 'master' }}"
+            alt="Dog Image"
+          >
+          <button class="order-btn">{{ section.settings.btn_txt }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Testimonial",
+  "settings": [
+     {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+     {
+          "type": "text",
+          "id": "btn_txt",
+          "label": "Button Text",
+          "default":"Order a Muttkin For Your Pooch"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "Testimonial",
+     "name":"Testimonial",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "txt",
+          "label": "Testimonial"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default":"– Kiana L."
+        }
+      ]
+    },
+  ],
+  "presets": [{
+    "name": "Collection Testimonial"
+  }]
+}
+{% endschema %}

@@ -1,0 +1,83 @@
+<section class="muttkin-section">
+  <div class="page-width">
+    <div class="muttkin-content">
+      <h2>{{ section.settings.head }}</h2>
+      <p>{{ section.settings.desc }}</p>
+
+      <div class="muttkin-flex">
+        <div class="muttkin-image-wrapper">
+          {% if section.settings.img != blank %}
+            <img
+              src="{{ section.settings.img | img_url: 'master' }}"
+              alt="Muttkin Bone"
+              class="muttkin-image"
+            >
+          {% endif %}
+        </div>
+
+        <div class="muttkin-video">
+          <iframe
+            width="100%"
+            height="400"
+            title="Annie's Pooch Pops - Muttkins"
+            src="{{ section.settings.video_url }}"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            name="fitvid0"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="muttkin-button">
+        <a href="{{ section.settings.btn_url }}">{{ section.settings.btn_txt }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "head",
+      "label": "Heading",
+      "default": "What is a Muttkin™?"
+    },
+    {
+      "type": "text",
+      "id": "desc",
+      "label": "Description",
+      "default": "A Muttkin™ is a heavy-duty dog bone made from cattle born, bred, and harvested in the USA. Annie’s Pooch Pops selects only the strongest beef bones from a steakhouse supplier. We double the pleasure by wrapping the bone in a peanut butter biscuit and slow-roast the Muttkin™ to savory, beefy perfection."
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Select Image"
+    },
+    {
+      "type": "text",
+      "id": "btn_txt",
+      "label": "Button Text",
+      "default": "Order a Muttkin For Your Pooch"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL",
+      "default": "https://www.youtube.com/embed/your-video-id"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Video"
+    }
+  ]
+}
+{% endschema %}

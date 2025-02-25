@@ -1,0 +1,112 @@
+<div class="gf-ai-container" style="display:none;">
+  {% for col in allcollections %}
+    {% assign card_collection = col.settings.collection %}
+    {% assign menu = col.settings.menu.links %}
+    {% unless card_collection.handle == 'behavior' %}
+      <a
+        href="{{ card_collection.url }}"
+        class="gf-ai-menu-item gf-ai-color-{{ forloop.index }}"
+        style="background:{{ col.settings.color }};"
+      >
+        <span>{{ card_collection.title }} </span>
+      </a>
+    {% endunless %}
+    {% comment %}
+      <div class="gf-ai-submenu">
+        <span style="color:#EFB93D"
+          ><strong>{{ col.settings['menu-title'] }}</strong></span
+        >
+        {% for link in menu %}
+          <a href="{{ link.url }}" class="gf-ai-submenu-item">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+    {% endcomment %}
+  {% endfor %}
+  <div class="ann-mega-menu-bottom">
+    {% for col in allcollections %}
+      {% assign menu = col.settings.menu.links %}
+      <div class="ann-mega-menu-bottom-col">
+        <h3 class="gf-ai-menu-item-ai">
+          {{ col.settings['menu-title'] }}
+          <span class="gf-ai-arrow">&gt;</span>
+        </h3>
+
+        <ul class="gf-ai-submenu ai-menu-item" style="display: none;">
+          {% for link in menu %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const menuItems = document.querySelectorAll('.gf-ai-menu-item-ai');
+
+  menuItems.forEach((menuItem, index) => {
+    menuItem.addEventListener('click', function (event) {
+      // Prevent the default anchor behavior
+      event.preventDefault();
+      event.stopPropagation(); // Stop the event from propagating to parent elements
+
+      // Select the corresponding submenu (next sibling element after the clicked menu item)
+      const submenu = menuItem.nextElementSibling;
+
+      // Collapse all other submenus except the clicked one
+      const allSubmenus = document.querySelectorAll('.gf-ai-submenu');
+      allSubmenus.forEach(sub => {
+        if (sub !== submenu) {
+          sub.style.display = 'none';
+          sub.previousElementSibling.classList.remove('active'); // Remove active class from all other menu items
+        }
+      });
+
+      // Toggle the submenu visibility
+      if (submenu.style.display === 'block') {
+        submenu.style.display = 'none';
+        menuItem.classList.remove('active'); // Reset arrow to right
+      } else {
+        submenu.style.display = 'block';
+        menuItem.classList.add('active'); // Change arrow to down
+      }
+    });
+  });
+
+  // Adding click event to the <li> Shop link to show/hide the mega menu div
+  const shopLink = document.querySelector('.ai-menu-item.ai-1');
+  const megaMenuDiv = document.querySelector('.gf-ai-container');
+
+  // Toggle the mega menu on clicking the "Shop" link
+  shopLink.addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    if (megaMenuDiv.style.display === 'block') {
+      megaMenuDiv.style.display = 'none';
+      shopLink.classList.remove('active'); // Remove active class from Shop link
+    } else {
+      megaMenuDiv.style.display = 'block';
+      shopLink.classList.add('active'); // Add active class to Shop link
+    }
+  });
+
+  // Prevent closing the entire menu when clicking inside the mega menu
+  megaMenuDiv.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevent the click from propagating to parent elements
+  });
+
+  // Adding click event to submenu items to toggle their visibility
+  const submenuItems = document.querySelectorAll('.gf-ai-submenu-item');
+  submenuItems.forEach(submenuItem => {
+    submenuItem.addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent default behavior
+      event.stopPropagation(); // Prevent closing the mega menu
+
+      // Handle submenu item click here (e.g., navigate to a link or perform an action)
+      console.log(`Submenu item clicked: ${submenuItem.textContent}`);
+    });
+  });
+});
+</script>

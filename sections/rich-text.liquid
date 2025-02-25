@@ -1,0 +1,126 @@
+<!-- product-of-the-week.liquid -->
+<div
+  id="shopify-section-template--18200361664806__89ef43a1-d21a-4696-9b5e-d659947e6277"
+  class="shopify-section section-rich-text"
+>
+  <div class="row">
+    <div class="small-12 columns">
+      <div
+        class="rich-text rich-text-ai rich-text--transparent-true text-center text-position-center text-width-large section-spacing-padding section-spacing--disable-bottom"
+        style="--color-bg: rgba(0,0,0,0); --color-heading: {{ section.settings.heading_color }}; --color-text: {{ section.settings.text_color }}; --solid-button-background: {{ section.settings.button_background_color }}; --bg-body: rgba(0,0,0,0); --color-accent: {{ section.settings.accent_color }}; --color-accent-rgb: {{ section.settings.accent_color_rgb }};"
+      >
+        <div class="rich-text__inner">
+          <img
+            class="retina_size lazyautosizes lazyloaded"
+            width="65"
+            height="60"
+            data-sizes="auto"
+            src="{{ section.settings.icon | img_url: '65x60' }}"
+            data-srcset="{{ section.settings.icon | img_url: '130x120' }} 130w"
+            fetchpriority="auto"
+            alt=""
+            style="object-position: 50.0% 50.0%;"
+            sizes="65px"
+            srcset="{{ section.settings.icon | img_url: '130x120' }} 130w"
+          >
+
+          <h3 class="h1 ">
+            {{ section.settings.title }}
+            <span class="animated-marker" style="--marker-color: {{ section.settings.marker_color }}">
+              {{- section.settings.subtitle }}
+              <svg
+                class="svg-marker svg-marker--style3"
+                width="184"
+                height="21"
+                viewBox="0 0 184 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path d="M2.99996 17.9626C12.8399 12.7075 30.9393 4.04876 36.8901 3.37945C42.8408 2.71013 41.6481 9.55371 38.7739 14.0685C38.0439 16.3832 40.2101 19.2307 54.715 12.1027L65.0248 7.05411C66.2099 6.45989 68.7141 6.06011 69.2498 9.21479C69.9193 13.1581 74.1326 16.5301 86.875 16.0475C99.6174 15.5649 118.079 9.0809 130.833 7.38711C143.587 5.69332 154.465 4.07802 180.617 7.35907" stroke="{{ section.settings.marker_color }}" stroke-width="6" stroke-linecap="round" style="stroke-dashoffset: 0; stroke-dasharray: none;"></path>
+              </svg>
+            </span>
+          </h3>
+          <div class="rte text-size-regular">
+            <p>
+              {{ section.settings.desc }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product of the Week",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Product"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Of The Week"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "#5c4295"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#2c2d2e"
+        },
+        {
+            "type": "color",
+            "id": "button_background_color",
+            "label": "Button Background Color",
+            "default": "#2c2d2e"
+        },
+        {
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent Color",
+            "default": "#2c2d2e"
+        },
+        {
+            "type": "text",
+            "id": "accent_color_rgb",
+            "label": "Accent Color RGB",
+            "default": "44,45,46"
+        },
+        {
+            "type": "color",
+            "id": "marker_color",
+            "label": "Marker Color",
+            "default": "#f48024"
+        },
+        {
+            "type": "textarea",
+            "id": "desc",
+            "label": "Description",
+            "default": "Your product description goes here."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product of the Week",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+<section
+  class="poch-collection-2-banner"
+  id="poch-collection-2-banner"
+  style="background-image: url('https://anniespoochpops.myshopify.com/cdn/shop/files/Background.png?v=1723725609'); background-size: cover;"
+>
+  <div class="poch-collection-2-banner-row">
+    <div class="poch-collection-2-banner-row-wrap-img">
+      <div class="poch-collection-2-banner-col poch-flex">
+        <div class="poch-collection-2-banner-content"></div>
+
+        {% if section.settings.img != blank %}
+          <img
+            src="{{ section.settings.img | img_url: 'master' }}"
+            alt="Dog with bone"
+            style="max-width: 100%; height: auto;"
+            width=""
+            height=""
+          >
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="poch-collection-2-banner-row-wrap-content">
+      <div class="page-width">
+        <div class="poch-collection-2-banner-col poch-flex">
+          <div class="poch-collection-2-banner-content">
+            <h2>{{ section.settings.txt }}</h2>
+            <p>{{ section.settings.desc }}</p>
+            <a href="{{ section.settings.btn_url }}" class="poch-btn">{{ section.settings.btn_txt }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [
+     {
+        "type": "text",
+        "id": "txt",
+        "label": "Heading",
+        "default":"Champion Chewers, Meet Your Match"
+      },
+     {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Description",
+        "default":"<p>Add Description</p>"
+      },
+    {
+        "type": "text",
+        "id": "btn_txt",
+        "label": "Button Text",
+        "default":"Order a Muttkin™"
+      },
+     {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+  ],
+  "presets": [
+    {
+      "name":"Collection Banner"
+    }
+  ]
+}
+{% endschema %}

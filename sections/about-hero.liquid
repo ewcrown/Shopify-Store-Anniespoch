@@ -1,0 +1,588 @@
+{{ 'section-about-banner.css' | asset_url | stylesheet_tag }}
+<style>
+    .about-us-hero {
+    background: url({{ section.settings.image | image_url }});
+    background-size: {{ section.settings.background_size }};
+    background-position: {{ section.settings.background_position }};
+    padding: {{ section.settings.padding_top }}rem {{ section.settings.padding_right }}rem {{ section.settings.padding_bottom }}rem {{ section.settings.padding_left }}rem;
+  }
+
+  .about-us-hero .text-content {
+    width: {{ section.settings.width }}%;
+  }
+
+  {% for block in section.blocks %}
+    .about-us-hero .year {
+      font-size: {{ block.settings.year_size }}px;
+      color: {{ block.settings.year_color }};
+      background: {{ block.settings.year_background }};
+      border-radius: {{ block.settings.year_border_radius }}px;
+      padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    }
+
+    .about-us-hero .about-heading {
+      font-size: {{ block.settings.heading_size }}px;
+      color: {{ block.settings.title_color }};
+    }
+  {% endfor %}
+
+  /* Media Queries for Different Screen Sizes */
+  @media only screen and (max-width: 1024px) { /* Tablet/Large mobile */
+    .about-us-hero {
+      padding: calc({{ section.settings.padding_top }}rem / 1.5)
+               calc({{ section.settings.padding_right }}rem / 1.5)
+               calc({{ section.settings.padding_bottom }}rem / 1.5)
+               calc({{ section.settings.padding_left }}rem / 1.5);
+    }
+
+    .about-us-hero .text-content {
+      width: 90%;
+    }
+
+    {% for block in section.blocks %}
+      .about-us-hero .year {
+        font-size: calc({{ block.settings.year_size }}px / 1.5);
+        padding: calc({{ section.settings.padding_top }}px / 1.5)
+                 calc({{ section.settings.padding_right }}px / 1.5)
+                 calc({{ section.settings.padding_bottom }}px / 1.5)
+                 calc({{ section.settings.padding_left }}px / 1.5);
+      }
+
+      .about-us-hero .about-heading {
+        font-size: calc({{ block.settings.heading_size }}px / 1.5);
+      }
+    {% endfor %}
+  }
+
+  @media only screen and (max-width: 768px) { /* Small Tablet */
+    .about-us-hero {
+      padding: calc({{ section.settings.padding_top }}rem / 2)
+               calc({{ section.settings.padding_right }}rem / 2)
+               calc({{ section.settings.padding_bottom }}rem / 2)
+               calc({{ section.settings.padding_left }}rem / 2);
+    }
+
+    .about-us-hero .text-content {
+      width: 100% !important;
+    }
+
+    {% for block in section.blocks %}
+      .about-us-hero .year {
+        font-size: calc({{ block.settings.year_size }}px / 2);
+        padding: calc({{ section.settings.padding_top }}px / 2)
+                 calc({{ section.settings.padding_right }}px / 2)
+                 calc({{ section.settings.padding_bottom }}px / 2)
+                 calc({{ section.settings.padding_left }}px / 2);
+      }
+
+      .about-us-hero .about-heading {
+        font-size: calc({{ block.settings.heading_size }}px / 2);
+      }
+    {% endfor %}
+  }
+
+  @media only screen and (max-width: 480px) { /* Mobile Phones */
+    .about-us-hero {
+      padding: calc({{ section.settings.padding_top }}rem / 3)
+               calc({{ section.settings.padding_right }}rem / 3)
+               calc({{ section.settings.padding_bottom }}rem / 3)
+               calc({{ section.settings.padding_left }}rem / 3);
+    }
+
+    {% for block in section.blocks %}
+      .about-us-hero .year {
+        font-size: calc({{ block.settings.year_size }}px / 3);
+        padding: calc({{ section.settings.padding_top }}px / 3)
+                 calc({{ section.settings.padding_right }}px / 3)
+                 calc({{ section.settings.padding_bottom }}px / 3)
+                 calc({{ section.settings.padding_left }}px / 3);
+      }
+
+      .about-us-hero .about-heading {
+        font-size: calc({{ block.settings.heading_size }}px / 3);
+      }
+    {% endfor %}
+  }
+</style>
+<div
+  class="template-{{ section.id }}-{{ page.title | handleize }} about-us-hero"
+>
+  <section class="about-section">
+    <div class="text-content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'year' %}
+            <span
+              class="year"
+            >
+              {{ block.settings.year }}
+            </span>
+
+          {% when 'heading' %}
+            <h1 class="about-heading">
+              {{ block.settings.heading }}
+            </h1>
+
+          {% when 'text' %}
+            <div style="font-size: {{ block.settings.text_size }}px; color: {{ block.settings.text_color }};">
+              {{ block.settings.text }}
+            </div>
+
+          {% when 'sign' %}
+            <p
+              class="signature"
+              style="font-size: {{ block.settings.sign_size }}px; color: {{ block.settings.sign_color }};"
+            >
+              Best regards,<br>
+              {{ block.settings.sign }}
+            </p>
+          {% when 'link' %}
+            <p>
+              <strong>{{ block.settings.link }}</strong>
+            </p>
+          {% when 'button' %}
+            <a
+              href="{{ block.settings.link }}"
+              style="
+                font-size:{{ block.settings.text_size }};border-radius:{{ block.settings.text_radius }}px;background:{{ block.settings.bg_color }};color:{{ block.settings.text_color }};
+                padding: {{ block.settings.padding_top }}px {{ block.settings.padding_right }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_left }}px;
+              "
+              ;
+            >
+              {{- block.settings['btn-title'] -}}
+            </a>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "width",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "select",
+      "id": "background_size",
+      "label": "Background Size",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "contain"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "initial",
+          "label": "Initial"
+        },
+        {
+          "value": "inherit",
+          "label": "Inherit"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Background Position",
+      "options": [
+        {
+          "value": "left top",
+          "label": "Left Top"
+        },
+        {
+          "value": "left center",
+          "label": "Left Center"
+        },
+        {
+          "value": "left bottom",
+          "label": "Left Bottom"
+        },
+        {
+          "value": "center top",
+          "label": "Center Top"
+        },
+        {
+          "value": "center center",
+          "label": "Center Center"
+        },
+        {
+          "value": "center bottom",
+          "label": "Center Bottom"
+        },
+        {
+          "value": "right top",
+          "label": "Right Top"
+        },
+        {
+          "value": "right center",
+          "label": "Right Center"
+        },
+        {
+          "value": "right bottom",
+          "label": "Right Bottom"
+        }
+      ],
+      "default": "center center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.image-banner.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "label": "Heading Size",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 54
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "year",
+      "name": "year",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "year",
+          "default": "Since 2010",
+          "label": "Year"
+        },
+        {
+          "type": "range",
+          "id": "year_size",
+          "label": "Size",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 54
+        },
+        {
+          "type": "color",
+          "id": "year_color",
+          "label": "Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "year_background",
+          "label": "Background",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "year_border_radius",
+          "label": "Border Radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "default": 5
+        },
+        {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "padding_left",
+        "label": "Padding Left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "padding_right",
+        "label": "Padding Right",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 5
+      }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.image-banner.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "html",
+          "id": "text",
+          "default": "t:sections.image-banner.blocks.text.settings.text.default",
+          "label": "t:sections.image-banner.blocks.text.settings.text.label"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Text Size",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 22
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "text Color",
+          "default": "#000000"
+        }
+
+      ]
+    },
+    {
+  "type": "sign",
+  "name": "Signature",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "html",
+      "id": "sign",
+      "default": "name",
+      "label": "Name"
+    },
+    {
+      "type": "range",
+      "id": "sign_size",
+      "label": "Sign Size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "sign_color",
+      "label": "Sign Color",
+      "default": "#000000"
+    }
+  ]
+},
+    {
+  "type": "link",
+  "name": "link",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "link",
+      "default": "link",
+      "label": "link"
+    }
+  ]
+},
+    {
+  "type": "button",
+  "name": "button",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "btn-title",
+      "default": "Button text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "link"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "font size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "text_radius",
+      "label": "Button radius",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#000000"
+    },
+        {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "rem",
+      "default": 5
+    }
+  ]
+}
+
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "sign"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

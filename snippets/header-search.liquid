@@ -1,0 +1,146 @@
+{% comment %}
+  Renders a header search modal. Should be used with 'header.liquid'
+
+  Accepts:
+  - input_id: {String} Id for the search input element (required)
+
+  Usage:
+  {% render 'header-search', input_id: 'My-Id'%}
+{% endcomment %}
+<style>
+                  .search-modal.modal__content {
+                  width: 30%;
+                  position: absolute;
+                  right: 0;
+                  /* height: 100vh; */
+                  background: #ffffff;
+              }
+                  .predictive-search {
+            position: absolute;
+            width: 100%;
+            background: white;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            padding: 10px;
+            display: none;
+            gap: 10px; /* Space between grid items */
+          }
+
+          .search-result-item {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border: 1px solid #ddd;
+        overflow: hidden; /* Prevent content from spilling out */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+          .search-result-item a {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-wrap: wrap; /* Allow flex items to wrap */
+  }
+
+  .search-result-item .col-inner {
+      margin-left: 10px; /* Create spacing between image and text */
+      flex: 1; /* Take up remaining space for the text */
+      white-space: normal;
+  }
+          .search-result-item img {
+        max-width: 80px; /* Adjust according to your design */
+        height: auto;
+        margin-right: 10px; /* Add spacing between image and text */
+    }
+
+
+    .predicate-search {
+        width: 100%; /* Ensure full width of the container */
+        display: grid;
+        gap: 10px; /* Space between items */
+        grid-template-columns: repeat(2, 1fr); /* For smaller screens */
+    }
+
+          /* Grid layout for different screen sizes */
+          @media (min-width: 1200px) {
+            .search-modal.modal__content {
+                  width: 30%;
+              }
+          }
+
+          @media (max-width: 1199px) and (min-width: 992px) {
+            .search-modal.modal__content {
+                  width: 60%;
+              }
+          }
+
+          @media (max-width: 991px) and (min-width: 768px) {
+            .search-modal.modal__content {
+                  width: 80%;
+              }
+          }
+
+          @media (max-width: 767px) {
+            .search-modal.modal__content {
+                  width: 100%;
+              }
+          }
+
+
+                .predictive-search .search-result-item span {
+                  font-size: 14px;
+                }
+            .search-modal.modal__content form #search-ai {
+                width: 100%;
+                position: relative;
+                top: 30px;
+            }
+</style>
+<details-modal class="header__search">
+  <details>
+    <summary
+      class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle"
+      aria-haspopup="dialog"
+      aria-label="{{ 'general.search.search' | t }}"
+    >
+      {% render 'search-icon' %}
+    </summary>
+    <div
+      class="search-modal modal__content gradient"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{{ 'general.search.search' | t }}"
+    >
+      <div class="modal-overlay"></div>
+      <div
+        class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
+        tabindex="-1"
+      >
+        <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+          <form action="/search" method="get" role="search" class="header__search">
+            <input
+              type="search"
+              id="search-ai"
+              name="q"
+              placeholder="Search products..."
+              aria-label="Search"
+              autocomplete="off"
+              required
+            >
+            <button type="submit"></button>
+          </form>
+        </predictive-search>
+        <div class="predictive-search"></div>
+        <button
+          type="button"
+          class="search-modal__close-button modal__close-button link link--text focus-inset"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          <span class="svg-wrapper">
+            {% render 'icon-close' %}
+          </span>
+        </button>
+      </div>
+    </div>
+  </details>
+</details-modal>

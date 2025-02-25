@@ -1,0 +1,55 @@
+{% comment %} medium-3 large-1/5 columns {% endcomment %}
+<div
+  class=" carousel-cell"
+>
+  <product-card class="product-card text-left product-card--content-spacing-true product-card--border-true has-shadow--false">
+    <figure class="product-featured-image thb-hover">
+      <a
+        href="{{ product.url }}"
+        title=""
+        class="product-featured-image-link aspect-ratio aspect-ratio--adapt"
+        style="--padding-bottom: 100%;"
+      >
+        <img
+          class="product-secondary-image lazyautosizes lazyloaded"
+          width="1200"
+          height="1080"
+          data-sizes="auto"
+          srcset="
+            {%- if product.featured_image.width >= 165 -%}{{ product.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if product.featured_image.width >= 330 -%}{{ product.featured_image | image_url: width: 330 }} 330w,{%- endif -%}
+            {%- if product.featured_image.width >= 535 -%}{{ product.featured_image | image_url: width: 535 }} 535w,{%- endif -%}
+            {%- if product.featured_image.width >= 750 -%}{{ product.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if product.featured_image.width >= 1000 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+            {%- if product.featured_image.width >= 1500 -%}{{ product.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if product.featured_image.width >= 3000 -%}{{ product.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+            {{ product.featured_image | image_url }} {{ product.featured_image.width }}w
+          "
+          src="{{ product.featured_image | image_url: width: 1500 }}"
+
+          alt="{{ product.featured_image.alt | escape }}"
+
+          fetchpriority="auto"
+          alt="{{ product.title }}"
+          sizes="164px"
+        >
+      </a>
+    </figure>
+    <div class="product-card-info">
+      <div class="product-card-vendor">
+        <a href="#" title="Product vendor">{{ product.collection[0] }}</a>
+      </div>
+      <span class="price">
+        <ins>
+          <span class="amount ">{{ product.price | money }}</span>
+        </ins>
+        <small class="unit-price  hidden">
+          <span></span>
+          <span class="unit-price-separator">/</span>
+          <span></span>
+        </small>
+      </span>
+      <a href="#" title="" class="product-card-title">{{ product.title }}</a>
+    </div>
+  </product-card>
+</div>

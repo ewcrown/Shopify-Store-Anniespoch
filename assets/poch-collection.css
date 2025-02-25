@@ -1,0 +1,672 @@
+.poch-collection-2-banner-row-wrap-img img {
+  object-fit:contain;
+}
+.poch-collection-2-banner-row-wrap-content .poch-collection-2-banner-col{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+}
+
+.poch-collection-2-banner-row-wrap-content .poch-collection-2-banner-content {
+    width:100%;
+}
+.poch-collection-2-banner-row-wrap-img .poch-collection-2-banner-col {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  height:100%;
+}
+
+.poch-collection-2-banner-row-wrap-img .poch-collection-2-banner-content {
+    background: #0006;
+  width:100%;
+}
+.poch-collection-2-banner-row-wrap-content {}
+
+.poch-facets-vertical.pops-facets-vertical.page-width {
+  padding: 0 0px !important;
+}
+
+.poch-facets-vertical #product-grid {
+  margin: 0;
+}
+
+.poch-collection-wrap .poch-flex {
+  align-items: baseline;
+}
+
+.poch-collection-title {
+  font-family: Poppins;
+  font-size: 35.34px;
+  font-weight: 600;
+  line-height: 40.72px;
+  letter-spacing: -0.6592366099357605px;
+  text-align: left;
+  color: #444249;
+}
+
+.poch-collection-desc {
+  font-family: Poppins;
+  font-size: 16.48px;
+  font-weight: 400;
+  line-height: 26.37px;
+  text-align: left;
+  color: #444249;
+}
+
+.poch-collection-view-btn a {
+  font-family: Poppins;
+  font-size: 16.15px;
+  font-weight: 500;
+  line-height: 25.83px;
+  text-align: center;
+  background: #f0bd41;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 20px;
+  transition: 0.3s;
+  display: inline;
+}
+
+.poch-collection-view-btn a:hover {
+  background-color: #f4842a;
+}
+
+.poch-collection-2-banner-row {
+  background-image: url(https://cdn.shopify.com/s/files/1/0710/0950/1430/files/Background.png?v=1723725609);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.poch-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.poch-collection-2-banner-row-wrap-img,
+.poch-collection-2-banner-row-wrap-content {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.poch-collection-2-banner-row-wrap-img .poch-flex {
+  align-items: stretch;
+}
+
+.poch-collection-2-banner-row-wrap-content .page-width {
+  height: 100%;
+}
+
+.poch-collection-2-banner-row-wrap-content .poch-collection-2-banner-col {
+  height: 100%;
+}
+
+.poch-collection-2-banner-content {
+  width: 50%;
+  /* background-color: #00000066; */
+  padding: 100px 50px 100px 0;
+  /* height : 100vh; */
+}
+
+.poch-collection-2-banner-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #fff;
+  line-height:1.1em;
+}
+
+.poch-collection-2-banner-content p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #fff;
+    line-height: 1.1em;
+}
+
+.poch-collection-2-banner-content a {
+  padding: 15px 30px;
+  font-size: 1em;
+  color: white;
+  background-color: #efb93d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.poch-collection-2-banner-content a:hover {
+  background-color: #f4842a;
+}
+
+.muttkin-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.muttkin-content h2 {
+  font-family: Poppins;
+  font-size: 59.06px;
+  font-weight: 700;
+  line-height: 76.93px;
+  text-align: center;
+}
+
+.muttkin-content p {
+  font-family: Poppins;
+  font-size: 25.04px;
+  font-weight: 400;
+  line-height: 35.05px;
+  text-align: center;
+  color: #666666;
+  margin-bottom: 3rem;
+}
+
+.muttkin-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 4rem;
+}
+
+.muttkin-image-wrapper {
+  position: relative;
+  width: 45%;
+  max-width: 500px;
+}
+
+.muttkin-image {
+  width: 100%;
+}
+
+.image-label {
+  position: absolute;
+  background-color: #ff7800;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.marrow-bone {
+  bottom: 10px;
+  left: 10px;
+}
+
+.peanut-butter-biscuit {
+  top: 10px;
+  right: 10px;
+}
+
+.tasty-bits {
+  bottom: 10px;
+  right: 10px;
+}
+
+.muttkin-video {
+  width: 45%;
+  max-width: 500px;
+}
+
+.muttkin-button {
+  margin-top: 30px;
+}
+
+.muttkin-button a {
+  padding: 15px 30px;
+  background-color: #efb93d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  font-family: Poppins;
+  font-size: 16.72px;
+  font-weight: 500;
+  line-height: 26.75px;
+  text-align: center;
+}
+
+.muttkin-button a:hover {
+  background-color: #f4842a;
+}
+
+.poch-collection-testimonials-row {
+  background-color: #f0bd41;
+}
+
+.testimonials-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.testimonials-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 2;
+}
+
+.testimonial {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stars {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.testimonial p {
+  font-family: Open Sans;
+  font-size: 22.82px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 41.4px;
+  text-align: left;
+  color: #666666;
+}
+
+.testimonial span {
+  font-size: 14px;
+  font-style: italic;
+  color: #666666;
+  font-family: Open Sans;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 41.4px;
+  text-align: right;
+  display: block;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin-top: 20px;
+}
+
+.side-content img {
+  width: 100%;
+  max-width: 341px;
+  margin-bottom: 20px;
+}
+@media (max-width: 1024px) {
+  /* General container adjustment for mobile/tablet */
+  .poch-collection-2-banner {
+    padding: 20px 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .poch-collection-2-banner-row {
+    display: flex;
+    flex-direction: column-reverse; /* Reverse for mobile */
+    padding: 20px;
+  }
+
+  /* Image section adjustment */
+  .poch-collection-2-banner-row-wrap-img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .poch-collection-2-banner-row-wrap-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Keep image aspect ratio */
+  }
+
+  /* Text and content area adjustment */
+  .poch-collection-2-banner-row-wrap-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .poch-collection-2-banner-content {
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    border-radius: 10px;
+  }
+
+  .poch-collection-2-banner-content h2 {
+    font-size: 1.8rem; /* Adjust for smaller devices */
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .poch-collection-2-banner-content p {
+    font-size: 1rem; /* Adjust paragraph size */
+    color: white;
+    margin-bottom: 15px;
+    line-height: 1.4em;
+  }
+
+  .poch-collection-2-banner-content a {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #efb93d;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .poch-collection-2-banner-content a:hover {
+    background-color: #f4842a;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Further adjustments for smaller mobile devices */
+  .poch-collection-2-banner-row-wrap-content,
+  .poch-collection-2-banner-row-wrap-img {
+    padding: 10px;
+  }
+
+  .poch-collection-2-banner-content {
+    padding: 10px 0;
+  }
+
+  .poch-collection-2-banner-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .poch-collection-2-banner-content p {
+    font-size: 0.9rem;
+  }
+
+  .poch-collection-2-banner-content a {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+
+.order-btn {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 40.8px;
+  text-align: center;
+  max-width: 341px;
+}
+
+.order-btn:hover {
+  background-color: #f7b500;
+  color: #fff;
+}
+
+.poch-collection-size-title {
+  font-family: Poppins;
+  font-size: 33.88px;
+  font-weight: 600;
+  line-height: 39.04px;
+  letter-spacing: -0.6320018768310547px;
+  text-align: left;
+  color: #444249;
+  margin-bottom: 3rem;
+}
+
+.poch-collection-2-size-row {
+  padding: 70px 0;
+}
+
+.poch-collection-2-comment-col {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 1% 65% !important;
+    padding: 150px;
+}
+.poch-collection-2-comment-col {
+  padding: 150px; /* Default padding for large screens */
+}
+
+@media (max-width: 1200px) {
+  .poch-collection-2-comment-col {
+    padding: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .poch-collection-2-comment-col {
+    padding: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .poch-collection-2-comment-col {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .poch-collection-2-comment-col {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 400px) {
+  .poch-collection-2-comment-col {
+    padding: 15px;
+  }
+}
+
+.poch-collection-2-comment-col .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+}
+
+.poch-collection-comment-title {
+  font-family: Poppins;
+  font-size: 25.79px;
+  font-weight: 500;
+  line-height: 35.63px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.poch-collection-comment-txt {
+  font-family: Poppins;
+  font-size: 29.51px;
+  font-weight: 500;
+  line-height: 40.78px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 3rem;
+}
+
+.poch-collection-comment-author {
+    font-family: Poppins;
+    font-size: 29.51px !important;
+    font-weight: 700;
+    line-height: 40.78px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.poch-collection-2-faq-row {
+  padding: 70px 0;
+}
+
+.poch-collection-faq-title {
+  font-family: Poppins;
+  font-size: 51.9px;
+  font-weight: 400;
+  line-height: 67.6px;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.poch-collection-faq-item {
+  margin-bottom: 1rem;
+}
+
+.poch-collection-faq-Ques {
+  font-family: Poppins;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+.poch-collection-faq-ans {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: left;
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  .poch-collection-2-banner-row-wrap-content .poch-collection-2-banner-content {
+    background: #0006 !important;
+    padding-bottom: 50px;
+  }
+
+  .poch-collection-2-banner-row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .poch-collection-2-banner-col.poch-flex {
+    flex-direction: column;
+    display:flex;
+  }
+
+  .poch-collection-2-banner-content {
+    width: 100%;
+    padding: 50px 20px;
+    background: unset !important;
+    padding-bottom: 0;
+  }
+
+  .muttkin-flex {
+    flex-direction: column;
+  }
+
+  .muttkin-image-wrapper,
+  .muttkin-video {
+    width: 100%;
+  }
+
+  .muttkin-content h2 {
+    font-size: 36px;
+  }
+
+  .muttkin-content p {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 0 20px;
+  }
+
+  .testimonials-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-content {
+    margin-top: 40px;
+  }
+
+  .poch-collection-size-content.poch-flex {
+    flex-direction: column;
+  }
+
+  .poch-collection-size-content img {
+    width: 100%;
+  }
+
+  .poch-collection-2-comment-col {
+    padding: 30px;
+  }
+
+  .poch-collection-comment-title {
+    font-size: 18.79px;
+    line-height: 30.63px;
+  }
+
+  .poch-collection-comment-txt,
+  .poch-collection-comment-author {
+    font-size: 20.51px;
+    line-height: 20.78px;
+  }
+
+  .poch-collection-comment-txt {
+    margin-bottom: 2rem;
+  }
+
+  .poch-collection-2-faq-row,
+  .poch-collection-2-size-row {
+    padding: 30px 20px;
+  }
+
+  .poch-collection-faq-title,
+  .poch-collection-size-title {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 400;
+  }
+
+  .poch-collection-faq-Ques {
+    font-size: 20px;
+  }
+
+  .poch-collection-faq-ans {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .testimonial p {
+    font-size: 20px;
+    line-height: 28.4px;
+  }
+
+  .stars img {
+    max-width: 200px;
+  }
+
+  .testimonial span {
+    font-size: 18px;
+  }
+
+  .testimonials-container {
+    padding: 0 20px;
+  }
+
+  .side-content {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+
+  .order-btn {
+    font-size: 19px;
+  }
+
+  .muttkin-section {
+    padding: 30px 0px;
+  }
+}

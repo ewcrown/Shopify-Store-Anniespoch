@@ -1,0 +1,99 @@
+{{ 'discount-newsletter-css.css' | asset_url | stylesheet_tag }}
+
+<section class="post-discount-newsletter" id="post-discount-newsletter" style="display:none;">
+  <div class="post-discount-newsletter-row">
+    <div class="page-width">
+      <div
+        class="post-discount-newsletter-col"
+        style=" background: url({{ section.settings.bg-img | image_url }}) top center / cover no-repeat;"
+      >
+        <div class="post-discount-newsletter-content">
+          {% comment %}
+            <h6 class="post-discount-newsletter-sub-heading">{{ section.settings.sub_head }}</h6>
+            <h2 class="post-discount-newsletter-heading">{{ section.settings.head }}</h2>
+            <p class="post-discount-newsletter-desc">{{ section.settings.desc }}</p>
+          {% endcomment %}
+
+          <div class="post-discount-newsletter-form">
+            <div class="klaviyo-form-{{ section.settings.sub_head }}"></div>
+          </div>
+        </div>
+        <div class="post-discount-newsletter-img">
+          <img
+            src="{{ section.settings.img | image_url }}"
+            alt=""
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const generatedFormClass = 'klaviyo-form-' + "{{ section.settings.sub_head }}";  // Dynamically generated class
+      console.log('Looking for form class:', generatedFormClass);  // Debug the generated class
+
+      const intervalId = setInterval(() => {
+          const klaviyoForm = document.querySelector('.' + generatedFormClass);
+
+          if (klaviyoForm) {
+              console.log('Found element with class:', generatedFormClass);
+
+              // Now show the post-discount-newsletter element
+              const discountElement = document.querySelector('#post-discount-newsletter');
+              if (discountElement) {
+                  discountElement.style.setProperty('display', 'block', 'important');
+                  console.log('Element #post-discount-newsletter is now visible');
+              } else {
+                  console.log('Element #post-discount-newsletter not found');
+              }
+
+              // Stop the interval once the element is found
+              clearInterval(intervalId);
+          }
+      }, 200); // Check every 200 milliseconds
+  });
+</script>
+{% schema %}
+{
+  "name": "Discount Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_head",
+      "label": "Klaviyo form ID",
+      "default":"TeqXjs"
+    },
+     {
+      "type": "text",
+      "id": "head",
+      "label": "Heading Here"
+    },
+     {
+      "type": "text",
+      "id": "desc",
+      "label": "Description Here"
+    },
+     {
+      "type": "text",
+      "id": "btn_txt",
+      "label": "Button Text"
+    },
+     {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image Here"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg-img",
+      "label": "Background"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discount Newsletter"
+    }
+  ]
+}
+{% endschema %}

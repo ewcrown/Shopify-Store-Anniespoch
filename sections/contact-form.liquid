@@ -1,0 +1,193 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+<style>
+  .gf-contact__input::placeholder,.gf-contact__textarea::placeholder{ color : #000000 !important; font-size:16px !important }
+</style>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="gf-contact ">
+  <div class="form-section">
+    <div class="gf-contact__header">
+      <h2 class="gf-contact__title">{{ page.title }}</h2>
+      <p class="gf-contact__description">Thank you for visiting our website! We would love to hear from you.</p>
+      <p class="gf-contact__description">
+        If you are a 501(c)(3) please visit our
+        <a href="/pages/partner-with-us" style="color:#000000"><strong>Partner page</strong></a> to discuss how Annie’s
+        Pooch Pops can support your agency’s mission!
+      </p>
+      <p class="gf-contact__description">
+        Please contact us via the Wholesale link below for additional information on resale and bulk pricing
+        opportunities.
+      </p>
+    </div>
+    <form class="gf-contact__form" id="gf-contact-form">
+      <div class="gf-contact__form-group">
+        <input type="text" id="gf-contact-name" class="gf-contact__input" name="name" placeholder="Name" required>
+        <input type="email" id="gf-contact-email" class="gf-contact__input" name="email" placeholder="Email" required>
+      </div>
+      <div class="gf-contact__form-group">
+        <input
+          type="tel"
+          id="gf-contact-phone"
+          class="gf-contact__input"
+          name="phone"
+          placeholder="Phone Number"
+          required
+        >
+      </div>
+      <div class="gf-contact__form-group">
+        <textarea
+          id="gf-contact-comment"
+          class="gf-contact__textarea"
+          name="comment"
+          placeholder="Comment"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="gf-contact__button">Send Message</button>
+    </form>
+  </div>
+  <div class="gf-contact__info row">
+    <div class="gf-contact__info-item">
+      <a href="tel:6105885777">
+        <div class="gf-contact__icon">
+          <svg width="26" height="45" viewBox="0 0 26 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.1406 44.5625C23.8949 44.5625 24.5477 44.2869 25.0989 43.7357C25.6502 43.1844 25.9258 42.5317 25.9258 41.7773V2.78516C25.9258 2.03084 25.6502 1.37807 25.0989 0.826843C24.5477 0.275616 23.8949 0 23.1406 0H3.64453C2.89022 0 2.23745 0.275616 1.68622 0.826843C1.13499 1.37807 0.859375 2.03084 0.859375 2.78516V41.7773C0.859375 42.5317 1.13499 43.1844 1.68622 43.7357C2.23745 44.2869 2.89022 44.5625 3.64453 44.5625H23.1406ZM12 40.2107C12 39.7755 12.1523 39.4056 12.4569 39.101C12.7616 38.7964 13.1315 38.644 13.5667 38.644C14.0018 38.644 14.3717 38.7964 14.6764 39.101C14.981 39.4056 15.1333 39.7755 15.1333 40.2107C15.1333 40.6459 14.981 41.0158 14.6764 41.3204C14.3717 41.625 14.0018 41.7773 13.5667 41.7773C13.1315 41.7773 12.7616 41.625 12.4569 41.3204C12.1523 41.0158 12 40.6459 12 40.2107ZM18.9629 2.78516C19.34 2.78516 19.6664 2.92296 19.942 3.19858C20.2177 3.47419 20.3555 3.80058 20.3555 4.17773C20.3555 4.55489 20.2177 4.88128 19.942 5.15689C19.6664 5.43251 19.34 5.57031 18.9629 5.57031H16.1777C15.8006 5.57031 15.4742 5.43251 15.1986 5.15689C14.923 4.88128 14.7852 4.55489 14.7852 4.17773C14.7852 3.80058 14.923 3.47419 15.1986 3.19858C15.4742 2.92296 15.8006 2.78516 16.1777 2.78516H18.9629ZM12 4.17773C12 4.55489 11.8622 4.88128 11.5866 5.15689C11.311 5.43251 10.9846 5.57031 10.6074 5.57031C10.2303 5.57031 9.90388 5.43251 9.62827 5.15689C9.35265 4.88128 9.21484 4.55489 9.21484 4.17773C9.21484 3.80058 9.35265 3.47419 9.62827 3.19858C9.90388 2.92296 10.2303 2.78516 10.6074 2.78516C10.9846 2.78516 11.311 2.92296 11.5866 3.19858C11.8622 3.47419 12 3.80058 12 4.17773ZM3.64453 8.35547H23.1406V36.207H3.64453V8.35547Z" fill="black"/>
+          </svg>
+        </div>
+        <p class="gf-contact__phone"><strong>Ph: (610) 588-5777</strong></p>
+        <p class="gf-contact__details">
+          Please note that we do not have a full-time office staff and that our sales team is typically traveling to
+          various fairs/festivals across the country.
+          <br>
+          For the fastest service, please email us. Our apologies in advance for any extended delays in response should
+          you require phone assistance.
+        </p>
+      </a>
+    </div>
+    <div class="gf-contact__info-item">
+      <a href="mailto:customerservice@anniespoochpops.com">
+        <div class="gf-contact__icon">
+          <svg width="46" height="45" viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_8611_632)">
+            <path d="M42.4961 5.57031H3.50391C2.74959 5.57031 2.09682 5.84593 1.54559 6.39716C0.994364 6.94838 0.71875 7.60116 0.71875 8.35547V36.207C0.71875 36.9613 0.994364 37.6141 1.54559 38.1653C2.09682 38.7166 2.74959 38.9922 3.50391 38.9922H42.4961C43.2504 38.9922 43.9032 38.7166 44.4544 38.1653C45.0056 37.6141 45.2812 36.9613 45.2812 36.207V8.35547C45.2812 7.60116 45.0056 6.94838 44.4544 6.39716C43.9032 5.84593 43.2504 5.57031 42.4961 5.57031ZM16.5593 25.1534L23 29.5488L29.4407 25.1099L40.5378 36.207H5.46222L16.5593 25.1534ZM3.50391 34.2487V16.2758L14.2094 23.5433L3.50391 34.2487ZM31.7471 23.4998L42.4961 16.1017V34.2487L31.7471 23.4998ZM42.4961 8.35547V12.8813L42.4526 12.7943L23 26.1544L3.50391 12.9249V8.35547H42.4961Z" fill="black"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_8611_632">
+            <rect width="44.5625" height="44.5625" fill="white" transform="matrix(1 0 0 -1 0.71875 44.5625)"/>
+            </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <p class="gf-contact__email"><strong>customerservice@anniespoochpops.com</strong></p>
+        <p class="gf-contact__details">Email us anytime</p>
+      </a>
+    </div>
+  </div>
+  <div class="gf-contact__map row">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12068.475166111088!2d-75.20532940342713!3d40.86926718888472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c48759268c628d%3A0x6bb72473a8d8a72b!2sAnnie&#39;s%20Pooch%20Pops!5e0!3m2!1sen!2sus!4v1725886640195!5m2!1sen!2sus"
+      width="100%"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    >
+    </iframe>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.contact-form.settings.title.default",
+      "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

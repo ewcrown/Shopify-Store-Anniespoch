@@ -1,0 +1,283 @@
+{{ 'rTYnoOTimx4t.css' | asset_url | stylesheet_tag }}
+<style>
+  .columns-a-i .flickity-viewport {
+     height:650px !important;
+   }
+</style>
+<div
+  id="shopify-section-template--17879066214654__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3"
+  class="shopify-section section-slideshow"
+>
+  <div class="row-ai">
+    <div class="small-12 columns-ai columns-a-i">
+      <slide-show
+        class="slideshow main-slideshow slideshow--full-width-false carousel mobile-height-500 desktop-height-650 section-spacing--disable-top section-spacing--disable-bottom transition--zoom flickity-enabled is-draggable is-fade flickity-resize"
+        data-dots="false"
+        data-autoplay="5000"
+        data-fade="true"
+        data-transition="zoom"
+        style="--dot-speed: 5s;--color-text: #fff;"
+        data-animations-ready="true"
+        tabindex="0"
+        data-initiated="true"
+      >
+        <div class="slideshow--autoplay-progress" style="--color-body: #2c2d2e;">
+          <svg
+            width="20px"
+            height="20px"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="thb-slideshow-progress--svg"
+            preserveAspectRatio="none"
+          >
+            <circle cx="10" cy="10" r="9" stroke="var(--color-body, #2c2d2e)" stroke-width="1.5px" stroke-linecap="round" stroke-linejoin="round" style="stroke-dashoffset: 0.002; stroke-dasharray: 0px, 999999px;"></circle>
+          </svg>
+        </div>
+
+        <div class="flickity-viewport" style="height: 650px; touch-action: pan-y;">
+          <div class="flickity-slider" style="left: 0px; transform: translateX(0%);">
+            {% for block in section.blocks %}
+              <div
+                class="slideshow__slide carousel__slide mobile-height-500 desktop-height-650 text-center content-size-medium"
+                style="--color-text: #2c2d2e; --overlay-color-rgb: 0,0,0; --overlay-opacity: 0.7; --color-slidebg-rgb: 0,0,0; --color-slidebg-opacity: 0.0; --bg-blur: 0px; position: absolute; left: 0px; transform: translateX(0%);"
+                data-timeline="[object Object]"
+              >
+                <div
+                  class="slideshow__slide-bg"
+                  style="translate: none; rotate: none; scale: none; transform: scale(1.1, 1.1);"
+                >
+                  <img
+                    src="{{ block.settings.image | image_url }}"
+                    class="lazyautosizes lazyloaded"
+                    width="2520"
+                    height="946"
+                    alt=""
+                    style="object-position: 50.0% 50.0%;"
+                    sizes="1440px"
+                  >
+                </div>
+                <div
+                  class="slideshow__slide-overlay"
+                  style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4) 100%)"
+                ></div>
+                <div class="slideshow__slide-inner content-middle-center content-has-bg--true">
+                  <div
+                    class="slideshow__slide-content"
+                    style="
+                      {% if section.settings.border_radius %}border-radius:{{ section.settings.border_radius | append:"px" }}{% endif %};{% if section.settings.overlay-width %}width:{{ section.settings.overlay-width | append : "%" }};{% endif %}
+                      {% if section.settings.padding_top %}
+                        padding-top: {{ section.settings.padding_top | append: "%" }};
+                        {% endif %}
+
+                        {% if section.settings.padding_right %}
+                        padding-right: {{ section.settings.padding_right | append: "%" }};
+                        {% endif %}
+
+                        {% if section.settings.padding_bottom %}
+                        padding-bottom: {{ section.settings.padding_bottom | append: "%" }};
+                        {% endif %}
+
+                        {% if section.settings.padding_left %}
+                        padding-left: {{ section.settings.padding_left | append: "%" }};
+                        {% endif %}
+                    "
+                  >
+                    <div
+                      class="split-text slideshow__slide-heading"
+                      style="font-size:{{ section.settings.heading_size | append:"px" }};"
+                    >
+                      <div class="line-parent" style="display: block; text-align: center; position: relative;">
+                        <div
+                          class="line-child banner-heading-ai"
+                          style="display: block; text-align: center; position: relative; color: #ffffff;{% if section.settings.line_height %} line-height:{{section.settings.line_height}};{% endif %}"
+                        >
+                          {{ block.settings.heading }}
+                        </div>
+                      </div>
+                    </div>
+                    <p class="split-text" style="">
+                      <div
+                        class="line-parent"
+                        style="display: block; text-align: center; position: relative;font-size:{{ section.settings.subheading_size | append:"px" }};"
+                      >
+                        <div
+                          class="line-child banner-desc-ai"
+                          style="display: block; text-align: center; position: relative; color: #ffffff;"
+                        >
+                          {{ block.settings.subheading }}
+                        </div>
+                      </div>
+                    </p>
+                    <div class="button-overflow-container">
+                      <a
+                        class="button white"
+                        href="{{ block.settings.link }}"
+                        role="button"
+                        title="{{ block.settings.button_label }}"
+                        style=""
+                      >
+                        {{- block.settings.button_label -}}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </slide-show>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.slideshow.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "em",
+      "label": "Line Height",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "overlay-width",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Overlay Width",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Padding Top",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_right",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Padding Right",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Padding Bottom",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "padding_left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Padding Left",
+        "default": 10
+      }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:sections.slideshow.blocks.slide.name",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "t:sections.slideshow.blocks.slide.settings.heading.default",
+          "label": "t:sections.slideshow.blocks.slide.settings.heading.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "subheading",
+          "default": "t:sections.slideshow.blocks.slide.settings.subheading.default",
+          "label": "t:sections.slideshow.blocks.slide.settings.subheading.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "t:sections.slideshow.blocks.slide.settings.button_label.default",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_label.label",
+          "info": "t:sections.slideshow.blocks.slide.settings.button_label.info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.slideshow.blocks.slide.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.slideshow.presets.name",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,317 @@
+.img-responsive {
+display:block;
+max-width:100%;
+height:auto;
+}
+
+#annies-review-section .annies-review-right-side a{
+      width: 100%;
+    background: #fff;
+    border-radius: 40px;
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 21.14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 33.823px;
+}
+.annies-review-testimonial-description {
+  color: #666;
+  font-family: Poppins;
+  font-size: 22.82px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 41.4px;
+}
+.annies-review-testimonial-name {
+  color: #666;
+  text-align: right;
+  font-family: Poppins;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 41.4px;
+  margin-top: 30px;
+}
+.annies-review-left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.annies-review-single {
+  background: #fff;
+  padding: 30px 45px;
+  border-radius: 10px;
+}
+.annies-review-wrap {
+  display: grid;
+  grid-template-columns: 1fr 30%;
+  gap: 40px;
+}
+.annies-review-row {
+  background: #fdc732;
+  padding: 56px 0px;
+}
+.post-discount-newsletter-col {
+  position: relative;
+}
+.post-discount-newsletter-col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ffffff8c;
+  width: 100%;
+  height: 100%;
+}
+.annies-collection-list {
+  margin-top: 20px;
+  a {
+    margin-bottom: 10px;
+    font-size: 16px;
+    &:hover {
+      color: #efb93d;
+    }
+  }
+}
+.product-form__input input {
+  display: none;
+  & + label {
+    cursor: pointer;
+    padding: 7px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  &:checked + label {
+    background: #efb93d;
+    border: 1px solid #efb93d;
+    color: #fff;
+  }
+}
+
+.facets-vertical .facet-checkbox input[type="checkbox"]:checked:before {
+  content: "✓";
+  display: block;
+  left: 3px;
+  position: relative;
+}
+.facet-checkbox__text {
+  font-size: 16px;
+  margin-left: 30px;
+}
+.facets__summary span {
+  transition: text-decoration var(--duration-short) ease;
+  font-size: 16px;
+}
+.facets-vertical .facets__summary > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.facets-vertical .facets__summary {
+  display: block;
+}
+.facets__disclosure-vertical {
+  padding: 20px 0;
+}
+.product-thumbnail img {
+  height: 90px;
+  object-fit: cover;
+}
+.page-width {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.annies-blogs-wrap:nth-of-type(4),
+.annies-blogs-wrap:nth-of-type(5) {
+  flex-basis: 48.7%;
+}
+.annies-blog-card img {
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 3px 3px 0px 0px;
+}
+.annies-tabs-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.annies-tabs-tab button {
+  color: rgba(68, 66, 73, 0.8);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 13px;
+  cursor: pointer;
+  padding: 9px 15px;
+  border-radius: 6px;
+  transition: 0.3s;
+  background: rgba(68, 66, 73, 0.05);
+}
+
+.annies-blogs-wrap {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ebebed;
+  background: var(--Color-Neutral-white, #fff);
+  flex-basis: 31.7%;
+}
+
+.annies-tabs-tabcontent {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 60px;
+}
+
+.annies-tabs-tab button:hover,
+.annies-tabs-tab button.active {
+  background-color: #eeb740;
+  color: #fff;
+}
+
+.annies-blog-card-date {
+  color: #444249;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+}
+
+.annies-tabcontent-inner-data p {
+  color: #444249;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  min-height: 100px;
+}
+
+.annies-tabcontent-inner-data h3 {
+  color: #444249;
+  font-size: 20.438px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+}
+
+.annies-banner-row {
+  background: url("https://cdn.shopify.com/s/files/1/0710/0950/1430/files/image-with-text-overlay_40013108-bb22-4471-8ddc-0db6df419b27.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0px;
+}
+
+.annies-banner-row h3 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 80px;
+  letter-spacing: -1.44px;
+  text-align: center;
+}
+
+.annies-tabs-row {
+  padding: 50px 0px;
+}
+
+.annies-tabs-wrap > p {
+  color: #444249;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27.2px;
+}
+
+.annies-tabs-wrap > h3 {
+  color: #eeb740;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: -0.84px;
+  margin: 0;
+}
+
+.annies-blog-card-read-more {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #eeb740;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.annies-tabcontent-inner-data {
+  padding: 20px;
+}
+
+@media (max-width: 1200px) {
+    .annies-review-testimonial-description {
+    font-size: 18.82px;
+    line-height: 28.4px;
+  }
+  .annies-review-testimonial-name {
+    font-size: 16px;
+    line-height: 18.4px;
+    margin-top: 20px;
+  }
+  #annies-review-section .annies-review-right-side a {
+   font-size: 16.14px;
+    line-height: 22.823px;
+  }
+  .annies-review-row {
+    padding: 30px 0;
+  }
+}
+@media (max-width: 600px) {
+  .annies-review-stars svg{
+      width: 100px;
+    height: 22px;
+}
+  .annies-review-right-side img {
+    margin:auto;
+  }
+  .annies-review-testimonial-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .annies-review-left-side {
+    gap: 10px;
+  }
+  .annies-review-single {
+    padding: 20px;
+  }
+  .annies-review-wrap {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  form#FacetFiltersForm {
+    padding: 0 20px;
+  }
+  .annies-banner-row {
+    padding: 30px 0;
+  }
+  .annies-banner-row h3 {
+    font-size: 34px;
+    margin: 0;
+  }
+  .annies-tabs-tabcontent {
+    gap: 20px;
+    padding-top: 30px;
+    flex-direction: column;
+  }
+}
+

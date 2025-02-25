@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading",
+      "settings": {}
+    },
+    "review": {
+      "type": "review",
+      "blocks": {
+        "video_i6TWVf": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_tHyMit": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_iHpKJj": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_XPdaxR": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_Gahq8Y": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_K9rxGQ": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_UHQkd7": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_mFTULD": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_DDkqrU": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_VpnhC4": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_9BLBxq": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_XPnkcq": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_wrG8aw": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_Gp9Yqc": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_hwDyjQ": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_Qa8JxQ": {
+          "type": "video",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "video_i6TWVf",
+        "video_tHyMit",
+        "video_iHpKJj",
+        "video_XPdaxR",
+        "video_Gahq8Y",
+        "video_K9rxGQ",
+        "video_UHQkd7",
+        "video_mFTULD",
+        "video_DDkqrU",
+        "video_VpnhC4",
+        "video_9BLBxq",
+        "video_XPnkcq",
+        "video_wrG8aw",
+        "video_Gp9Yqc",
+        "video_hwDyjQ",
+        "video_Qa8JxQ"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "heading",
+    "review"
+  ]
+}

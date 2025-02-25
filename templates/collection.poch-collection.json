@@ -1,0 +1,279 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_list_B3F9aD": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_zG4nHA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "muttkins"
+          }
+        },
+        "featured_collection_tHhykk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "happy-dog-meals-1"
+          }
+        },
+        "featured_collection_Lf6hQw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "packaged-treats"
+          }
+        },
+        "featured_collection_hTRHNG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "large-biscuits"
+          }
+        },
+        "featured_collection_pTNVdJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tasty-biscuits"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_zG4nHA",
+        "featured_collection_tHhykk",
+        "featured_collection_Lf6hQw",
+        "featured_collection_hTRHNG",
+        "featured_collection_pTNVdJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "poch_collection_banner_GrqzAF": {
+      "type": "poch-collection-banner",
+      "settings": {
+        "txt": "Champion Chewers, Meet Your Match",
+        "desc": "<p>Muttkins™ satisfies your tough chewer with a bone marrow base that can withstand hours of chomping fun.</p><p>No rawhide here! Muttkins™ are made with a beef marrow bone base to keep your tough chewer satisfied.</p><p>Feel grr-eat about how you’re treating your pooch! Muttkins™ are hand-made with human-grade ingredients sourced in the USA.<br/></p>",
+        "btn_txt": "Order a Muttkin™",
+        "btn_url": "#shopify-section-template--18379327471862__product-grid",
+        "img": "shopify://shop_images/ScoutMuttkin_Fix_png.png"
+      }
+    },
+    "poch_collection_video_9ANJQa": {
+      "type": "poch-collection-video",
+      "settings": {
+        "head": "What is a Muttkin™?",
+        "desc": "A Muttkin™ is a heavy-duty dog bone made from cattle born, bred, and harvested in the USA. Annie’s Pooch Pops selects only the strongest beef bones from a steakhouse supplier. We double the pleasure by wrapping the bone in a peanut butter biscuit and slow-roast the Muttkin™ to savory, beefy perfection.",
+        "img": "shopify://shop_images/what-is-a-muttkin_png_a42c7d37-a1de-4896-a4cf-865edb4c2730.png",
+        "btn_txt": "Order a Muttkin For Your Pooch",
+        "btn_url": "#shopify-section-template--18379327471862__product-grid",
+        "video_url": "https://player.vimeo.com/video/543412929?dnt=1&app_id=122963&autoplay=1&muted=1"
+      }
+    },
+    "annies_review_section_DMaVGr": {
+      "type": "annies-review-section",
+      "blocks": {
+        "testimonial_LUMMqk": {
+          "type": "testimonial",
+          "settings": {
+            "description": "“We can’t even get the box in the house and our pup is already going nuts! Everything is excellent quality and he thinks they’re delicious!”",
+            "name": "– Kiana L."
+          }
+        },
+        "testimonial_nViBed": {
+          "type": "testimonial",
+          "settings": {
+            "description": "“The Muttkins are irresistible. What dog wouldn’t like a marrow bone with a cookie coating. The customer service is exceptional.”",
+            "name": "– Cindy C."
+          }
+        },
+        "testimonial_zY7ggD": {
+          "type": "testimonial",
+          "settings": {
+            "description": "“They are high quality bones, properly prepared. They don’t chip and my dogs LOVE them! They still naw on them long after the cookie and marrow are gone.”",
+            "name": "– Laurie C."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_LUMMqk",
+        "testimonial_nViBed",
+        "testimonial_zY7ggD"
+      ],
+      "settings": {
+        "img": "shopify://shop_images/IMG_5895.webp",
+        "btn_url": "#shopify-section-template--18379327471862__product-grid",
+        "btn_text": "Order a Muttkin For Your Pooch"
+      }
+    },
+    "custom_liquid_Qqk3xP": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<iframe src='https://a61ac457c9634cc8bd469d3a6740217f.elf.site' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"></iframe>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "collection_testimonial_rHGKMd": {
+      "type": "collection-testimonial",
+      "blocks": {
+        "testimonial_EXFchA": {
+          "type": "Testimonial",
+          "settings": {
+            "txt": "We can’t even get the box in the house and our pup is alreadygoing nuts! Everything is excellent quality and he thinks they’redelicious!",
+            "author": "– Kiana L."
+          }
+        },
+        "testimonial_xieBBk": {
+          "type": "Testimonial",
+          "settings": {
+            "txt": "The Muttkins are irresistible. What dog wouldn’t like a marrowbone with a cookie coating. The customer service is exceptional.",
+            "author": "– Cindy C."
+          }
+        },
+        "testimonial_37CYHN": {
+          "type": "Testimonial",
+          "settings": {
+            "txt": "They are high quality bones, properly prepared. They don’t chipand my dogs LOVE them! They still naw on them long after thecookie and marrow are gone.",
+            "author": "– Laurie C."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_EXFchA",
+        "testimonial_xieBBk",
+        "testimonial_37CYHN"
+      ],
+      "disabled": true,
+      "settings": {
+        "img": "shopify://shop_images/IMG_5895_MOV-high_gif.png",
+        "btn_txt": "Order a Muttkin For Your Pooch"
+      }
+    },
+    "collection_size_guide_hA73P3": {
+      "type": "Collection-size-guide",
+      "blocks": {
+        "img_RYXqNf": {
+          "type": "img",
+          "settings": {
+            "img": "shopify://shop_images/muttkin_jpg.png"
+          }
+        },
+        "img_WWGRLq": {
+          "type": "img",
+          "settings": {
+            "img": "shopify://shop_images/muttkin-size_jpg.png"
+          }
+        }
+      },
+      "block_order": [
+        "img_RYXqNf",
+        "img_WWGRLq"
+      ],
+      "settings": {
+        "head": "Muttkins™ Ingredients and Size Guide"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_comment_BfPFPp": {
+      "type": "collection-comment",
+      "settings": {
+        "comment": "<p>\"Our dogs cannot get enough of the Mega Muttkins. They love the biscuit around the middle, but go on to work on the bone for months or even years later. I can’t tell you how many stripped down bones we have all around the house. My husband thinks we don’t need anymore, but I just ordered six more.</p>",
+        "txt": "Shhh! It’s their favorite treat!\"",
+        "author": "– Melissa A",
+        "image": "shopify://shop_images/pizza-love-20210129-a7305778jpg_50901377791_o.jpg"
+      }
+    },
+    "collection_faqs_Whx4UY": {
+      "type": "collection-faqs",
+      "blocks": {
+        "faqs_wbVbm3": {
+          "type": "faqs",
+          "settings": {
+            "ques": "Do I need to freeze a Muttkin™?",
+            "ans": "A Muttkin™ is a perishable product since we keep the Tasty Bits on the bone to maximize flavor. When you receive your delivery, we ask that you either freeze the bone for future use or give it to your pooch within 1-2 days. After your pooch chews off the Tasty Bits and Peanut Butter Biscuit, you can leave the Muttkin™ out for your pooch to chew at his/her leisure."
+          }
+        },
+        "faqs_htnXVD": {
+          "type": "faqs",
+          "settings": {
+            "ques": "Is a Muttkin™ safe to give to my pooch?",
+            "ans": "We only use a femur bone, which is one of the strongest bones in a cow. Like all dog chew treats, you should only provide a Muttkin™ to your pooch with proper supervision. If the bone splinters or breaks, please discard it immediately."
+          }
+        },
+        "faqs_dw4NrB": {
+          "type": "faqs",
+          "settings": {
+            "ques": "Do you ship nationwide?",
+            "ans": "We ship throughout the continental US during the fall and winter. However, due to the perishable nature of a Muttkin™, during warmer summer months we only ship to locations within a 2-3 day delivery area from our bakery in Eastern Pennsylvania."
+          }
+        }
+      },
+      "block_order": [
+        "faqs_wbVbm3",
+        "faqs_htnXVD",
+        "faqs_dw4NrB"
+      ],
+      "settings": {
+        "txt": "Frequently Asked Questions:"
+      }
+    }
+  },
+  "order": [
+    "collection_list_B3F9aD",
+    "banner",
+    "poch_collection_banner_GrqzAF",
+    "poch_collection_video_9ANJQa",
+    "annies_review_section_DMaVGr",
+    "custom_liquid_Qqk3xP",
+    "collection_testimonial_rHGKMd",
+    "collection_size_guide_hA73P3",
+    "product-grid",
+    "collection_comment_BfPFPp",
+    "collection_faqs_Whx4UY"
+  ]
+}

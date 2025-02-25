@@ -1,0 +1,105 @@
+{{ 'text-with-image.css' | asset_url | stylesheet_tag }}
+<div
+  class="template-{{ section.id }}--{{ page.title | handleize }}"
+  style="
+                    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+  "
+>
+  <section
+    class="ai-image-text-section ai-container"
+  >
+    <div class="ai-image">
+      <img src="{{ section.settings.image  | image_url }}" height="" width="" alt="Image">
+    </div>
+    <div class="ai-content" style="color: {{ section.settings.text_color }};">
+      <p style="font-size: {{ section.settings.text_size }}px;">{{ section.settings.text }}</p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "AI Image with Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "We are dedicated to Animal Welfare. Lincoln dutifully serves as the Official Taste Tester at Annie’s Pooch Pops. Rescued as a stray dog from Georgia, his life dramatically changed for the better upon joining the McInerney family in November 2017.\n\nWhile not all dogs will be as lucky as Lincoln, Annie’s Pooch Pops is eager to work with reputable agencies dedicated to the promotion of pet adoption and other animal welfare initiatives. Please contact us via the Partner With Us link below to discuss how Annie’s Pooch Pops can support your agency’s mission!"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_row",
+      "label": "Reverse Row Order",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

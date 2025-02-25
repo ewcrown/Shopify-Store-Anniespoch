@@ -1,0 +1,58 @@
+<section class="poch-collection-2-faq" id="poch-collection-2-faq">
+  <div class="poch-collection-2-faq-row">
+    <div class="page-width">
+      <div class="poch-collection-2-faq-col ">
+        <h2 class="poch-collection-faq-title">{{ section.settings.txt }}</h2>
+
+        <div class="poch-collection-faqs">
+          {% for block in section.blocks %}
+            <div class="poch-collection-faq-item">
+              <h3 class="poch-collection-faq-Ques"><span>Q:</span> {{ block.settings.ques }}</h3>
+              <p class="poch-collection-faq-ans"><span>A:</span> {{ block.settings.ans }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection FAQ's",
+  "settings": [
+    {
+      "type": "text",
+      "id": "txt",
+      "label": "Heading",
+      "default":"Frequently Asked Questions:"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faqs",
+      "name": "faqs",
+      "limit": 3,
+      "settings": [
+         {
+      "type": "text",
+      "id": "ques",
+      "label": "Question",
+      "default":"Do I need to freeze a Muttkin™?"
+    },
+           {
+      "type": "text",
+      "id": "ans",
+      "label": "Answer",
+      "default":"A Muttkin™ is a perishable product since we keep the Tasty Bits on the bone to maximize flavor. When you receive your delivery, we ask that you either freeze the bone for future use or give it to your pooch within 1-2 days. After your pooch chews off the Tasty Bits and Peanut Butter Biscuit, you can leave the Muttkin™ out for your pooch to chew at his/her leisure."
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection FAQ's"
+    }
+  ]
+}
+{% endschema %}

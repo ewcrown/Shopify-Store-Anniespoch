@@ -1,0 +1,71 @@
+/* Links inside the collection tabs */
+.collection-tabs__list-link {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+  display: inline-flex;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  padding: 5px 15px;
+  height: 31px;
+  border-radius: var(--button-border-radius, 6px);
+  align-items: center;
+  font-weight: var(--font-body-medium-weight, 500);
+  margin: 0 2px 2px 0;
+  line-height: 1;
+  background: rgba(var(--color-body-rgb), 0.05);
+  color: rgba(var(--color-body-rgb), 0.8);
+}
+
+/* Hover and active state for the collection tabs */
+.collection-tabs__list-link:hover,
+.active.collection-tabs__list-link {
+  color: #fff;
+  background: var(--color-accent);
+}
+
+/* Collection tabs container */
+.collection-tabs {
+  overflow: hidden;
+}
+
+/* Collection tabs list styling */
+.collection-tabs__list {
+  display: block;
+  overflow-x: scroll;
+  text-align: left;
+  white-space: nowrap;
+  scrollbar-width: none; /* For Firefox */
+  margin-top: 15px;
+}
+
+.collection-tabs__list::-webkit-scrollbar {
+  display: none; /* For Webkit-based browsers */
+}
+
+/* Margin between collection tab links */
+.collection-tabs__list-link + .collection-tabs__list-link {
+  margin-left: 10px;
+}
+
+/* Mobile specific styles for collection tabs */
+@media only screen and (max-width: 767px) {
+  .collection-tabs__list {
+    width: 100%;
+  }
+}
+
+/* Default state for columns inside the carousel */
+.section-collection-tabs .products.carousel .columns {
+  display: none;
+}
+
+/* Display carousel slides */
+.section-collection-tabs .products.carousel .columns.carousel__slide {
+  display: flex;
+}
+
+/* Mobile-specific width for carousel slides */
+@media only screen and (max-width: 767px) {
+  .section-collection-tabs .products.carousel .carousel__slide {
+    width: calc(50vw - 15px);
+  }
+}

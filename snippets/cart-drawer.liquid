@@ -1,0 +1,188 @@
+{% comment %}
+  Renders cart drawer
+
+  Usage:
+  {% render 'cart-drawer' %}
+{% endcomment %}
+
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .drawer {
+    visibility: hidden;
+  }
+</style>
+<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+  <div id="CartDrawer" class="cart-drawer">
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+    <div
+      class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{{ 'sections.cart.title' | t }}"
+      tabindex="-1"
+    >
+      {%- if cart == empty -%}
+        <div class="drawer__inner-empty">
+          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+            <div class="cart-drawer__empty-content">
+              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              <button
+                class="drawer__close"
+                type="button"
+                onclick="this.closest('cart-drawer').close()"
+                aria-label="{{ 'accessibility.close' | t }}"
+              >
+                {% render 'icon-close' %}
+              </button>
+              <a href="{{ routes.all_products_collection_url }}" class="button">
+                {{ 'general.continue_shopping' | t }}
+              </a>
+
+              {%- if shop.customer_accounts_enabled and customer == null -%}
+                <p class="cart__login-title h3">{{ 'sections.cart.login.title' | t }}</p>
+                <p class="cart__login-paragraph">
+                  {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if settings.cart_drawer_collection != blank -%}
+            <div class="cart-drawer__collection">
+              {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="drawer__header">
+          <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+          <button
+            class="drawer__close"
+            type="button"
+            onclick="this.closest('cart-drawer').close()"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {% render 'icon-close' %}
+          </button>
+        </div>
+        <cart-drawer-items>
+          <form
+            action="{{ routes.cart_url }}"
+            id="CartDrawer-Form"
+            class="cart__contents cart-drawer__form"
+            method="post"
+          >
+            <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
+              <div class="product-cart-item--container">
+                {%- for item in cart.items -%}
+                  <div class="product-cart-item" id="CartDrawerItem-{{ item.index }}">
+                    <div class="product-cart-item-image">
+                      <img
+                        src="{{ item.image | image_url: '300x300' }}"
+                        alt="{{ item.image.alt | escape }}"
+                        sizes="75px"
+                      >
+                    </div>
+                    <div class="product-cart-item-info">
+                      <a href="{{ item.url }}" title="{{ item.title }}" class="cart-product-link">
+                        {{ item.title }}
+                      </a>
+                      <div class="cart-item__discounted-prices">
+                        <span class="visually-hidden">
+                          {{ 'products.product.price.regular_price' | t }}
+                        </span>
+                        <s class="cart-item__old-price product-option">
+                          {{- item.original_price | money -}}
+                        </s>
+                        <span class="visually-hidden">
+                          {{ 'products.product.price.sale_price' | t }}
+                        </span>
+                        <strong class="cart-item__final-price product-option">
+                          {{ item.final_price | money }}
+                        </strong>
+                      </div>
+
+                      <div class="product-cart-item-options">{{ item.variant_title }}</div>
+
+                      <quantity-selector class="quantity cart-update small-qty buttons_added" data-id="{{ item.key }}">
+                        <button class="minus" type="button" aria-label="Decrease quantity for {{ item.title }}">
+                          <svg width="8" height="2" viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1H7" stroke="var(--color-body)" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </button>
+                        <input
+                          type="number"
+                          name="updates[]"
+                          id="updates_{{ item.key }}"
+                          value="{{ item.quantity }}"
+                          min="1"
+                          step="1"
+                          class="qty"
+                          aria-label="Quantity for {{ item.title }}"
+                        >
+                        <button class="plus" type="button" aria-label="Increase quantity for {{ item.title }}">
+                          <svg
+                            width="10"
+                            height="10"
+                            viewBox="0 0 10 10"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M1 5H9" stroke="var(--color-body)" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M5 1V9" stroke="var(--color-body)" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </button>
+                      </quantity-selector>
+                      <a
+                        href="{{ routes.cart_url }}?line={{ forloop.index }}&quantity=0"
+                        class="remove"
+                        data-index="{{ forloop.index }}"
+                      >
+                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 3L1 3M5.00024 6V10M8.00024 6V10M11.0002 3V12.5C11.0002 12.6326 10.9476 12.7598 10.8538 12.8536C10.76 12.9473 10.6329 13 10.5002 13H2.50024C2.36764 13 2.24046 12.9473 2.14669 12.8536C2.05292 12.7598 2.00024 12.6326 2.00024 12.5V3M9.00025 3V2C9.00025 1.73478 8.89489 1.48043 8.70735 1.29289C8.51982 1.10536 8.26546 1 8.00024 1H5.00024C4.73503 1 4.48067 1.10536 4.29314 1.29289C4.1056 1.48043 4.00024 1.73478 4.00024 2V3" stroke="#E93636" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+            <div id="CartDrawer-CartErrors" role="alert"></div>
+          </form>
+        </cart-drawer-items>
+        <div class="drawer__footer">
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <li class="discounts__discount discounts__discount--end">
+                  {{ discount.title | escape }} (-{{ discount.total_allocated_amount | money }})
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          <div class="totals" role="status">
+            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+          </div>
+
+          <small class="tax-note caption-large rte">
+            {{ 'sections.cart.taxes_at_checkout' | t }}
+          </small>
+        </div>
+        <div class="cart-drawer-buttons">
+          <a href="{{ routes.cart_url }}" class="button" title="View cart"><span>View cart</span></a>
+          <form action="{{ routes.cart_url }}" method="post" novalidate="">
+            <button type="submit" class="button accent checkout full" name="checkout" title="Checkout">
+              <span>Checkout</span>
+            </button>
+          </form>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</cart-drawer>

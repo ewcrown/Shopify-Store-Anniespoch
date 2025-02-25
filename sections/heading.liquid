@@ -1,0 +1,63 @@
+<style>
+   /* Container for the review section */
+   .review-section {
+     background-image: url('{{ page.metafields.custom.image.value | image_url  }}'); /* Replace with actual image path */
+     background-size: cover;
+     background-position: center;
+     padding: 100px 20px;
+     text-align: center;
+     color: #000;
+     position: relative;
+   }
+
+   /* Add a semi-transparent overlay */
+   /* .review-section::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: rgba(255, 204, 102, 0.8); /* Semi-transparent overlay color */
+     z-index: 1;
+   }
+  */
+   /* Main content of the review section */
+   .review-content {
+     position: relative;
+     z-index: 2;
+   }
+
+   /* Review heading */
+   .review-heading {
+     font-size: 3rem;
+     font-weight: bold;
+     margin-bottom: 20px;
+   }
+
+   /* Review description */
+   .review-description {
+     font-size: 1.2rem;
+   }
+</style>
+
+<section class="review-section">
+  <div class="review-content">
+    <h2 class="review-heading">{{ page.title }}</h2>
+    <p class="review-description">{{ page_description }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heading",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "Heading"
+    }
+  ]
+}
+{% endschema %}

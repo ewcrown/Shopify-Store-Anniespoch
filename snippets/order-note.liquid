@@ -1,0 +1,38 @@
+<script>
+  const orderNoteToggle = document.getElementById('order-note-toggle');
+   const orderNoteContent = document.getElementById('mini-cart-note');
+   const saveButton = orderNoteContent.querySelector('.button.full'); // Save button
+   const noteTextarea = document.getElementById('mini-cart__notes');
+
+   if (orderNoteToggle && orderNoteContent) {
+     // Toggle the active class for the order note content
+     orderNoteToggle.addEventListener('click', () => {
+       orderNoteContent.classList.toggle('active');
+     });
+   }
+
+   if (saveButton) {
+     saveButton.addEventListener('click', () => {
+       const note = noteTextarea.value;
+
+       // Send the note to Shopify's cart API
+       fetch('/cart/update.js', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+           'X-Requested-With': 'XMLHttpRequest'
+         },
+         body: JSON.stringify({
+           note: note
+         })
+       })
+       .then(response => response.json())
+       .then(data => {
+         console.log('Order note saved:', data.note);
+         // Optionally close the note input after saving
+         orderNoteContent.classList.remove('active');
+       })
+       .catch(error => console.error('Error saving order note:', error));
+     });
+   }
+</script>

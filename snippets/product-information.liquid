@@ -1,0 +1,22 @@
+{% comment %} Snippet: product-information.liquid {% endcomment %}
+<div class="product-information">
+  <div id="ProductInfo-{{ section.id }}">
+    <p class="product--text">{{ product.vendor }}</p>
+    <div class="product-title-container">
+      <h1 class="product-title">{{ product.title }}</h1>
+      <div class="product-price-container">
+        <span class="price">{{ product.price | money_with_currency }}</span>
+        <small class="unit-price hidden"
+          >Tax included. <a href="/policies/shipping-policy">Shipping</a> calculated at checkout.</small
+        >
+      </div>
+    </div>
+
+    <form method="post" action="/cart/add" id="product-form-{{ section.id }}" enctype="multipart/form-data">
+      <input type="hidden" name="id" value="{{ product.id }}">
+      <variant-selects id="variant-selects-{{ section.id }}" class="no-js-hidden">
+        <!-- Variants and options rendered here -->
+      </variant-selects>
+    </form>
+  </div>
+</div>

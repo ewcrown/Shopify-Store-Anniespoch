@@ -1,0 +1,38 @@
+<div class="small-12 ">
+  <div class="collection-card style2 ">
+    <div
+      class="collection-card--image media-aspect-adapt has-shadow--true"
+      style="--var-media-aspect-ratio: 100%"
+    >
+      <a href="#" class="collection-card--link" title="{{ card_collection.title }}">
+        <img
+          class="lazyautosizes ls-is-cached lazyloaded"
+          srcset="
+            {%- if card_collection.featured_image.width >= 165 -%}{{ card_collection.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 330 -%}{{ card_collection.featured_image | image_url: width: 330 }} 330w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 535 -%}{{ card_collection.featured_image | image_url: width: 535 }} 535w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 750 -%}{{ card_collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 1000 -%}{{ card_collection.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 1500 -%}{{ card_collection.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if card_collection.featured_image.width >= 3000 -%}{{ card_collection.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+            {{ card_collection.featured_image | image_url }} {{ card_collection.featured_image.width }}w
+          "
+          src="{{ card_collection.featured_image | image_url: width: 1500 }}"
+
+          alt="{{ card_collection.featured_image.alt | escape }}"
+          height="{{ card_collection.featured_image.height }}"
+          width="{{ card_collection.featured_image.width }}"
+        >
+      </a>
+    </div>
+    <div class="collection-card--content">
+      <a
+        href="{{ card_collection.url }}"
+        class="collection-card--link collection-card--link-small collection-card--link-bottom-center"
+        title="{{ card_collection.title }}"
+      >
+        <span>{{ card_collection.title }}</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="support-section">
+  <h1>{{ section.settings.heading }}</h1>
+  <div class="logos">
+    {% for block in section.blocks %}
+      <div class="logo-container">
+        {% if block.settings.logo_image != blank %}
+          <img src="{{ block.settings.logo_image | img_url: 'master' }}" alt="{{ block.settings.logo_alt_text }}">
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "Support Organizations",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Organizations We Support"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "logo",
+            "name": "Logo",
+          "limit": 2,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "logo_image",
+                    "label": "Logo Image"
+                },
+                {
+                    "type": "text",
+                    "id": "logo_alt_text",
+                    "label": "Logo Alt Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Support Organizations",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

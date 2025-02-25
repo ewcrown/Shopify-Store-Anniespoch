@@ -1,0 +1,410 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_list_B3F9aD": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_zG4nHA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "muttkins"
+          }
+        },
+        "featured_collection_tHhykk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "happy-dog-meals"
+          }
+        },
+        "featured_collection_Lf6hQw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chewables-grain-free"
+          }
+        },
+        "featured_collection_hTRHNG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tasty-biscuits"
+          }
+        },
+        "featured_collection_pTNVdJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "canine-cuisine"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_zG4nHA",
+        "featured_collection_tHhykk",
+        "featured_collection_Lf6hQw",
+        "featured_collection_hTRHNG",
+        "featured_collection_pTNVdJ"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "hero_slider": {
+      "type": "hero-ai-slider",
+      "blocks": {
+        "slide_x9N8Am": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/pizza-love-20210129-a7305655jpg_50901371346_o.jpg",
+            "heading": "Our Signature Muttkin™ Dog Treats",
+            "subheading": "Slow-roasted USA Beef Marrow Bone Wrapped in a Peanut Butter Biscuit",
+            "button_label": "Order a Muttkin™",
+            "link": "shopify://collections/muttkins"
+          }
+        }
+      },
+      "block_order": [
+        "slide_x9N8Am"
+      ],
+      "settings": {
+        "heading_size": 48,
+        "line_height": 1,
+        "overlay-width": 70,
+        "subheading_size": 22,
+        "border_radius": 20,
+        "padding_top": 5,
+        "padding_right": 10,
+        "padding_bottom": 5,
+        "padding_left": 10
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "button_text": "View All",
+        "button_url": "shopify://collections/tasty-biscuits",
+        "collection": "tasty-biscuits"
+      }
+    },
+    "collage": {
+      "type": "collage",
+      "blocks": {
+        "image_fq4UN9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Container_6.png",
+            "title": "For Holidays & Special Occasions",
+            "btn_txt": "",
+            "btn_url": "shopify://collections/specialty-items"
+          }
+        },
+        "image_Yn6wKx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Container_5.png",
+            "title": "For the Peanut Butter Lover",
+            "btn_txt": "",
+            "btn_url": "shopify://collections/peanut-butter-lovers"
+          }
+        }
+      },
+      "block_order": [
+        "image_fq4UN9",
+        "image_Yn6wKx"
+      ],
+      "settings": {}
+    },
+    "video": {
+      "type": "video",
+      "blocks": {
+        "video_x6eC8R": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Sally Compton.mov"
+          }
+        },
+        "video_Vbhz4m": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/rawvideo.mov"
+          }
+        },
+        "video_TEYzrd": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/SarahGrimm_subtitles.mp4"
+          }
+        },
+        "video_ePXy8m": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/9_16_Captions.MOV.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_x6eC8R",
+        "video_Vbhz4m",
+        "video_TEYzrd",
+        "video_ePXy8m"
+      ],
+      "settings": {}
+    },
+    "custom_liquid_eazmT7": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<iframe src='https://a61ac457c9634cc8bd469d3a6740217f.elf.site' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"></iframe>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "discount_newsletter_yqBXGx": {
+      "type": "discount-newsletter",
+      "settings": {
+        "sub_head": "TeqXjs",
+        "head": "Unlock 15% SAVINGS on your first order!",
+        "desc": "And a BONUS offer your dog's Birthday!",
+        "btn_txt": "Get The Discount",
+        "img": "shopify://shop_images/APP-Opt-in-image.png",
+        "bg-img": "shopify://shop_images/Annie_s_Milk_Street-2020-Huberts_Graphic_Design_Spread-2020-A7304978_1.jpg"
+      }
+    },
+    "rich_text_iX3gVX": {
+      "type": "rich-text",
+      "settings": {
+        "icon": "shopify://shop_images/Layer_1.png",
+        "title": "Our",
+        "subtitle": "Signature Muttkins™",
+        "heading_color": "#444249",
+        "text_color": "#2c2d2e",
+        "button_background_color": "#2c2d2e",
+        "accent_color": "#2c2d2e",
+        "accent_color_rgb": "44,45,46",
+        "marker_color": "#efb93d",
+        "desc": "Champion Chewers,\nMeet Your Match"
+      }
+    },
+    "featured_product_Rmp69m": {
+      "type": "featured-product",
+      "blocks": {
+        "title_Qk9LiW": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_jMcNFb": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_7BzThP": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Tax included. <a href=\"/policies/shipping-policy\">Shipping</a> calculated at checkout.",
+            "text_style": "uppercase"
+          }
+        },
+        "variant_picker_XEiUQM": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_cLt7NR": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_cGeczz": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_6gz4zj": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title_Qk9LiW",
+        "price_jMcNFb",
+        "text_7BzThP",
+        "variant_picker_XEiUQM",
+        "quantity_selector_cLt7NR",
+        "buy_buttons_cGeczz",
+        "share_6gz4zj"
+      ],
+      "settings": {
+        "product": "mighty-muttkin",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_wCgJ3T": {
+      "type": "featured-collection",
+      "settings": {
+        "button_text": "View All",
+        "button_url": "shopify://collections/muttkins",
+        "collection": "muttkins"
+      }
+    },
+    "image_with_text_4DiCDD": {
+      "type": "image-with-text",
+      "blocks": {
+        "image_with_text_CBtMPT": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/madeusa_png.png",
+            "heading": "Made in the USA",
+            "caption": "Our treats are handmade in Bangor, PA with ingredients sourced within the USA."
+          }
+        },
+        "image_with_text_eVejCQ": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/bakery_png.png",
+            "heading": "Human-Grade Ingredients",
+            "caption": "Crafted with ingredients fit for your plate—because your pup deserves the best quality and taste."
+          }
+        },
+        "image_with_text_FgV7it": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/naturalingredients_png.png",
+            "heading": "Premium Ingredients",
+            "caption": "Our all-natural ingredients are sourced from restaurant-quality purveyors."
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_CBtMPT",
+        "image_with_text_eVejCQ",
+        "image_with_text_FgV7it"
+      ],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "organization_support_CMfUBw": {
+      "type": "organization-support",
+      "blocks": {
+        "logo_mGLBVE": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_36.png",
+            "logo_alt_text": ""
+          }
+        },
+        "logo_LVBXwJ": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_37.png",
+            "logo_alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_mGLBVE",
+        "logo_LVBXwJ"
+      ],
+      "settings": {
+        "heading": "Organizations We Support"
+      }
+    },
+    "loop_text_jLkJWV": {
+      "type": "loop-text",
+      "blocks": {
+        "heading_QjVjNi": {
+          "type": "heading",
+          "settings": {
+            "heading": "All-Natural Ingredients",
+            "heading_size": "h1"
+          }
+        },
+        "heading_63P9gY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sourced from Restaurant-quality Purveyors",
+            "heading_size": "h1"
+          }
+        },
+        "heading_WKYTMk": {
+          "type": "heading",
+          "settings": {
+            "heading": "Certified by Pennsylvania Department of Health",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QjVjNi",
+        "heading_63P9gY",
+        "heading_WKYTMk"
+      ],
+      "settings": {}
+    },
+    "17278875287e9be3d8": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "collection_list_B3F9aD",
+    "hero_slider",
+    "featured_collection",
+    "collage",
+    "video",
+    "custom_liquid_eazmT7",
+    "discount_newsletter_yqBXGx",
+    "rich_text_iX3gVX",
+    "featured_product_Rmp69m",
+    "featured_collection_wCgJ3T",
+    "image_with_text_4DiCDD",
+    "organization_support_CMfUBw",
+    "loop_text_jLkJWV",
+    "17278875287e9be3d8"
+  ]
+}

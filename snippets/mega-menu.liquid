@@ -1,0 +1,58 @@
+{{ 'menu.css' | asset_url | stylesheet_tag }}
+
+<section class="ann-mega-menu">
+  <div class="ann-mega-menu-row">
+    <div class="page-width">
+      <div class="ann-mega-menu-wrap">
+        <div class="ann-mega-menu-head ">
+          {% for col in allcollections %}
+            {% assign card_collection = col.settings.collection %}
+            {% if card_collection.title %}
+              <div class="amm-menu-head-col">
+                {%- if card_collection.featured_image %}
+                  <h3>{{ card_collection.title }}</h3>
+                  <a href="{{ card_collection.url}}" style="padding:0">
+                  <img
+                    srcset="
+                      {%- if card_collection.featured_image.width >= 165 -%}{{ card_collection.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if card_collection.featured_image.width >= 330 -%}{{ card_collection.featured_image | image_url: width: 330 }} 330w,{%- endif -%}
+                      {%- if card_collection.featured_image.width >= 535 -%}{{ card_collection.featured_image | image_url: width: 535 }} 535w,{%- endif -%}
+                      {%- if card_collection.featured_image.width >= 750 -%}{{ card_collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                      {%- if card_collection.featured_image.width >= 1000 -%}{{ card_collection.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                      {%- if card_collection.featured_image.width >= 1500 -%}{{ card_collection.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                      {%- if card_collection.featured_image.width >= 3000 -%}{{ card_collection.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                      {{ card_collection.featured_image | image_url }} {{ card_collection.featured_image.width }}w
+                    "
+                    width=""
+                    ,
+                    height=""
+                    src="{{ card_collection.featured_image | image_url: width: 1500 }}"
+                    class="img-res"
+                  >
+                  </a>
+                  <a href="{{ card_collection.url}}">View All</a>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="ann-mega-menu-bottom">
+          {% for col in allcollections %}
+            {% assign menu = col.settings.menu.links %}
+            <div class="ann-mega-menu-bottom-col">
+              <h3>{{ col.settings['menu-title'] }}</h3>
+
+              <ul>
+                {% for link in menu %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

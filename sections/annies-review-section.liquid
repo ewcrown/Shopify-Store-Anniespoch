@@ -1,0 +1,79 @@
+<section class="annies-review-section" id="annies-review-section">
+  <div class="annies-review-row">
+    <div class="page-width">
+      <div class="annies-review-wrap">
+      <div class="annies-review-left-side">
+        {% for block in section.blocks %}
+          <div class="annies-review-single">
+            <div class="annies-review-stars">{% render 'five-stars' %}</div>
+            <div class="annies-review-testimonial-description">
+              {{ block.settings.description }}
+            </div>
+            <div class="annies-review-testimonial-name">
+              {{ block.settings.name }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="annies-review-right-side">
+        {% if section.settings.img != blank %}
+        <img src="{{ section.settings.img | img_url:'master' }}" class="img-responsive">
+        {% endif %}
+        {% if section.settings.btn_url != blank %}
+        <div class="muttkin-button">
+          <a href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "<> Review Section",
+  "settings": [
+    {
+      "type":"image_picker",
+      "label": "Image Here",
+      "id": "img"
+    },
+    {
+      "type": "url",
+      "label": "Button Link",
+      "id": "btn_url"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "btn_text",
+      "default":"Order a Muttkin For Your Pooch"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "label": "Description",
+          "id": "description"
+        },
+        {
+          "type": "text",
+          "label": "Name",
+          "id": "name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "<> Review Section",
+    }
+  ]
+}
+{% endschema %}

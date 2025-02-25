@@ -1,0 +1,123 @@
+{{ 'gallery.css' | asset_url | stylesheet_tag }}
+<style>
+       #shopify-section-template--18200361664806__23941103-0904-4fda-a0ea-686d4c090f5a .aspect-ratio img,#shopify-section-template--18200361664806__23941103-0904-4fda-a0ea-686d4c090f5a .aspect-ratio .thb-placeholder {
+      position: inherit;
+  }
+</style>
+<div
+  id="shopify-section-template--18200361664806__23941103-0904-4fda-a0ea-686d4c090f5a"
+  class="shopify-section section-gallery"
+>
+  <div class="row">
+    <div class="small-12 columns">
+      <theme-gallery
+        class="gallery text-center section-spacing section-spacing--disable-top"
+        style="--gallery-columns: 2; --overlay-color-rgb: 0,0,0; --overlay-opacity: 0.0"
+      >
+        <div class="gallery--inner column-spacing--large">
+          {% for block in section.blocks %}
+            <div
+              class="gallery--item"
+              onclick="window.location.href='{{ block.settings.btn_url }}'; return false;"
+              style="cursor: pointer;"
+            >
+              <figure class="aspect-ratio aspect-ratio--adapt" style="--ratio-percent:96.0%;">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+
+                <div class="gallery--item-content content-top-center">
+                  <div>
+                    <p class="subheading"></p>
+                    <h4 class="h2">
+                      <span class="animated-marker collection-title-ai" style="--marker-color: #fd6b62">
+                        {{- block.settings.title }}
+                        <svg
+                          class="svg-marker svg-marker--style1"
+                          width="201"
+                          height="14"
+                          viewBox="0 0 201 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          preserveAspectRatio="none"
+                        >
+                          <path d="M3 10.5732C55.565 6.61382 168.107 -0.117058 197.753 4.63415" stroke="#FF9800" stroke-width="6" stroke-linecap="round" style="stroke-dashoffset: 0; stroke-dasharray: none;"></path>
+                        </svg>
+                      </span>
+                      {{ block.settings.sub_heading }}
+                    </h4>
+                    {% comment %}
+                      <a
+                        href="{{ block.settings.btn_url }}"
+                        role="link"
+                        class="text-button white text-button--has-icon"
+                      >
+                        {{- block.settings.btn_txt }}
+                        <span>
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L1 9" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    {% endcomment %}
+                  </div>
+                </div>
+              </figure>
+            </div>
+          {% endfor %}
+        </div>
+      </theme-gallery>
+    </div>
+  </div>
+  {% comment %}
+    <script
+      src="//vision-pets.myshopify.com/cdn/shop/t/2/assets/gallery.js?v=58756531785782864281678693683"
+      defer="defer"
+    ></script>
+  {% endcomment %}
+</div>
+
+{% schema %}
+{
+  "name": "Gallery Section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "btn_txt",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button URL"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Gallery Section",
+
+    }
+  ]
+}
+{% endschema %}

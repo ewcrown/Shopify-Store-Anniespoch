@@ -1,0 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "about-hero": {
+      "type": "about-hero",
+      "blocks": {
+        "year_tHw6yn": {
+          "type": "year",
+          "settings": {
+            "year": "Since 2010",
+            "year_size": 12,
+            "year_color": "#ffffff",
+            "year_background": "#eb4f45",
+            "year_border_radius": 25,
+            "padding_top": 10,
+            "padding_bottom": 10,
+            "padding_left": 10,
+            "padding_right": 10
+          }
+        },
+        "heading_UPd7iY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Affiliate Program",
+            "heading_size": 54,
+            "title_color": "#000000"
+          }
+        },
+        "text_AXtkTV": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Become a part of the Annie’s Pooch Pops family by joining our top paying Affiliate Program.\n\n        Our goal at Annie’s Pooch Pops is to become the premier and highest paying partner in the dog treat market. Annie’s Pooch Pops handmakes all-natural dog treats in a human-grade bakery using ingredients sourced entirely in the USA.\n    </p>\n    <p style=\"text-align: justify;\">\n        Our attractive packaging and pooch-pleasing treats are sure to attract your followers. And, with our <strong>90-day cookie policy</strong>, those customers will come back when their pooches beg for more!\n    </p>\n    \n   <strong>Setup is Easy</strong>\n    <ul>\n        <li>Sign up and join our affiliate program powered by ShareASale</li>\n        <li>Once your application is approved you’ll have access to our creative and text links</li>\n        <li>Access our exclusive affiliate promotions</li>\n        <li>Track your referrals online through ShareASale</li>\n    </ul>\n    \n    <p style=\"text-align: justify;\">\n        Once you have joined the program, reach out to our affiliate manager to share your campaign strategies, get tips on how to optimize your current campaign, and learn more about current incentive programs.\n    </p>\n    \n    <p style=\"font-weight: bold;\">\n        Visit: <a href=\"http://www.shareasale.com/join/AnniesPoochPops\" style=\"color: #000; text-decoration: none;\">http://www.shareasale.com/join/AnniesPoochPops</a>\n    </p>",
+            "text_size": 22,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "year_tHw6yn",
+        "heading_UPd7iY",
+        "text_AXtkTV"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/image-with-text-overlay_1.png",
+        "width": 44,
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "padding_left": 5,
+        "padding_right": 5,
+        "background_size": "cover",
+        "background_position": "center center"
+      }
+    },
+    "double-image": {
+      "type": "double-image",
+      "disabled": true,
+      "settings": {
+        "heading": "Welcoming Your Pooch Into Our Family",
+        "heading_size": 36,
+        "heading_color": "#000000",
+        "description": "Matt McInerney, the current owner of Annie’s Pooch Pops, named his childhood dog 'Annie' in homage to Little Orphan Annie. Annie was a rescued golden retriever/corgi mix with a strawberry-blonde coat. Matt and Annie were inseparable and truly embodied the phrase of man’s best friend. Acquiring the Annie’s Pooch Pops business was the perfect opportunity for Matt to honor the legacy of a revered family member.",
+        "description_size": 20,
+        "description_color": "#333333",
+        "image1": "shopify://shop_images/IMG_5465_Original-scaled_jpg.png",
+        "image2": "shopify://shop_images/IMG_5465_Original-scaled.jpg_1.png",
+        "background_color": "#ffffff",
+        "background_size": "cover",
+        "background_position": "center center",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_left": 20,
+        "padding_right": 20
+      }
+    },
+    "text-with-image": {
+      "type": "text-with-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/IMG_5465_Original-scaled.jpg_2.png",
+        "text": "<p>\nWe are dedicated to Animal Welfare. Lincoln dutifully serves as the Official Taste Tester at Annie’s Pooch Pops. Rescued as a stray dog from Georgia, his life dramatically changed for the better upon joining the McInerney family in November 2017.\n</p>\n<br>\n<p>\nWhile not all dogs will be as lucky as Lincoln, Annie’s Pooch Pops is eager to work with reputable agencies dedicated to the promotion of pet adoption and other animal welfare initiatives. Please contact us via the Partner With Us link below to discuss how Annie’s Pooch Pops can support your agency’s mission!</p>",
+        "text_size": 16,
+        "text_color": "#333333",
+        "reverse_row": false,
+        "background_color": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 20,
+        "padding_right": 20
+      }
+    }
+  },
+  "order": [
+    "about-hero",
+    "double-image",
+    "text-with-image"
+  ]
+}

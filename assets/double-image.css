@@ -1,0 +1,129 @@
+.family-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.family-section .content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.family-section h2 {
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.family-section p {
+    line-height: 1.6;
+    max-width: 515px; /* Maintain max width */
+}
+
+.family-section .images {
+    flex: 1;
+    position: relative;
+}
+
+.family-section .images img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.family-section .images .img1 {
+    width: 60%; /* Adjust size for the first image */
+}
+
+
+.family-section .images .img2 {
+    position: absolute;
+    top: 90px;
+    left: 30%;
+    width: 60%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .family-section {
+        gap: 30px;
+    }
+
+    .family-section .images .img1,
+    .family-section .images .img2 {
+        width: 70%;
+    }
+
+    .family-section .images .img2 {
+        top: 70px;
+        left: 20%;
+    }
+
+    .family-section .content {
+        padding-right: 15px;
+    }
+
+    .family-section p {
+        max-width: 100%; /* Allow full width on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .family-section {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .family-section .content {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .family-section .images .img1,
+    .family-section .images .img2 {
+        width: 50%;
+    }
+  .family-section .images .img1 {
+    position: relative;
+    left: 150px;
+}
+
+    .family-section .images .img2 {
+          left: 20px;
+          top: 100px;
+      }
+}
+
+@media (max-width: 480px) {
+    .family-section h2 {
+        font-size: 24px;
+    }
+
+    .family-section p {
+        font-size: 16px;
+    }
+
+    .family-section .images .img1,
+    .family-section .images .img2 {
+        width: 50%;
+    }
+
+    .family-section .images .img2 {
+    left: 20px;
+    top: 100px;
+}
+  .family-section .images .img1 {
+    position: relative;
+    left: 150px;
+}
+
+    .family-section .images img {
+        border-radius: 8px;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    }
+}

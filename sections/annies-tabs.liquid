@@ -1,0 +1,81 @@
+<section class="annies-tabs annies-tabs-{{ section.id }}" id="annies-tabs">
+  <div class="annies-tabs-row">
+    <div class="page-width">
+      <div class="annies-tabs-wrap">
+        <h3>Latest News</h3>
+        <!-- <p>Add a short description for your blog.</p> -->
+        <div class="annies-tabs-inner-wrap">
+          <!--
+            <div class="annies-tabs-tab">
+              <button class="annies-tabs-tablinks" onclick="openCategory(event, 'content1')">Content1</button>
+            </div>
+          -->
+          <div class="annies-tabs-tabcontent-inner-wrap">
+            <div id="content1" class="annies-tabs-tabcontent">
+              {% for article in blogs.news.articles %}
+                {% unless forloop.first %}
+                  <div class="annies-blogs-wrap">
+                    <div class="annies-blog-card">
+                      {% if article.image != blank %}
+                        <img src="{{ article.image | img_url:'master' }}" class="img-responsive">
+                      {% endif %}
+                      <div class="annies-tabcontent-inner-data">
+                        <span class="annies-blog-card-date">{{ article.published_at | date: '%a, %b %d, %y' }}</span>
+                        <h3>{{ article.title }}</h3>
+                        <div class="annies-blog-content">
+                          {{ article.excerpt | truncate: 20 }}
+                        </div>
+                        <a href="{{ article.url }}" class="annies-blog-card-read-more">
+                          <span>Read more</span>
+                          <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="6"
+                              height="11"
+                              viewBox="0 0 6 11"
+                              fill="none"
+                            >
+                              <path d="M1 1.41016L5 5.41016L1 9.41016" stroke="#EEB740" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function openCategory(evt, cityName) {
+    let i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("annies-tabs-tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("annies-tabs-tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "flex";
+    evt.currentTarget.className += " active";
+  }
+</script>
+
+{% schema %}
+{
+  "name": "<> Tabs",
+  "settings": [],
+  "presets": [
+    {
+      "name": "<> Tabs"
+    }
+  ]
+}
+{% endschema %}

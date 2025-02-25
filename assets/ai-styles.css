@@ -1,0 +1,61 @@
+.thb-secondary-area .thb-item-count {
+    background: rgb(244, 128, 36) !important;
+}
+#search-ai:focus {
+      outline: -webkit-focus-ring-color auto 1px !important;
+}
+.main-slideshow .slideshow__slide {
+  will-change: auto !important;
+  pointer-events: auto !important;
+}
+
+.main-slideshow .slideshow__slide .button {
+  cursor: pointer !important;
+}
+
+.recommended-products-slider .swiper-button {
+  display: none;
+}
+
+.he-section-title {
+  /* font-family: Inter; */
+  font-size: 29.22px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: -0.6800000071525574px;
+  text-align: left;
+  color: #444249;
+  margin-bottom: 0px;
+}
+.he-section-desc {
+  /* font-family: DM Sans; */
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 27.2px;
+  text-align: left;
+  color: #444249;
+}
+.recommended-products-slider {
+    padding: 35px;
+}
+/* For medium screens (tablets, small laptops) */
+@media (max-width: 1024px) {
+    .recommended-products-slider {
+        padding: 25px;
+    }
+}
+
+/* For small screens (large phones, small tablets) */
+@media (max-width: 768px) {
+    .recommended-products-slider {
+        padding: 0;
+        padding-bottom:35px;
+    }
+}
+
+
+.carousel-cell {
+    border: 1px solid #EBEBED;
+    border-radius: 5.82px;
+    /* height: 300px; */
+}

@@ -1,0 +1,230 @@
+/* General Styles */
+.post-discount-form input::placeholder {
+  color: #959595;
+  opacity: 1;
+}
+
+.post-discount-newsletter-row {
+  padding-bottom: 5rem; /* Equivalent to 80px */
+}
+
+.post-discount-newsletter-col {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.post-discount-newsletter-content {
+  padding-left: 10rem; /* Equivalent to 170px */
+}
+
+.post-discount-newsletter-sub-heading,
+.post-discount-newsletter-heading,
+.post-discount-newsletter-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #323232;
+  text-align: left;
+}
+
+.post-discount-newsletter-sub-heading {
+  font-size: 0.66rem; /* 10.53px */
+  font-weight: 500;
+  line-height: 1.07rem; /* 16.85px */
+  letter-spacing: 0.066rem; /* Slight improvement for readability */
+  margin-bottom: 0.3rem; /* Equivalent to 5px */
+}
+
+.post-discount-newsletter-heading {
+  font-family: 'circular', sans-serif;
+  font-size: 2.63rem; /* 42.13px */
+  font-weight: 700;
+  line-height: 3.4rem; /* 54.42px */
+  letter-spacing: -0.06rem; /* Optimized letter-spacing */
+  max-width: 28.75rem; /* Equivalent to 460px */
+  margin-bottom: 0.3rem; /* Consistent margin with sub-heading */
+  text-transform: uppercase;
+}
+
+.post-discount-newsletter-desc {
+  font-family: 'circular', sans-serif;
+  font-size: 1.08rem; /* 17.27px */
+  line-height: 1.73rem; /* 27.64px */
+  margin-bottom: 1rem; /* Equivalent to 15px */
+}
+
+.post-discount-form input {
+  font-family: 'circular', sans-serif;
+  font-size: 0.82rem; /* 13.17px */
+  line-height: 1.3rem; /* 21.07px */
+  width: 100%;
+  padding: 0.8rem 1.25rem; /* Equivalent to 13px 20px */
+  border-radius: 30px;
+  border: none;
+  background: #fff;
+  color: #959595;
+  outline: none;
+}
+
+.post-discount-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Equivalent to 25px */
+}
+
+.post-discount-form-btn button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem; /* 13.17px */
+  font-weight: 500;
+  line-height: 1.3rem; /* 21.07px */
+  text-align: center;
+  background: #323232;
+  color: #fff;
+  padding: 0.8rem 2.2rem; /* Equivalent to 13px 35px */
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.post-discount-form-btn button:hover {
+  background-color: #555;
+}
+.post-discount-newsletter-img img {
+    max-width: 550px;
+    /* position: relative; */
+    position: relative;
+    top: 80px;
+}
+/* Responsive Design */
+/* General Styles for Desktop remain the same */
+
+/* Responsive Design for all screen sizes except desktop */
+@media (max-width: 1200px) {
+  .post-discount-newsletter-content {
+    padding-left: 5rem; /* Adjusted for smaller screens */
+  }
+   
+  .post-discount-newsletter-col {
+    padding: 4rem 2rem; /* Adjusted for medium screens */
+  }
+
+  .post-discount-newsletter-heading {
+    font-size: 2.4rem; /* Adjust for smaller screens */
+    line-height: 3rem; 
+  }
+}
+
+@media (max-width: 992px) {
+  .post-discount-newsletter-content {
+    padding-left: 2rem;
+  }
+
+  .post-discount-newsletter-heading {
+    font-size: 2.3rem; /* Slightly smaller for tablet screens */
+    line-height: 2.8rem;
+  }
+.post-discount-newsletter-img img {
+    top: 0;
+}
+      .post-discount-newsletter-col {
+        padding: 3rem 1.5rem;
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 768px) {
+  .post-discount-newsletter-content {
+    padding-left: 0; /* No padding for mobile screens */
+  }
+
+  .post-discount-newsletter-col {
+    flex-direction: column;
+    padding: 2rem; /* Adjusted for mobile devices */
+  }
+
+  .post-discount-newsletter-heading {
+    font-size: 2.2rem; /* Adjust for mobile */
+    line-height: 2.53rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .post-discount-newsletter-heading {
+    font-size: 1.8rem; /* Even smaller for very small screens */
+    line-height: 2.3rem;
+  }
+
+  .post-discount-newsletter-col {
+    padding: 1.5rem 1rem; /* Tighter padding for small screens */
+  }
+
+  .post-discount-newsletter-img img {
+    max-width: 100%; /* Make image responsive */
+  }
+}
+/* General Styles for Desktop remain the same */
+
+/* Responsive Design for all screen sizes except desktop */
+@media (max-width: 1200px) {
+  .post-discount-newsletter-content {
+    padding-left: 5rem; /* Adjusted for smaller screens */
+  }
+
+  .post-discount-newsletter-col {
+    padding: 4rem 2rem; /* Adjusted for medium screens */
+  }
+
+  .post-discount-newsletter-heading {
+    font-size: 2.4rem; /* Adjust for smaller screens */
+    line-height: 3rem; 
+  }
+}
+
+@media (max-width: 992px) {
+  .post-discount-newsletter-content {
+    padding-left: 2rem;
+  }
+
+  .post-discount-newsletter-heading {
+    font-size: 2.3rem; /* Slightly smaller for tablet screens */
+    line-height: 2.8rem;
+  }
+
+  .post-discount-newsletter-col {
+    padding: 3rem 1.5rem; /* Tighter padding for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .post-discount-newsletter-content {
+    padding-left: 0; /* No padding for mobile screens */
+  }
+
+  .post-discount-newsletter-col {
+    flex-direction: column;
+    padding: 2rem; /* Adjusted for mobile devices */
+  }
+
+  .post-discount-newsletter-heading {
+    font-size: 2.2rem; /* Adjust for mobile */
+    line-height: 2.53rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .post-discount-newsletter-heading {
+    font-size: 1.8rem; /* Even smaller for very small screens */
+    line-height: 2.3rem;
+  }
+
+  .post-discount-newsletter-col {
+    padding: 1.5rem 1rem; /* Tighter padding for small screens */
+  }
+
+  .post-discount-newsletter-img img {
+    max-width: 100%; /* Make image responsive */
+  }
+}
+
