@@ -8,7 +8,7 @@ height:auto;
       width: 100%;
     background: #fff;
     border-radius: 40px;
-    color: #000;
+    color: #444249;
     text-align: center;
     font-family: Poppins;
     font-size: 21.14px;
@@ -211,7 +211,7 @@ height:auto;
 }
 
 .annies-banner-row h3 {
-  color: #000;
+  color: #444249;
   font-family: Poppins;
   font-size: 54px;
   font-style: normal;

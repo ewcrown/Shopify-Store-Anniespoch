@@ -17,7 +17,7 @@ body {
 }
 
 .section-header--title {
-  color: #000;
+  color: #444249;
   font-weight: 600;
   font-size: 35px;
   font-family: "poppins";
@@ -60,25 +60,25 @@ body {
 }
 
 .gallery--item-content h4 {
-  color: #000 !important;
+  color: #444249 !important;
   font-family: "poppins" !important;
   font-size: 41px !important;
 }
 
 .gallery--item-content .subheading,
 .gallery--item-content a {
-  color: #000 !important;
+  color: #444249 !important;
   font-family: "poppins" !important;
 }
 
 .gallery--item-content .text-button.white svg path,
 .footer .custom-select--arrow svg path {
-  stroke: #000 !important;
+  stroke: #444249 !important;
 }
 
 .sub-footer div,
 .sub-footer button {
-  color: #000 !important;
+  color: #444249 !important;
 }
 
 .single-add-to-cart-button {
@@ -129,7 +129,7 @@ body {
 
 .scrolling-text--item-ai span {
     font-size: 30px;
-    color: #000;
+    color: #444249;
     font-family: 'poppins';
     font-weight: 500;
 }

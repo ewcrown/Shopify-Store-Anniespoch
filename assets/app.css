@@ -1020,7 +1020,7 @@ code,
 @media print {
   * {
     background: transparent !important;
-    color: #000 !important;
+    color: #444249 !important;
     -webkit-print-color-adjust: economy;
     print-color-adjust: economy;
     box-shadow: none !important;

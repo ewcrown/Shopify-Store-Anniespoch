@@ -31,7 +31,7 @@
           "settings": {
             "heading": "Partner with Us",
             "heading_size": 54,
-            "title_color": "#000000"
+            "title_color": "#444249"
           }
         },
         "text_AXtkTV": {
@@ -39,7 +39,7 @@
           "settings": {
             "text": "<p><strong>If you are a reputable 501(c)(3) dedicated to animal welfare, Annie’s Pooch Pops wants to work with you! \nWe can support your agency’s mission via a “Shop &amp; Support” program offering a 15% discount on purchases to your supporters and a 20% commission to your agency on the net sales.\n</strong></p><strong>\n\n</strong><p><strong>\ncomplete the questionnaire below</strong>\n</p>",
             "text_size": 22,
-            "text_color": "#000000"
+            "text_color": "#444249"
           }
         },
         "sign_qc4MBG": {
@@ -48,7 +48,7 @@
           "settings": {
             "sign": "name",
             "sign_size": 22,
-            "sign_color": "#000000"
+            "sign_color": "#444249"
           }
         }
       },

@@ -1,5 +1,5 @@
 .title.title--primary {
-  color: #000;
+  color: #444249;
   font-weight: 600;
   font-size: 35px;
 }
@@ -17,14 +17,14 @@
 
 .cart-item__name {
   font-family: 'Poppins', sans-serif;
-  color: #000;
+  color: #444249;
   font-size: 20px;
 }
 
 .cart-item__price-wrapper>*:only-child:not(.cart-item__discounted-prices),
 .product-option {
   font-family: 'Poppins', sans-serif;
-  color: #000;
+  color: #444249;
   font-size: 16px;
 }
 

@@ -743,7 +743,7 @@ h1, h2, h3, h4, h5, h6 {
   @media print {
     * {
       background: transparent !important;
-      color: #000 !important;
+      color: #444249 !important;
       -webkit-print-color-adjust: economy;
       print-color-adjust: economy;
       box-shadow: none !important;
@@ -6481,10 +6481,11 @@ a.button {
 .product-grid-container div#product-grid {
     display: block !important;
     text-align: center;
-    color: #000000;
+    color: #444249;
 }
-.product-card .price {
-    color: #f48024;
+.product-option,
+.price {
+  color: #f48024 !important;
 }
 .breadcrumbs {
   padding: 0 15px;
@@ -6540,7 +6541,7 @@ a.button {
   text-underline-offset: 3px;
 }
 input[type=search]:focus::placeholder, input[type=search]::placeholder {
-    color: #000000;
+    color: #444249;
 }
 
 .template-search h1 {

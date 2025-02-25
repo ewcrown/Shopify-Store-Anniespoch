@@ -14,7 +14,7 @@
   }
 }
 .footer a,.footer p , .footer .thb-widget-title.collapsible, .footer, .footer .thb-widget-title{
-  color: #000000 !important;
+  color: #444249 !important;
   font-size: 14px !important;
 }
 .footer a:focus,
@@ -369,5 +369,5 @@ p.footer-logo-caption {
 h2.footer-block__heading.inline-richtext {
     font-size: 19px;
     font-weight: 500;
-    color: #000;
+    color: #444249;
 }
