@@ -1,3 +1,16 @@
+.product-form__input.product-form__input--pill {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.posh-product-social-icons,
+.product--text.style_vendor {
+    display: none !important;
+}
+button.checkout {
+    background: #f48024 !important;
+}
+
 .announcement-bar--inner {
   justify-content: center;
 }
@@ -23,11 +36,30 @@
   color: #444249 !important;
 }
 
+.banner-special-heading-ai svg {
+  margin-top:-20px;
+}
+
+.banner-special-heading-ai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.banner-special-heading-ai em {
+   font-family: "poppins", sans-serif;
+  font-size: 18px;
+  vertical-align: 20px;
+  margin-left: -6px; 
+}
+
 .banner-heading-ai em {
   font-family: "poppins", sans-serif;
   font-style: normal;
   font-size: 18px;
-  vertical-align: top;
+  vertical-align: 20px;
   margin-left: -6px;
 }
 

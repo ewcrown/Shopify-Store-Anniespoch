@@ -44,9 +44,9 @@
           {% endif %}
         </div>
         <span class="price">
-          {% if product.price %}
+          {% if product.first_available_variant.price %}
             <ins>
-              <span class="amount ">{{ product.price | money }}</span>
+              <span class="amount ">{{ product.first_available_variant.price | money }}</span>
             </ins>
           {% endif %}
           <small class="unit-price hidden">

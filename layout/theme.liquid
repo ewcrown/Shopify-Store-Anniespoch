@@ -39,7 +39,6 @@
     {{ 'annies-styles.css' | asset_url | stylesheet_tag }}
     {{ 'ew-styles.css' | asset_url | stylesheet_tag }}
 
-
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
     {% render 'root' %}
 
@@ -269,24 +268,37 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <style>
-                  @media(min-width:1024px){
-                  .featured-col .carousel__slide {
-                    width:20%;
+                                          @media(min-width:1024px){
+                                          .featured-col .carousel__slide {
+                                            width:20%;
+                                          }
+                                          }
+                                    .carousel-slide-wrapper {
+                                  border: 1px solid #EBEBED;
+                                  border-radius: 5.82px;
+                                  height: 350px;
+                              }
+                                    .product-card .product-featured-image-link {
+                                      padding-bottom:200px;
+                                    }
+                              @media(max-width:600px){
+                                .row .columns {
+                                      width: 50%;
+                                  }
+                              }
+                              .paywhirl-plan-selector.paywhirl-plan-selector-theme-modern .paywhirl-plan-selector-group.paywhirl-group-selected>.paywhirl-label {
+                            background-color: #efb93d!important;
+                        }.paywhirl-plan-selector {
+                      padding-top: 1rem !IMPORTANT;
                   }
-                  }
-            .carousel-slide-wrapper {
-          border: 1px solid #EBEBED;
-          border-radius: 5.82px;
-          height: 350px;
-      }
-            .product-card .product-featured-image-link {
-              padding-bottom:200px;
+                  .paywhirl-plan-selector.paywhirl-plan-selector-theme-modern .paywhirl-plan-selector-group.paywhirl-group-selected>label {
+                border: 1px solid #cccccc !IMPORTANT;
             }
-      @media(max-width:600px){
-        .row .columns {
-              width: 50%;
-          }
+            .paywhirl-plan-selector.paywhirl-plan-selector-theme-modern .paywhirl-plan-selector-group.paywhirl-group-selected .paywhirl-icon-box-open,.paywhirl-plan-selector.paywhirl-plan-selector-theme-modern .paywhirl-plan-selector-group.paywhirl-group-selected .paywhirl-icon-truck {
+          fill: #FFFFFF !IMPORTANT;
+
       }
+           .paywhirl-plan-selector.paywhirl-plan-selector-theme-modern.paywhirl-plan-selector-show-prices .paywhirl-plan-selector-group.paywhirl-group-selected .paywhirl-plan-selector-group-price, .paywhirl-plan-selector.paywhirl-plan-selector-theme-modern .paywhirl-plan-selector-group.paywhirl-group-selected .paywhirl-plan-selector-group-name,.paywhirl-plan-selector.paywhirl-plan-selector-theme-modern #paywhirl-one-time-purchase-group.paywhirl-plan-selector-group.paywhirl-group-selected .paywhirl-plan-selector-price{COLOR:#FFFFFF !IMPORTANT}
     </style>
   </head>
 
@@ -374,6 +386,64 @@ document.querySelector('#cart-drawer-toggle').addEventListener('click', function
     </script>
 
     <script src="{{'app.js' | asset_url}} " defer="defer"></script>
+    <script>
+function addAccessibilityAttributes() {
+    // Add `aria-label` to all links opening in a new tab
+    document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+        if (!link.hasAttribute('aria-label')) {
+            const linkText = link.textContent.trim();
+            link.setAttribute('aria-label', `${linkText} (opens in a new tab)`);
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+
+    // Add `role` attributes to common semantic elements
+    document.querySelectorAll('nav').forEach((nav) => {
+        nav.setAttribute('role', 'navigation');
+    });
+    document.querySelectorAll('header').forEach((header) => {
+        header.setAttribute('role', 'banner');
+    });
+    document.querySelectorAll('footer').forEach((footer) => {
+        footer.setAttribute('role', 'contentinfo');
+    });
+    document.querySelectorAll('main').forEach((main) => {
+        main.setAttribute('role', 'main');
+    });
+    document.querySelectorAll('aside').forEach((aside) => {
+        aside.setAttribute('role', 'complementary');
+    });
+
+    // Add `aria-required` to required input fields
+    document.querySelectorAll('input[required]').forEach((input) => {
+        input.setAttribute('aria-required', 'true');
+    });
+
+    // Add `aria-live` to alert elements
+    document.querySelectorAll('.alert').forEach((alert) => {
+        alert.setAttribute('role', 'alert');
+        alert.setAttribute('aria-live', 'assertive');
+    });
+
+    // Add `aria-describedby` for inputs with helper text
+    document.querySelectorAll('input').forEach((input) => {
+        const helperText = input.nextElementSibling;
+        if (helperText && helperText.tagName.toLowerCase() === 'span' && helperText.classList.contains('helper-text')) {
+            const helperId = helperText.id || `helper-${Math.random().toString(36).substr(2, 9)}`;
+            helperText.id = helperId;
+            input.setAttribute('aria-describedby', helperId);
+        }
+    });
+
+    // Add `tabindex` to focusable elements if missing
+    document.querySelectorAll('button, a, input, textarea, select').forEach((element) => {
+        if (!element.hasAttribute('tabindex')) {
+            element.setAttribute('tabindex', '0');
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', addAccessibilityAttributes);
+    </script>
     <script>
              const video_carousel = document.querySelector('.video-carousel');
        const featured_col = document.querySelectorAll('.featured-col');

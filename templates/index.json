@@ -16,7 +16,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/pizza-love-20210129-a7305655jpg_50901371346_o_6f76bcd1-4257-4313-9914-3ba211924476.jpg",
-            "heading": "Our Signature Muttkin<em>™</em> Dog Treats",
+            "special_heading": "Muttkin<em>™</em>",
+            "heading": "Our Signature Dog Treats",
             "subheading": "Slow-roasted USA Beef Marrow Bone Wrapped in a Peanut Butter Biscuit",
             "button_label": "Order a Muttkin™",
             "link": "shopify://collections/muttkins"
@@ -28,7 +29,7 @@
       ],
       "settings": {
         "heading_size": 48,
-        "line_height": 1,
+        "line_height": 60,
         "overlay-width": 70,
         "subheading_size": 22,
         "border_radius": 20,
@@ -372,7 +373,7 @@
         "heading_WKYTMk": {
           "type": "heading",
           "settings": {
-            "heading": "Certified by Pennsylvania Department of Health",
+            "heading": "Inspected by the Pennsylvania Department of Agriculture",
             "heading_size": "h1"
           }
         }

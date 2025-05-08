@@ -114,7 +114,9 @@
                   >
                     <span class="price">
                       <ins
-                        ><span class="amount ">{{ product.price | money_with_currency | replace: 'USD', '' }}</span></ins
+                        ><span class="amount ">
+                          {{- product.first_available_variant.price | money_with_currency -}}
+                        </span></ins
                       >
                       <small class="unit-price  hidden">
                         <span></span>
@@ -127,17 +129,36 @@
               </div>
 
               {% for block in section.blocks %}
-              {%- case block.type -%}
-              {%- when 'variant_picker' -%}
-                {%- assign product_form_id = 'product-form-' | append: section.id -%}
-                {% render 'product-variant-picker', product: product,block:block, product_form_id: product_form_id %}
+                {%- case block.type -%}
+                  {%- when '@app' -%}
+                    {% render block %}
+                    <p class="product--text style_vendor">{{ product.vendor }}</p>
+                  {%- when 'text' -%}
+                    <p
+                      class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
+                      {{- block.settings.text -}}
+                    </p>
+                  {%- when 'variant_picker' -%}
+                    {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                    {% render 'product-variant-picker',
+                      product: product,
+                      block: block,
+                      product_form_id: product_form_id
+                    %}
 
-                <select name="id" id="annies-variant-select" style="display:none;">
-                    {% for variant in product.variants %}
-                      <option value="{{ variant.id }}" data-price="{{ variant.price | money_with_currency }}" data-title="{{ variant.title }}">{{ variant.title }}</option>
-                  {% endfor %}
-                </select>
-                
+                    <select name="id" id="annies-variant-select" style="display:none;">
+                      {% for variant in product.variants %}
+                        <option
+                          value="{{ variant.id }}"
+                          data-price="{{ variant.price | money_with_currency }}"
+                          data-title="{{ variant.title }}"
+                        >
+                          {{ variant.title }}
+                        </option>
+                      {% endfor %}
+                    </select>
                 {% endcase %}
               {% endfor %}
               <hr class="product-information--separator">
@@ -269,6 +290,18 @@
                       <div class="ann-product-des">
                         {{ product.description }}
                       </div>
+
+                      {% for block in section.blocks %}
+                        {%- case block.type -%}
+                          {%- when 'text2' -%}
+                            <p
+                              class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                              {{ block.shopify_attributes }}
+                            >
+                              {{- block.settings.text -}}
+                            </p>
+                        {% endcase %}
+                      {% endfor %}
                     </div>
 
                     <div class="posh-product-social-icons">
@@ -417,6 +450,38 @@
     {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "t:sections.main-product.blocks.text.settings.text.default",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.main-product.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "text2",
+      "name": "Text 2",
       "settings": [
         {
           "type": "inline_richtext",

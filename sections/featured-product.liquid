@@ -117,16 +117,27 @@
                     <div class="product-title-container">
                       <h1 class="product-title">{{ product.title }}</h1>
                     </div>
-              {%- when 'variant_picker' -%}
-                {%- assign product_form_id = 'product-form-' | append: section.id -%}
-                {% render 'product-variant-picker', product: product, block:block, product_form_id: product_form_id %}
+                  {%- when 'text' -%}
+                    <p
+                      class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
+                      {{- block.settings.text -}}
+                    </p>
+                  {%- when 'variant_picker' -%}
+                    {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                    {% render 'product-variant-picker',
+                      product: product,
+                      block: block,
+                      product_form_id: product_form_id
+                    %}
 
-                <select name="id" id="annies-variant-select" style="display:none;">
-                    {% for variant in product.variants %}
-                      <option value="{{ variant.id }}" data-title="{{ variant.title }}">{{ variant.title }}</option>
-                  {% endfor %}
-                </select>
-                
+                    <select name="id" id="annies-variant-select" style="display:none;">
+                      {% for variant in product.variants %}
+                        <option value="{{ variant.id }}" data-title="{{ variant.title }}">{{ variant.title }}</option>
+                      {% endfor %}
+                    </select>
+
                   {% when 'price' %}
                     <div class="product-price-container">
                       <div
@@ -135,7 +146,9 @@
                       >
                         <span class="price">
                           <ins
-                            ><span class="amount ">{{ product.price | money_with_currency | replace: 'USD', ''}}</span></ins
+                            ><span class="amount ">
+                              {{- product.first_available_variant.price | money_with_currency -}}
+                            </span></ins
                           >
                           <small class="unit-price  hidden">
                             <span></span>

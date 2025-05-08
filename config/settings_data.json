@@ -142,6 +142,11 @@
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
+      },
+      "14710812113501315912": {
+        "type": "shopify://apps/kor-order-limit-quantity/blocks/app-embed/143c1e59-4c01-4de6-ad3e-90b86ada592d",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
