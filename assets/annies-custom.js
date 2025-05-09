@@ -170,9 +170,10 @@ window.fetch = async function (...args) {
 
   if (url.includes('cart/change.js')) {
     const productId = JSON.parse(options.body).id.includes(':') ? JSON.parse(options.body).id.split(':')[0] : JSON.parse(options.body).id;
+    const productQty = JSON.parse(options.body).quantity
     const response = await originalFetch.apply(this, args);
 
-    if (limited_product_ids.includes(productId)) {
+    if (limited_product_ids.includes(productId) && productQty > 1) {
       showPopup();
       await originalFetch('/cart/change.js', {
         method: 'POST',
