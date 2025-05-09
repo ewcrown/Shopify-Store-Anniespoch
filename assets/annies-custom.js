@@ -152,6 +152,7 @@ window.fetch = async function (...args) {
     const response = await originalFetch.apply(this, args);
 
     if (limited_product_ids.includes(productId)) {
+      document.querySelector('#Cart-Drawer').style.display = 'none'
       showPopup();
       await originalFetch('/cart/change.js', {
         method: 'POST',
