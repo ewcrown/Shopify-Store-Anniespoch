@@ -302,10 +302,20 @@
     </style>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}" data-limited-product="{{ settings.product.first_available_variant.id }}">
-
-    {% render 'annies-limited-product' %}
+  
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}" 
+    data-limited-product='[
+      {%- for product in settings.product_list -%}
+        {%- assign full_product = all_products[product.handle] -%}
+        {%- for variant in full_product.variants -%}
+          "{{- variant.id -}}"{%- unless forloop.last and forloop.parentloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    ]'
     
+    >
+    {% render 'annies-limited-product' %}
+
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

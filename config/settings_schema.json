@@ -11,9 +11,10 @@
     "name":"Only 1 Quantity",
     "settings":[
       {
-        "type": "product",
-        "id": "product",
-        "label": "Product"
+        "type": "product_list",
+        "id": "product_list",
+        "label": "Products",
+        "limit": 50
       }
     ]
   },

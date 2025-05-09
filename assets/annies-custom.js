@@ -127,7 +127,7 @@ function attachQuantityListeners() {
 attachQuantityListeners();
 
 
-const limited_product_id = document.body.dataset.limitedProduct;
+const limited_product_ids = JSON.parse(document.body.dataset.limitedProduct);
 const originalFetch = window.fetch;
 
 function showPopup() {
@@ -151,11 +151,8 @@ window.fetch = async function (...args) {
 
     const response = await originalFetch.apply(this, args);
 
-    if (productId === limited_product_id) {
-      // Show popup
+    if (limited_product_ids.includes(productId)) {
       showPopup();
-
-      // Force quantity to 1
       await originalFetch('/cart/change.js', {
         method: 'POST',
         headers: {
@@ -172,14 +169,11 @@ window.fetch = async function (...args) {
   }
 
   if (url.includes('cart/change.js')) {
-    const productId = JSON.parse(options.body).id;
+    const productId = JSON.parse(options.body).id.includes(':') ? JSON.parse(options.body).id.split(':')[0] : JSON.parse(options.body).id;
     const response = await originalFetch.apply(this, args);
 
-    if (productId.includes(limited_product_id)) {
-      // Show popup
+    if (limited_product_ids.includes(productId)) {
       showPopup();
-
-      // Force quantity to 1 again
       await originalFetch('/cart/change.js', {
         method: 'POST',
         headers: {
@@ -191,7 +185,6 @@ window.fetch = async function (...args) {
         }),
       });
     }
-
     return response;
   }
 

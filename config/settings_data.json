@@ -9,7 +9,10 @@
  */
 {
   "current": {
-    "product": "broken-biscuit-grab-bag",
+    "product_list": [
+      "broken-biscuit-grab-bag",
+      "bacon-biscuit"
+    ],
     "logo": "shopify://shop_images/Frame_30_3.png",
     "logo_width": 180,
     "favicon": "shopify://shop_images/favicon.png",
@@ -123,6 +126,8 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
+    "product": "broken-biscuit-grab-bag",
+    "product_qty": 1,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
