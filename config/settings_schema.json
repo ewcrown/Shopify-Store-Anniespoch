@@ -8,6 +8,16 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name":"Only 1 Quantity",
+    "settings":[
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

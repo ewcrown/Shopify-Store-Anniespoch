@@ -39,7 +39,6 @@ if (variant_form) {
   });
 }
 const AddToCart = document.querySelector('#AddToCart');
-
 AddToCart?.addEventListener('click', async () => {
   setTimeout(async () => {
     try {
@@ -52,9 +51,7 @@ AddToCart?.addEventListener('click', async () => {
 
       const data = await resp.json();
       const cart_count = document.querySelector(".thb-item-count")
-      console.log("cart_count==>", cart_count)
       cart_count.innerText = data.item_count
-      console.log('Cart Data:', data);
     } catch (error) {
       console.error('Error fetching cart:', error);
     }
@@ -86,7 +83,7 @@ function attachQuantityListeners() {
 
   cartItems.forEach((item, index) => {
     const quantityInput = item.querySelector('.quantity__input');
-    const line = index + 1;
+    const id = quantityInput.dataset.quantityVariantId;
 
     if (!quantityInput) return;
 
@@ -101,7 +98,7 @@ function attachQuantityListeners() {
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            line,
+            id: `${id}`,
             quantity: newQuantity
           })
         });
@@ -128,3 +125,75 @@ function attachQuantityListeners() {
 
 // 🔁 Initial call
 attachQuantityListeners();
+
+
+const limited_product_id = document.body.dataset.limitedProduct;
+const originalFetch = window.fetch;
+
+function showPopup() {
+  document.getElementById('limited-product-popup').style.display = 'block';
+}
+
+function hidePopup() {
+  location.reload(); // This will reload the page when the popup is closed
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('close-popup').addEventListener('click', hidePopup);
+});
+
+window.fetch = async function (...args) {
+  const [url, options] = args;
+
+  if (url.includes('/cart/add') && options?.body instanceof FormData) {
+    const formData = options.body;
+    const productId = formData.get('id');
+
+    const response = await originalFetch.apply(this, args);
+
+    if (productId === limited_product_id) {
+      // Show popup
+      showPopup();
+
+      // Force quantity to 1
+      await originalFetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: productId,
+          quantity: 1,
+        }),
+      });
+    }
+
+    return response;
+  }
+
+  if (url.includes('cart/change.js')) {
+    const productId = JSON.parse(options.body).id;
+    const response = await originalFetch.apply(this, args);
+
+    if (productId.includes(limited_product_id)) {
+      // Show popup
+      showPopup();
+
+      // Force quantity to 1 again
+      await originalFetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: productId,
+          quantity: 1,
+        }),
+      });
+    }
+
+    return response;
+  }
+
+  return originalFetch.apply(this, args);
+};
