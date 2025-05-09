@@ -41,8 +41,6 @@ if (variant_form) {
 const AddToCart = document.querySelector('#AddToCart');
 
 AddToCart?.addEventListener('click', async () => {
-  console.log("Hello QT PIE");
-
   setTimeout(async () => {
     try {
       const resp = await fetch(`${window.Shopify.routes.root}cart.js`, {

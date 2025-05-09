@@ -6,6 +6,7 @@ function dispatchCustomEvent(eventName, data = {}) {
 
 // Function to update the cart item quantity or remove item
 function updateCartItem(key, quantity, inputElement, priceEle) {
+
   fetch('/cart/change.js', {
     method: 'POST',
     headers: {
@@ -27,6 +28,8 @@ function updateCartItem(key, quantity, inputElement, priceEle) {
       document.body.classList.remove('open-cc');
     }
 
+    
+  
     // Refresh the quantity value in the input element if quantity > 0
     if (quantity > 0 && inputElement) {
       inputElement.value = data.items.find(item => item.key === key)?.quantity || 1;
@@ -34,6 +37,8 @@ function updateCartItem(key, quantity, inputElement, priceEle) {
         priceEle.innerHTML = "$" + `${(data.items.find(item => item.key === key).final_line_price / 100).toFixed(2)}`;
       }
     }
+
+    inputElement.value = +quantity
 
     // If the quantity is 0, remove the item visually from the cart drawer
     if (quantity === 0) {
@@ -61,7 +66,7 @@ document.addEventListener('click', (event) => {
 
     // Get the price element related to this product
     const productContainer = button.closest('.product-information');
-    const priceEle = productContainer.querySelector('.amount');
+    const priceEle = productContainer?.querySelector('.amount');
     updateCartItem(key, newQuantity, inputElement, priceEle);
   }
 });

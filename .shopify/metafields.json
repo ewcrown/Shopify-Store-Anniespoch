@@ -126,8 +126,8 @@
       "name": "Doggy Lifestyle",
       "description": "",
       "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
       }
     }
   ],
