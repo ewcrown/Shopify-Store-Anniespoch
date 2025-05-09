@@ -106,27 +106,42 @@
             >
               {% comment %} <p class="product--text style_vendor">{{ product.vendor }}</p> {% endcomment %}
               <div class="product-title-container">
-                <h1 class="product-title">{{ product.title }}</h1>
+                <h1 class="product-title">
+                  {{ product.title | replace: '™', '<span class="trademark">™</span>' }}
+                </h1>
                 <div class="product-price-container">
                   <div
                     class="no-js-hidden"
-                    id="price-template--18200361664806__6ad8cec2-709b-4c46-ae24-5a5a68bdcbf7"
+                    id="price-template--{{ section.id }}"
                   >
                     <span class="price">
-                      <ins
-                        ><span class="amount ">
-                          {{- product.first_available_variant.price | money_with_currency -}}
-                        </span></ins
-                      >
-                      <small class="unit-price  hidden">
+                      {% assign variant = product.first_available_variant %}
+              
+                      {% if variant.compare_at_price > variant.price %}
+                        <del>
+                          <span class="compare-at-price amount">
+                            {{ variant.compare_at_price | money_with_currency }}
+                          </span>
+                        </del>
+                      {% endif %}
+              
+                      <ins>
+                        <span class="amount">
+                          {{ variant.price | money_with_currency }}
+                        </span>
+                      </ins>
+              
+                      <small class="unit-price hidden">
                         <span></span>
                         <span class="unit-price-separator">/</span>
-                        <span> </span> </small
-                      ><span class="badges"> </span>
+                        <span></span>
+                      </small>
+                      <span class="badges"> </span>
                     </span>
                   </div>
                 </div>
               </div>
+              
 
               {% for block in section.blocks %}
                 {%- case block.type -%}
