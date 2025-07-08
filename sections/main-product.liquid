@@ -109,39 +109,33 @@
                 <h1 class="product-title">
                   {{ product.title | replace: '™', '<span class="trademark">™</span>' }}
                 </h1>
-                <div class="product-price-container">
-                  <div
-                    class="no-js-hidden"
-                    id="price-template--{{ section.id }}"
-                  >
-                    <span class="price">
-                      {% assign variant = product.first_available_variant %}
-              
-                      {% if variant.compare_at_price > variant.price %}
-                        <del>
-                          <span class="compare-at-price amount">
-                            {{ variant.compare_at_price | money_with_currency }}
-                          </span>
-                        </del>
-                      {% endif %}
-              
-                      <ins>
-                        <span class="amount">
-                          {{ variant.price | money_with_currency }}
-                        </span>
-                      </ins>
-              
-                      <small class="unit-price hidden">
-                        <span></span>
-                        <span class="unit-price-separator">/</span>
-                        <span></span>
-                      </small>
-                      <span class="badges"> </span>
-                    </span>
-                  </div>
-                </div>
+             <div class="product-price-container">
+  <div class="no-js-hidden" id="price-template--{{ section.id }}">
+    <span class="price">
+      {% assign variant = product.first_available_variant %}
+
+        <del>
+          <span class="compare-at-price amount">
+            {{ variant.compare_at_price | money_with_currency }}
+          </span>
+        </del>
+
+      <ins>
+        <span class="amount">
+          {{ variant.price | money_with_currency }}
+        </span>
+      </ins>
+
+      <small class="unit-price hidden">
+        <span></span>
+        <span class="unit-price-separator">/</span>
+        <span></span>
+      </small>
+      <span class="badges"></span>
+    </span>
+  </div>
+</div>
               </div>
-              
 
               {% for block in section.blocks %}
                 {%- case block.type -%}
@@ -156,6 +150,12 @@
                       {{- block.settings.text -}}
                     </p>
                   {%- when 'variant_picker' -%}
+                    {% if product.metafields.custom.show_disclaimer %}
+                      <label for="disclaimer_checkbox">
+                        <input type="checkbox" id="disclaimer_checkbox" value="true">
+                        I Have Read The Ingredient Disclaimer
+                      </label>
+                    {% endif %}
                     {%- assign product_form_id = 'product-form-' | append: section.id -%}
                     {% render 'product-variant-picker',
                       product: product,
@@ -168,6 +168,7 @@
                         <option
                           value="{{ variant.id }}"
                           data-price="{{ variant.price | money_with_currency }}"
+                          data-compare_at_price="{% if variant.compare_at_price %}{{ variant.compare_at_price | money_with_currency }}{% else %}$0{% endif %}"
                           data-title="{{ variant.title }}"
                         >
                           {{ variant.title }}
@@ -176,6 +177,7 @@
                     </select>
                 {% endcase %}
               {% endfor %}
+
               <hr class="product-information--separator">
 
               <div id="quantity-template--18200361664806__6ad8cec2-709b-4c46-ae24-5a5a68bdcbf7">
@@ -247,6 +249,9 @@
                   >
                     <input type="hidden" name="form_type" value="product"><input type="hidden" name="utf8" value="✓"
                     ><input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+                    {% if product.metafields.custom.show_disclaimer %}
+                      <input type="hidden" name="properties[disclaimer]" id="disclaimer_hidden" value="">
+                    {% endif %}
                     <div class="product-add-to-cart-container">
                       <div class="form-notification error" style="display:none;"></div>
                       <div class="add_to_cart_holder add_to_cart_holder--multi ">
@@ -452,7 +457,30 @@
 <script src="{{ 'photoswipe.min.js' | asset_url  }}" defer="defer"></script>
 <script src="{{ 'photoswipe-ui-default.min.js' | asset_url  }}" defer="defer"></script>
 {{ 'photo-swiper.css' | asset_url | stylesheet_tag }}
+{% if product.metafields.custom.show_disclaimer %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const checkbox = document.getElementById('disclaimer_checkbox');
+      const hiddenInput = document.getElementById('disclaimer_hidden');
+      const productForm = document.querySelector('.product-form');
 
+      // Initially disable the product form
+      productForm.classList.add('disabled');
+
+      checkbox.addEventListener('change', function () {
+        const isChecked = this.checked;
+        hiddenInput.value = isChecked ? 'true' : '';
+
+        // Toggle disabled class based on checkbox state
+        if (isChecked) {
+          productForm.classList.remove('disabled');
+        } else {
+          productForm.classList.add('disabled');
+        }
+      });
+    });
+  </script>
+{% endif %}
 {% schema %}
 {
   "name": "t:sections.main-product.name",

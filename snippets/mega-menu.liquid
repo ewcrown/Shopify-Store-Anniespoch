@@ -10,9 +10,6 @@
             {% if card_collection.title %}
               <div class="amm-menu-head-col">
                 {%- if card_collection.featured_image %}
-                  <h3><a href="{{ card_collection.url }}">
-                  {{ card_collection.title | replace: '™', '<span class="trademark">™</span>' }}
-                </a></h3>
                   <a href="{{ card_collection.url}}" style="padding:0">
                   <img
                     srcset="
@@ -32,7 +29,7 @@
                     class="img-res"
                   >
                   </a>
-                  <a href="{{ card_collection.url}}">View All</a>
+                  <a href="{{ card_collection.url}}">{{ card_collection.title | replace: '™', '<span class="trademark">™</span>' }}</a>
                 {% endif %}
               </div>
             {% endif %}

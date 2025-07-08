@@ -46,28 +46,32 @@
         <span class="price">
           {% assign lowest_variant = product.variants.first %}
 
-          {% for variant in product.variants %}
-            {% if variant.price < lowest_variant.price %}
-              {% assign lowest_variant = variant %}
-            {% endif %}
-          {% endfor %}
-          
-          {% if lowest_variant %}
-            <span class="price">
-              {% if lowest_variant.compare_at_price > lowest_variant.price %}
-                <del>
-                  <span class="compare-at-price amount">
-                    {{ lowest_variant.compare_at_price | money }}
-                  </span>
-                </del>
-              {% endif %}
-              <ins>
-                <span class="amount">
-                  {{ lowest_variant.price | money }}
-                </span>
-              </ins>
-            </span>
-          {% endif %}
+   {% assign lowest_variant = nil %}
+
+{% for variant in product.variants %}
+  {% if variant.price > 0 %}
+    {% if lowest_variant == nil or variant.price < lowest_variant.price %}
+      {% assign lowest_variant = variant %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if lowest_variant %}
+  <span class="price">
+    {% if lowest_variant.compare_at_price > lowest_variant.price %}
+      <del>
+        <span class="compare-at-price amount">
+          {{ lowest_variant.compare_at_price | money }}
+        </span>
+      </del>
+    {% endif %}
+    <ins>
+      <span class="amount">
+        {{ lowest_variant.price | money }}
+      </span>
+    </ins>
+  </span>
+{% endif %}
           
           
           <small class="unit-price hidden">

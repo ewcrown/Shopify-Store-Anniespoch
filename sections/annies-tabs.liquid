@@ -20,7 +20,7 @@
                         <img src="{{ article.image | img_url:'master' }}" class="img-responsive">
                       {% endif %}
                       <div class="annies-tabcontent-inner-data">
-                        <span class="annies-blog-card-date">{{ article.published_at | date: '%a, %b %d, %y' }}</span>
+                        <span class="annies-blog-card-date">{{ article.published_at | date: '%-m.%-d.%y' }}</span>
                         <h3>{{ article.title }}</h3>
                         <div class="annies-blog-content">
                           {{ article.excerpt | truncate: 20 }}

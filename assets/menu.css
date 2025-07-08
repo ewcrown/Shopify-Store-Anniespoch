@@ -81,12 +81,19 @@
   margin-bottom: 0;
 }
 
+.upcart-item-option {
+    display: none !important;
+}
+
 .amm-menu-head-col a {
-  color: #686868;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
+    text-align: center;
+    color: #F48025;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    opacity: 1;
+    padding: 0;
 }
 
 .ann-mega-menu-bottom-col h3 {

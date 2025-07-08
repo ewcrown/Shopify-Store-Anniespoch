@@ -1,3 +1,63 @@
+// Upcart Cart Drawer
+const FREE_VARIANT_ID = 48640031981814;
+const BLOCKED_VARIANT_ID = 48640031949046;
+const MATCHED_URLS = [
+  '/api/2025-04/graphql.json',
+  '/cart.json?app=mwsfees',
+  '/cart/add.js?upcart=1&opens_cart=never'
+];
+
+let debounceTimer = null;
+
+function getCart() {
+  return fetch('/cart.js').then(res => res.json());
+}
+
+function removeBlockedVariant(cart) {
+  const hasFree = cart.items.some(item => item.variant_id == FREE_VARIANT_ID);
+  const blockedItem = cart.items.find(item => item.variant_id == BLOCKED_VARIANT_ID);
+
+  if (hasFree && blockedItem) {
+    console.log('blockedItem.key ==>', blockedItem);
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: blockedItem.key, quantity: 0 })
+    }).then(() => {
+      console.log('Blocked variant removed because Free variant is in the cart.');
+      window.location.href = '/cart';
+    });
+  }
+}
+
+function shouldWatch(url) {
+  return MATCHED_URLS.some(pattern => url.includes(pattern));
+}
+
+function setupCartWatcher() {
+  const originalFetch = window.fetch;
+
+  window.fetch = function (...args) {
+    const url = typeof args[0] === 'string' ? args[0] : args[0].url;
+
+    if (shouldWatch(url)) {
+      // Clear previous debounce if any
+      if (debounceTimer) clearTimeout(debounceTimer);
+
+      // Set debounce
+      debounceTimer = setTimeout(() => {
+        getCart().then(removeBlockedVariant);
+      }, 300);
+    }
+
+    return originalFetch.apply(this, args);
+  };
+}
+
+// Init
+setupCartWatcher();
+
+
 const cartDrawer = document.querySelector("#Cart-Drawer");
 if (cartDrawer) {
   cartDrawer.addEventListener("click", (e) => {
@@ -13,30 +73,47 @@ const variant_form = document.querySelector('.product-form__input');
 const product_form = document.querySelector('.product-form');
 if (variant_form) {
   variant_form.addEventListener('click', (e) => {
-    if (e.target.tagName === "INPUT") {
-      const variant_value = e.target.value;
-      const hidden_select = document.querySelector('#annies-variant-select');
-      const hidden_input = product_form.querySelector('input[name="id"]');
-      const selectedOption = Array.from(hidden_select.options).find(option => option.dataset.title === variant_value);
-      if (selectedOption) {
-        const dataPrice = selectedOption.dataset.price;
-        const priceContainer = document.querySelector(".product-price-container .amount");
-        if (priceContainer) {
-          priceContainer.innerText = dataPrice;
-        }
-      }
-      for (let i = 0; i < hidden_select.options.length; i++) {
-        const option = hidden_select.options[i];
+  if (e.target.tagName === "INPUT") {
+    const variant_value = e.target.value;
+    const hidden_select = document.querySelector('#annies-variant-select');
+    const hidden_input = product_form.querySelector('input[name="id"]');
+    const selectedOption = Array.from(hidden_select.options).find(option => option.dataset.title === variant_value);
 
-        if (option.dataset.title && option.dataset.title.includes(variant_value)) {
-          option.selected = true;
-          hidden_input.value = option.value;
-          break;
-        }
+    if (selectedOption) {
+      const dataPrice = selectedOption.dataset.price;
+      const dataCompareAtPrice = selectedOption.dataset.compare_at_price;
+
+      const priceContainer = document.querySelector(".product-price-container .price");
+      const compareAtEl = priceContainer.querySelector(".compare-at-price.amount");
+      const compareAtWrapper = compareAtEl?.closest("del");
+      const priceEl = priceContainer.querySelector("ins .amount");
+
+      const compareAtValid = dataCompareAtPrice && !dataCompareAtPrice.includes("$0") && !dataCompareAtPrice.includes("0.00");
+
+      // Update prices
+      if (priceEl) {
+        priceEl.innerText = dataPrice;
       }
 
+      if (compareAtValid) {
+        if (compareAtEl) compareAtEl.innerText = dataCompareAtPrice;
+        if (compareAtWrapper) compareAtWrapper.style.display = "inline";
+      } else {
+        if (compareAtWrapper) compareAtWrapper.style.display = "none";
+      }
     }
-  });
+
+    // Update hidden select and input
+    for (let i = 0; i < hidden_select.options.length; i++) {
+      const option = hidden_select.options[i];
+      if (option.dataset.title && option.dataset.title.includes(variant_value)) {
+        option.selected = true;
+        hidden_input.value = option.value;
+        break;
+      }
+    }
+  }
+});
 }
 const AddToCart = document.querySelector('#AddToCart');
 AddToCart?.addEventListener('click', async () => {

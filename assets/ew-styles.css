@@ -1,3 +1,6 @@
+input[data-quantity-variant-id="48640031981814"] {
+    visibility: hidden;
+}
 .product-form__input.product-form__input--pill {
   display: flex;
   flex-wrap: wrap;
