@@ -48,13 +48,19 @@
                   style="translate: none; rotate: none; scale: none; transform: scale(1.1, 1.1);"
                 >
                   <img
-                    src="{{ block.settings.image | image_url }}"
-                    class="lazyautosizes lazyloaded"
-                    width="2520"
-                    height="946"
-                    alt=""
-                    style="object-position: 50.0% 50.0%;"
-                    sizes="1440px"
+                    src="{{ block.settings.image | image_url: width: 1440 }}"
+                    srcset="
+                      {{ block.settings.image | image_url: width: 640 }} 640w,
+                      {{ block.settings.image | image_url: width: 1024 }} 1024w,
+                      {{ block.settings.image | image_url: width: 1440 }} 1440w,
+                      {{ block.settings.image | image_url: width: 1920 }} 1920w
+                    "
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1440px"
+                    loading="lazy"
+                    width="1440"
+                    height="auto"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    style="object-fit: cover; object-position: 50% 50%;"
                   >
                 </div>
                 <div

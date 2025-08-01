@@ -18,7 +18,7 @@
           "type": "text",
           "settings": {
             "heading": "Company",
-            "subtext": "<p>110 Pennsylvania Ave<br/>Bangor, PA 18013</p><p><a href=\"mailto:customerservice@anniespoochpops.com\" target=\"_blank\" title=\"mailto:customerservice@anniespoochpops.com\">customerservice@anniespoochpops.com</a></p><p>*Muttkin shipments to Arizona, California, Colorado, Florida, Idaho, Montana, Nevada, New Mexico, North Dakota, Oregon, Texas, Utah, Washington, and Wyoming are subject to an additional $10 express shipping surcharge.</p>"
+            "subtext": "<p>110 Pennsylvania Ave<br/>Bangor, PA 18013</p><p><a href=\"mailto:customerservice@anniespoochpops.com\" target=\"_blank\" title=\"mailto:customerservice@anniespoochpops.com\">customerservice@anniespoochpops.com</a></p><p>*Muttkin shipments to locations beyond a 2-day UPS Ground transit range from Eastern Pennsylvania are subject to an additional $10 express shipping surcharge.</p>"
           }
         },
         "footer-0": {

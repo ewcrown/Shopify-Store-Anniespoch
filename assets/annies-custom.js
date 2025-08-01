@@ -1,3 +1,44 @@
+function wrapTrademarkSymbol() {
+  const trademarkSymbol = '™';
+
+  function replaceTextNode(node) {
+    const text = node.nodeValue;
+    const parts = text.split(trademarkSymbol);
+
+    if (parts.length > 1) {
+      const fragment = document.createDocumentFragment();
+
+      parts.forEach((part, index) => {
+        fragment.appendChild(document.createTextNode(part));
+        if (index < parts.length - 1) {
+          const em = document.createElement('em');
+          em.className = 'ew-trademark';
+          em.textContent = trademarkSymbol;
+          fragment.appendChild(em);
+        }
+      });
+
+      node.parentNode.replaceChild(fragment, node);
+    }
+  }
+
+  function traverse(node) {
+    if (node.nodeType === 3) { // Text node
+      replaceTextNode(node);
+    } else if (
+      node.nodeType === 1 && // Element node
+      !['SCRIPT', 'STYLE', 'TEXTAREA', 'EM'].includes(node.tagName)
+    ) {
+      Array.from(node.childNodes).forEach(traverse);
+    }
+  }
+
+  traverse(document.body);
+}
+
+// Call the function on page load or manually
+wrapTrademarkSymbol();
+
 // Upcart Cart Drawer
 const FREE_VARIANT_ID = 48640031981814;
 const BLOCKED_VARIANT_ID = 48640031949046;
@@ -201,10 +242,21 @@ function attachQuantityListeners() {
 }
 
 // 🔁 Initial call
-attachQuantityListeners();
+// attachQuantityListeners();
+
+// console.log(document.body.dataset.limitedProduct)
+const limited_product_ids = '48640031949046'; // string
 
 
-const limited_product_ids = JSON.parse(document.body.dataset.limitedProduct);
+// try {
+//   const rawData = document.body.dataset.limitedProduct;
+//   if (rawData) {
+//     limited_product_ids = JSON.parse(rawData);
+//   }
+// } catch (e) {
+//   console.error("Failed to parse limitedProduct:", e);
+// }
+
 const originalFetch = window.fetch;
 
 function showPopup() {
@@ -219,53 +271,53 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('close-popup').addEventListener('click', hidePopup);
 });
 
-window.fetch = async function (...args) {
-  const [url, options] = args;
+// window.fetch = async function (...args) {
+//   const [url, options] = args;
 
-  if (url.includes('/cart/add') && options?.body instanceof FormData) {
-    const formData = options.body;
-    const productId = formData.get('id');
+//   if (url.includes('/cart/add') && options?.body instanceof FormData) {
+//     const formData = options.body;
+//     const productId = '48640031949046';
 
-    const response = await originalFetch.apply(this, args);
+//     const response = await originalFetch.apply(this, args);
 
-    if (limited_product_ids.includes(productId)) {
-      document.querySelector('#Cart-Drawer').style.display = 'none'
-      showPopup();
-      await originalFetch('/cart/change.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: productId,
-          quantity: 1,
-        }),
-      });
-    }
+//     if (limited_product_ids.includes(productId)) {
+//       document.querySelector('#Cart-Drawer').style.display = 'none'
+//       showPopup();
+//       await originalFetch('/cart/change.js', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           id: productId,
+//           quantity: 1,
+//         }),
+//       });
+//     }
 
-    return response;
-  }
+//     return response;
+//   }
 
-  if (url.includes('cart/change.js')) {
-    const productId = JSON.parse(options.body).id.includes(':') ? JSON.parse(options.body).id.split(':')[0] : JSON.parse(options.body).id;
-    const productQty = JSON.parse(options.body).quantity
-    const response = await originalFetch.apply(this, args);
+//   if (url.includes('cart/change.js')) {
+//     const productId = JSON.parse(options.body).id.includes(':') ? JSON.parse(options.body).id.split(':')[0] : JSON.parse(options.body).id;
+//     const productQty = JSON.parse(options.body).quantity
+//     const response = await originalFetch.apply(this, args);
 
-    if (limited_product_ids.includes(productId) && productQty > 1) {
-      showPopup();
-      await originalFetch('/cart/change.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: productId,
-          quantity: 1,
-        }),
-      });
-    }
-    return response;
-  }
+//     if (limited_product_ids.includes(productId) && productQty > 1) {
+//       showPopup();
+//       await originalFetch('/cart/change.js', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//           id: productId,
+//           quantity: 1,
+//         }),
+//       });
+//     }
+//     return response;
+//   }
 
-  return originalFetch.apply(this, args);
-};
+//   return originalFetch.apply(this, args);
+// };

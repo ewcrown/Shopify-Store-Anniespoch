@@ -22,7 +22,21 @@
               style="cursor: pointer;"
             >
               <figure class="aspect-ratio aspect-ratio--adapt" style="--ratio-percent:96.0%;">
-                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                <img
+                  src="{{ block.settings.image | image_url: width: 750 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 400 }} 400w,
+                    {{ block.settings.image | image_url: width: 750 }} 750w,
+                    {{ block.settings.image | image_url: width: 1200 }} 1200w,
+                    {{ block.settings.image | image_url: width: 1500 }} 1500w
+                  "
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  alt="{{ block.settings.title | escape }}"
+                  loading="lazy"
+                  fetchpriority="auto"
+                  width=""
+                  height=""
+                >
 
                 <div class="gallery--item-content content-top-center">
                   <div>

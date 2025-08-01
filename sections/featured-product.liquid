@@ -275,12 +275,13 @@
                                 <div>
                                   <div>
                                     <div>
-                                      <button
+                                      <a
+                                        href="/cart/{{ product.first_available_variant.id }}:1"
                                         type="button"
-                                        class="shopify-payment-button__button shopify-payment-button__button--unbranded BUz42FHpSPncCPJ4Pr_f jjzYeefyWpPZLH9pIgyw RWJ0IfBjxIhflh4AIrUw"
-                                        data-testid="Checkout-button"
+                                        class="shopify-payment-button__button "
+                                        id="customBuyNow"
                                       >
-                                        Buy it now</button
+                                        Buy it now</a
                                       ><button
                                         aria-disabled="true"
                                         aria-hidden="true"

@@ -56,14 +56,34 @@ if (!customElements.get("variant-selects")) {
         label && (label.innerHTML = this.options[i]);
       });
     }
-    updateMasterId() {
-      this.currentVariant = this.getVariantData().find(
-        (variant) =>
-          !variant.options
-            .map((option, index) => this.options[index] === option)
-            .includes(!1)
-      );
+updateMasterId() {
+  const variants = this.getVariantData();
+  // console.log('getVariantData returned:', variants);
+  // console.log('Current options selected:', this.options);
+
+  if (Array.isArray(variants)) {
+    this.currentVariant = variants.find((variant) =>
+      variant.options.every((opt, i) => opt === this.options[i])
+    );
+  } else {
+    // console.warn('Variant data is not an array:', variants);
+    this.currentVariant = null;
+  }
+
+  console.log('Matched currentVariant:', this.currentVariant);
+  if (this.currentVariant) {
+    const idInput = document.querySelector('input[name="id"]');
+    const buyNowBtn = document.getElementById('customBuyNow');
+    if (buyNowBtn) {
+      buyNowBtn.href = `/cart/${this.currentVariant.id}:1`;
     }
+    if (idInput) {
+      idInput.value = this.currentVariant.id;
+    }
+  }
+}
+
+
     updateOther() {
       if (this.dataset.updateUrl !== "false" && this.other.length) {
         let fieldsets = this.other[0].querySelectorAll("fieldset"),
@@ -157,6 +177,7 @@ if (!customElements.get("variant-selects")) {
         );
     }
     updateVariantInput() {
+      console.log("check")
       document
         .querySelectorAll(
           `#product-form-${this.dataset.section}, #product-form-installment`
@@ -434,16 +455,28 @@ if (!customElements.get("variant-selects")) {
         }
       );
     }
-    getVariantData() {
-      return (
-        (this.variantData =
-          this.variantData ||
-          JSON.parse(
-            this.querySelector('[type="application/json"]').textContent
-          )),
-        this.variantData
-      );
+getVariantData() {
+  if (!this.variantData) {
+    const script = this.querySelector('script[type="application/json"][data-selected-variant]');
+    if (!script?.textContent) {
+      console.warn("Variant data script not found or empty");
+      return [];
     }
+
+    try {
+      const parsed = JSON.parse(script.textContent);
+      // Wrap single variant in array to standardize output
+      this.variantData = Array.isArray(parsed) ? parsed : [parsed];
+    } catch (e) {
+      console.error("Failed to parse variant JSON", e);
+      this.variantData = [];
+    }
+  }
+
+  return this.variantData;
+}
+
+
   }
   customElements.define("variant-selects", VariantSelects);
   class VariantRadios extends VariantSelects {

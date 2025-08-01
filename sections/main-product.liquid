@@ -60,10 +60,18 @@
                           </svg>
                         </a>
                         <img
-                          width=""
-                          height=""
-                          class="lazyautosizes lazyloaded"
-                          src="{{ image | img_url  : 'master' }}"
+                          src="{{ image | image_url: width: 800 }}"
+                          srcset="
+                            {{ image | image_url: width: 400 }} 400w,
+                            {{ image | image_url: width: 800 }} 800w,
+                            {{ image | image_url: width: 1200 }} 1200w
+                          "
+                          sizes="(max-width: 749px) 100vw, 800px"
+                          loading="lazy"
+                          alt="{{ image.alt | escape }}"
+                          class="lazyautosizes"
+                          width="800"
+                          height="auto"
                         >
                       </div>
                     </div>
@@ -109,32 +117,34 @@
                 <h1 class="product-title">
                   {{ product.title | replace: '™', '<span class="trademark">™</span>' }}
                 </h1>
-             <div class="product-price-container">
-  <div class="no-js-hidden" id="price-template--{{ section.id }}">
-    <span class="price">
-      {% assign variant = product.first_available_variant %}
+                {% unless product.tags contains 'Subscriptions' %}
+                  <div class="product-price-container">
+                    <div class="no-js-hidden" id="price-template--{{ section.id }}">
+                      <span class="price">
+                        {% assign variant = product.first_available_variant %}
 
-        <del>
-          <span class="compare-at-price amount">
-            {{ variant.compare_at_price | money_with_currency }}
-          </span>
-        </del>
+                        <del>
+                          <span class="compare-at-price amount">
+                            {{ variant.compare_at_price | money_with_currency }}
+                          </span>
+                        </del>
 
-      <ins>
-        <span class="amount">
-          {{ variant.price | money_with_currency }}
-        </span>
-      </ins>
+                        <ins>
+                          <span class="amount">
+                            {{ variant.price | money_with_currency }}
+                          </span>
+                        </ins>
 
-      <small class="unit-price hidden">
-        <span></span>
-        <span class="unit-price-separator">/</span>
-        <span></span>
-      </small>
-      <span class="badges"></span>
-    </span>
-  </div>
-</div>
+                        <small class="unit-price hidden">
+                          <span></span>
+                          <span class="unit-price-separator">/</span>
+                          <span></span>
+                        </small>
+                        <span class="badges"></span>
+                      </span>
+                    </div>
+                  </div>
+                {% endunless %}
               </div>
 
               {% for block in section.blocks %}
@@ -285,12 +295,13 @@
                           <div>
                             <div>
                               <div>
-                                <button
+                                <a
+                                  href="/cart/47225053642998:1"
                                   type="button"
-                                  class="shopify-payment-button__button shopify-payment-button__button--unbranded BUz42FHpSPncCPJ4Pr_f jjzYeefyWpPZLH9pIgyw RWJ0IfBjxIhflh4AIrUw"
-                                  data-testid="Checkout-button"
+                                  class="shopify-payment-button__button "
+                                  id="customBuyNow"
                                 >
-                                  Buy it now</button
+                                  Buy it now</a
                                 ><button
                                   aria-disabled="true"
                                   aria-hidden="true"

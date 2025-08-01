@@ -13,77 +13,71 @@
             style="--padding-bottom: 100%;"
           >
             <img
-              class="product-secondary-image lazyautosizes lazyloaded"
+              class="product-secondary-image"
               width="1200"
               height="1080"
               data-sizes="auto"
               srcset="
-                {%- if product.featured_image.width >= 165 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
-                {%- if product.featured_image.width >= 330 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
-                {%- if product.featured_image.width >= 535 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
-                {%- if product.featured_image.width >= 750 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if product.featured_image.width >= 300 -%}{{ product.featured_image | image_url: width: 300 }} 300w,{%- endif -%}
+                {%- if product.featured_image.width >= 750 -%}{{ product.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
                 {%- if product.featured_image.width >= 1000 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
                 {%- if product.featured_image.width >= 1500 -%}{{ product.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
                 {%- if product.featured_image.width >= 3000 -%}{{ product.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
                 {{ product.featured_image | image_url }} {{ product.featured_image.width }}w
               "
-              src="{{ product.featured_image | image_url: width: 1500 }}"
-  
+              src="{{ product.featured_image | image_url: width: 1000 }}"
               alt="{{ product.featured_image.alt | escape }}"
-  
               fetchpriority="auto"
-              alt="{{ product.title }}"
-              sizes="164px"
+              sizes="(min-width: 768px) 25vw, 100vw"
             >
           </span>
         </figure>
         <div class="product-card-info">
-        <div class="product-card-vendor">
-          {% if product.collection and product.collection[0] %}
-            <span href="{{ product.url }}" title="Product vendor">{{ product.collection[0] }}</span>
+          <div class="product-card-vendor">
+            {% if product.collection and product.collection[0] %}
+              <span href="{{ product.url }}" title="Product vendor">{{ product.collection[0] }}</span>
+            {% endif %}
+          </div>
+          <span class="price">
+            {% assign lowest_variant = product.variants.first %}
+
+            {% assign lowest_variant = null %}
+
+            {% for variant in product.variants %}
+              {% if variant.price > 0 %}
+                {% if lowest_variant == null or variant.price < lowest_variant.price %}
+                  {% assign lowest_variant = variant %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            {% if lowest_variant %}
+              <span class="price">
+                {% if lowest_variant.compare_at_price > lowest_variant.price %}
+                  <del>
+                    <span class="compare-at-price amount">
+                      {{ lowest_variant.compare_at_price | money }}
+                    </span>
+                  </del>
+                {% endif %}
+                <ins>
+                  <span class="amount">
+                    {{ lowest_variant.price | money }}
+                  </span>
+                </ins>
+              </span>
+            {% endif %}
+
+            <small class="unit-price hidden">
+              <span></span>
+              <span class="unit-price-separator">/</span>
+              <span></span>
+            </small>
+          </span>
+          {% if product.title %}
+            <span title="{{ product.title }}" class="product-card-title">{{ product.title }}</span>
           {% endif %}
         </div>
-        <span class="price">
-          {% assign lowest_variant = product.variants.first %}
-
-   {% assign lowest_variant = nil %}
-
-{% for variant in product.variants %}
-  {% if variant.price > 0 %}
-    {% if lowest_variant == nil or variant.price < lowest_variant.price %}
-      {% assign lowest_variant = variant %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
-
-{% if lowest_variant %}
-  <span class="price">
-    {% if lowest_variant.compare_at_price > lowest_variant.price %}
-      <del>
-        <span class="compare-at-price amount">
-          {{ lowest_variant.compare_at_price | money }}
-        </span>
-      </del>
-    {% endif %}
-    <ins>
-      <span class="amount">
-        {{ lowest_variant.price | money }}
-      </span>
-    </ins>
-  </span>
-{% endif %}
-          
-          
-          <small class="unit-price hidden">
-            <span></span>
-            <span class="unit-price-separator">/</span>
-            <span></span>
-          </small>
-        </span>
-        {% if product.title %}
-          <span title="{{ product.title }}" class="product-card-title">{{ product.title }}</span>
-        {% endif %}
-      </div>
       </a>
     </product-card>
   </div>
