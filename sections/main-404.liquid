@@ -1,23 +1,138 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
+{% style %}
+  .ew-main-404-page {
+    padding: 80px 0;
   }
+  .search-page {
+    margin-top: 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .search__input {
+    max-width: 400px;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  #customPredictiveResults {
+    margin-top: 2rem;
+  }
+#customPredictiveResults ul {
+    gap: 20px 0;
+    list-style: none;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.ew-main-404-page h1,
+.ew-main-404-page p {
+  color:#000;
+}
+@media(max-width:600px){
+  #customPredictiveResults ul {
+    grid-template-columns: repeat(2,1fr) !important;
+  }
+  .ew-main-404-page {
+    padding: 30px 0;
+  }
+}
+{% endstyle %}
 
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
+<div class="ew-main-404-page" id="ew-main-404-page">
+  <div class="page-width">
+    <h1>We’re sorry, but we’re having trouble finding that page</h1>
+    <p>Search our site:</p>
+    <div class="search-page">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+        <input
+          id="predictiveSearchInput"
+          type="search"
+          name="q"
+          value=""
+          placeholder="Or, try some of these best sellers and popular categories:"
+          class="search__input"
+          autocomplete="off"
+        >
+      </form>
+    </div>
+
+    <div id="customPredictiveResults">
+      <ul id="product-grid" class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop" role="list"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  const input = document.getElementById('predictiveSearchInput');
+  const productGrid = document.getElementById('product-grid');
+  let debounceTimer;
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const query = input.value.trim();
+
+    if (query.length < 2) {
+      productGrid.innerHTML = '';
+      return;
+    }
+
+    debounceTimer = setTimeout(() => {
+      fetchPredictiveResults(query);
+    }, 300);
+  });
+
+  async function fetchPredictiveResults(query) {
+    try {
+      const response = await fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product`);
+      const data = await response.json();
+      const products = data.resources.results.products;
+
+      if (!products.length) {
+        productGrid.innerHTML = '<li><p>No results found</p></li>';
+        return;
+      }
+
+      productGrid.innerHTML = products.map(product => `
+        <li class="grid__item scroll-trigger animate--slide-in" data-cascade>
+          <div class="carousel__slide columns pops-carousel__slide" data-collection="collection-">
+            <div class="carousel-slide-wrapper">
+              <product-card class="product-card text-left product-card--content-spacing-true product-card--border-true has-shadow--false">
+                <a href="${product.url}" tabindex="0">
+                  <figure class="product-featured-image thb-hover">
+                    <span class="product-featured-image-link aspect-ratio aspect-ratio--adapt" style="--padding-bottom: 100%;">
+                      <img class="product-secondary-image"
+                        width="1200"
+                        height="1080"
+                        src="${product.image}"
+                        alt="${product.title}"
+                        loading="lazy"
+                        fetchpriority="auto"
+                        sizes="(min-width: 768px) 25vw, 100vw"
+                      >
+                    </span>
+                  </figure>
+                  <div class="product-card-info">
+                    <span class="price">
+                      ${product.compare_at_price_min > product.price_min ? `
+                        <del><span class="compare-at-price amount">$${product.compare_at_price_min}</span></del>
+                      ` : ''}
+                      <ins><span class="amount">$${product.price_min}</span></ins>
+                      <small class="unit-price hidden">
+                        <span></span><span class="unit-price-separator">/</span><span></span>
+                      </small>
+                    </span>
+                    <span title="${product.title}" class="product-card-title">
+                      ${product.title.replace(/™/g, '<em class="ew-trademark">™</em>')}
+                    </span>
+                  </div>
+                </a>
+              </product-card>
+            </div>
+          </div>
+        </li>
+      `).join('');
+    } catch (error) {
+      console.error('Predictive search failed:', error);
+      productGrid.innerHTML = '<li><p>Error loading results.</p></li>';
     }
   }
-</style>
-
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
-</div>
+</script>
