@@ -35,9 +35,9 @@
                         style="--padding-bottom: 89.99999999999999%;"
                       >
                         <a
-                          href="{{ image | img_url  : 'master' }}"
+                          href="{{ image | image_url: width: 1200 }}"
                           class="product-single__media-zoom"
-                          data-msrc="{{ image | img_url  : 'master' }}"
+                          data-msrc="{{ image | image_url: width: 1200 }}"
                           data-h="1080"
                           data-w="1200"
                           target="_blank"
@@ -65,8 +65,9 @@
                         <img
                           width=""
                           height=""
+                          alt=""
                           class="lazyautosizes lazyloaded"
-                          src="{{ image | img_url  : 'master' }}"
+                          src="{{ image | image_url: width: 800 }}"
                         >
                       </div>
                     </div>
@@ -88,12 +89,12 @@
                           width="1200"
                           height="1080"
                           data-sizes="auto"
-                          src="{{ image | img_url  : 'master' }}"
-                          data-srcset="{{ image | img_url  : 'master' }}"
+                          src="{{ image | image_url: width: 200 }}"
+                          data-srcset="{{ image | image_url: width: 200 }}"
                           fetchpriority="auto"
                           alt=""
                           sizes="80px"
-                          srcset="{{ image | img_url  : 'master' }}"
+                          srcset="{{ image | image_url: width: 200 }}"
                         >
                       </div>
                     {% endfor %}

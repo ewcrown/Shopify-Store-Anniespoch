@@ -17,7 +17,7 @@
       </div>
       <div class="annies-review-right-side">
         {% if section.settings.img != blank %}
-        <img src="{{ section.settings.img | img_url:'master' }}" class="img-responsive">
+        <img src="{{ section.settings.img | image_url: width: 800 }}" class="img-responsive" width="" height="">
         {% endif %}
         {% if section.settings.btn_url != blank %}
         <div class="muttkin-button">

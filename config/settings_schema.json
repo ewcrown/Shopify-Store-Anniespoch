@@ -4,12 +4,12 @@
     "theme_name": "Dawn",
     "theme_version": "15.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
-    "name":"Only 1 Quantity",
-    "settings":[
+    "name": "Only 1 Quantity",
+    "settings": [
       {
         "type": "product_list",
         "id": "product_list",

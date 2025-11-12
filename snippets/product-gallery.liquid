@@ -11,12 +11,12 @@
         {% for image in product.media %}
           <div class="product-images__slide" data-media-id="Media-{{ section.id }}-{{ image.id }}">
             <div class="product-single__media aspect-ratio">
-              <a href="{{ image | img_url: 'master' }}" class="product-single__media-zoom" target="_blank" title="Zoom">
+              <a href="{{ image | image_url: width: 800 }}" class="product-single__media-zoom" target="_blank" title="Zoom">
                 <svg width="20" height="20">
                   <!-- SVG content for zoom icon -->
                 </svg>
               </a>
-              <img src="{{ image | img_url: 'master' }}" class="lazyautosizes" alt="Product Image">
+              <img src="{{ image | image_url: width: 800 }}" class="lazyautosizes" alt="Product Image" width="" height="">
             </div>
           </div>
         {% endfor %}
@@ -26,7 +26,7 @@
         <div id="Product-Thumbnails" class="product-thumbnail-container">
           {% for image in product.images %}
             <div class="product-thumbnail">
-              <img src="{{ image | img_url: 'master' }}" alt="Thumbnail">
+              <img src="{{ image | image_url: width: 200 }}" alt="Thumbnail" width="" height="">
             </div>
           {% endfor %}
         </div>

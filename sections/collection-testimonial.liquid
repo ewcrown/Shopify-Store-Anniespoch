@@ -9,6 +9,8 @@
                 <img
                   src="https://cdn.shopify.com/s/files/1/0710/0950/1430/files/5stars-e1625084085214-300x62_jpeg.png?v=1723720604"
                   alt="stars"
+                  width=""
+                  height=""
                 >
               </div>
               <p>"{{ block.settings.txt }}"</p>
@@ -18,8 +20,10 @@
         </div>
         <div class="side-content">
           <img
-            src="{{ section.settings.img | img_url: 'master' }}"
+            src="{{ section.settings.img | image_url: width: 800 }}"
             alt="Dog Image"
+            width=""
+            height=""
           >
           <button class="order-btn">{{ section.settings.btn_txt }}</button>
         </div>

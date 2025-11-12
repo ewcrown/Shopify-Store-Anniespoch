@@ -316,6 +316,7 @@
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "scdfv0t6bs");
     </script>
+        <script src="{{  'accessibilitychecker.js' | asset_url }}"></script>
   </head>
 
   <body
@@ -334,12 +335,12 @@
 
     {% sections 'header-group' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <main id="MainContent" class="content-for-layout focus-none" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
     {% sections 'footer-group' %}
-    {% render 'drawer-ai' %}
+    {% comment %} {% render 'drawer-ai' %} {% endcomment %}
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
@@ -550,6 +551,8 @@ document.addEventListener('DOMContentLoaded', addAccessibilityAttributes);
            });
        }
     </script>
+    
+
     <script src="{{  'annies-custom.js' | asset_url }}" defer></script>
   </body>
 </html>

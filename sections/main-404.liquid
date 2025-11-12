@@ -1,3 +1,4 @@
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 {% style %}
   .ew-main-404-page {
     padding: 80px 0;
@@ -23,10 +24,16 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
 }
-.ew-main-404-page h1,
-.ew-main-404-page p {
-  color:#000;
+.ew-main-404-page h1, .ew-main-404-page p {
+    color: #000;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+#ew-main-404-page .row {
+  padding:0;
+}
+.max-ai-width {    max-width: 850px;margin:auto}
 @media(max-width:600px){
   #customPredictiveResults ul {
     grid-template-columns: repeat(2,1fr) !important;
@@ -34,11 +41,34 @@
   .ew-main-404-page {
     padding: 30px 0;
   }
+
+  #ew-main-404-page .list-collections.section-spacing.section-spacing--disable-top {
+    margin: 20px 0;
+}
+
+#ew-main-404-page .collection-card--image {
+  height:100%;
+}
+    #ew-main-404-page .collection-grid.swipe-on-mobile {
+        margin-left: 0px;
+                grid-template-columns: 1fr !important;
+            scroll-snap-type: none;
+        scrollbar-width: none;
+        width: 100%;
+        padding: 0;
+    }
+    .small-12:nth-of-type(5),
+    .small-12:nth-of-type(3) {
+    grid-column: 2;
+}
+
+
 }
 {% endstyle %}
 
 <div class="ew-main-404-page" id="ew-main-404-page">
   <div class="page-width">
+    <div class="max-ai-width">
     <h1>We’re sorry, but we’re having trouble finding that page</h1>
     <p>Search our site:</p>
     <div class="search-page">
@@ -54,10 +84,28 @@
         >
       </form>
     </div>
+    </div>
 
     <div id="customPredictiveResults">
       <ul id="product-grid" class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop" role="list"></ul>
     </div>
+        
+<div id="shopify-section-template--{{ section.id }}" class="shopify-section section-collection-list">
+  <div class="row">
+    <div class="small-12 columns">
+      <div
+        class="list-collections section-spacing section-spacing--disable-top"
+        style="--overlay-color-rgb: 0,0,0; --overlay-opacity: 0.0; --var-collection-list-columns:5; --collection-text-color: #252f35"
+      >
+        <div class="collection-grid collection-grid-mobile collection-grid__grid  swipe-on-mobile mobile-columns--2">
+          {% for col in section.blocks %}
+            {% render 'collection-loop', card_collection: col.settings.collection %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </div>
 
@@ -82,16 +130,18 @@
 
   async function fetchPredictiveResults(query) {
     try {
-      const response = await fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product`);
+      const response = await fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product,collection`);
       const data = await response.json();
-      const products = data.resources.results.products;
+      const products = data.resources.results.products.filter(
+        product => !product.title.toLowerCase().includes('surcharge')
+      );
 
       if (!products.length) {
         productGrid.innerHTML = '<li><p>No results found</p></li>';
         return;
       }
 
-      productGrid.innerHTML = products.map(product => `
+      productGrid.innerHTML = products.slice(0, 8).map(product => `
         <li class="grid__item scroll-trigger animate--slide-in" data-cascade>
           <div class="carousel__slide columns pops-carousel__slide" data-collection="collection-">
             <div class="carousel-slide-wrapper">
@@ -136,3 +186,173 @@
     }
   }
 </script>
+
+{% schema %}
+{
+  "name": "404 Main",
+  "tag": "section",
+  "class": "section section-collection-list",
+  "max_blocks": 15,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "t:sections.collection-list.settings.title.default",
+      "label": "t:sections.collection-list.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.collection-list.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.collection-list.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.collection-list.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "square",
+      "label": "t:sections.collection-list.settings.image_ratio.label",
+      "info": "t:sections.collection-list.settings.image_ratio.info"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.collection-list.settings.columns_desktop.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": false,
+      "label": "t:sections.collection-list.settings.show_view_all.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.collection-list.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.collection-list.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.collection-list.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.collection-list.settings.columns_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": false,
+      "label": "t:sections.collection-list.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "404 Main",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

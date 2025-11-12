@@ -17,7 +17,7 @@
                   <div class="annies-blogs-wrap">
                     <div class="annies-blog-card">
                       {% if article.image != blank %}
-                        <img src="{{ article.image | img_url:'master' }}" class="img-responsive">
+                        <img src="{{ article.image | image_url: width: 800 }}" class="img-responsive" width="" height="">
                       {% endif %}
                       <div class="annies-tabcontent-inner-data">
                         <span class="annies-blog-card-date">{{ article.published_at | date: '%-m.%-d.%y' }}</span>

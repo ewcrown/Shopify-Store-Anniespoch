@@ -9,6 +9,54 @@
  */
 {
   "sections": {
+    "about_hero_BWG87r": {
+      "type": "about-hero",
+      "blocks": {
+        "heading_mV4wxC": {
+          "type": "heading",
+          "settings": {
+            "heading": "HOWLOWEEN Sale! Save 20% sitewide.",
+            "heading_size": 54,
+            "title_color": "#ffffff"
+          }
+        },
+        "text_e347bg": {
+          "type": "text",
+          "settings": {
+            "text": "Use code HOWLOWEEN20 at checkout.",
+            "text_size": 34,
+            "text_color": "#ffffff"
+          }
+        },
+        "sign_W7xXD7": {
+          "type": "sign",
+          "disabled": true,
+          "settings": {
+            "sign": "",
+            "sign_size": 22,
+            "sign_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mV4wxC",
+        "text_e347bg",
+        "sign_W7xXD7"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "name": "Hero",
+      "settings": {
+        "image": "shopify://shop_images/Your_paragraph_text.jpg",
+        "width": 44,
+        "padding_top": 5,
+        "padding_bottom": 11,
+        "padding_left": 5,
+        "padding_right": 5,
+        "background_size": "cover",
+        "background_position": "center center"
+      }
+    },
     "hero_slider": {
       "type": "hero-ai-slider",
       "blocks": {
@@ -169,7 +217,7 @@
     "custom_liquid_eazmT7": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<iframe src='https://a61ac457c9634cc8bd469d3a6740217f.elf.site' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"></iframe>",
+        "custom_liquid": "<iframe src='https://a61ac457c9634cc8bd469d3a6740217f.elf.site' title='Order a Muttkin For Your Pooch' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"></iframe>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
@@ -393,6 +441,7 @@
     }
   },
   "order": [
+    "about_hero_BWG87r",
     "hero_slider",
     "collection_list_B3F9aD",
     "featured_collection",

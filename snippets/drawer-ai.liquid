@@ -20,7 +20,6 @@
           {% for item in cart.items %}
             {% assign item_key = item.key %}
             {% assign item_quantity = item.quantity %}
-            {% assign item_final_price = item.final_price | money %}
 
             <div class="product-cart-item" id="CartDrawerItem-{{ forloop.index }}">
               <div class="product-cart-item-image">
@@ -29,6 +28,8 @@
                   alt="{{ item.title }}"
                   sizes="75px"
                   loading="lazy"
+                  width=""
+                  height=""
                 >
               </div>
               <div class="product-cart-item-info">

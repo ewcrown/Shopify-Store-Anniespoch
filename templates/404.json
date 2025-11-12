@@ -11,7 +11,57 @@
   "sections": {
     "main": {
       "type": "main-404",
-      "settings": {}
+      "blocks": {
+        "featured_collection_XQtJUD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "muttkins"
+          }
+        },
+        "featured_collection_8Bakrm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "happy-dog-meals"
+          }
+        },
+        "featured_collection_pKLzCk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chewables-grain-free"
+          }
+        },
+        "featured_collection_4M4acR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tasty-biscuits"
+          }
+        },
+        "featured_collection_TjMPEJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "canine-cuisine"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_XQtJUD",
+        "featured_collection_8Bakrm",
+        "featured_collection_pKLzCk",
+        "featured_collection_4M4acR",
+        "featured_collection_TjMPEJ"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [

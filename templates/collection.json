@@ -90,8 +90,8 @@
         "head": "Unlock 15% SAVINGS on your first order!",
         "desc": "And a BONUS offer your dog's Birthday!",
         "btn_txt": "Get The Discount",
-        "img": "shopify://shop_images/APP-Opt-in-image.png",
-        "bg-img": "shopify://shop_images/Annie_s_Milk_Street-2020-Huberts_Graphic_Design_Spread-2020-A7304978_1.jpg"
+        "img": "shopify:\/\/shop_images\/APP-Opt-in-image.png",
+        "bg-img": "shopify:\/\/shop_images\/Annie_s_Milk_Street-2020-Huberts_Graphic_Design_Spread-2020-A7304978_1.jpg"
       }
     }
   },

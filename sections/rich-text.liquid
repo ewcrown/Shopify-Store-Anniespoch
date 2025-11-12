@@ -15,13 +15,13 @@
             width="65"
             height="60"
             data-sizes="auto"
-            src="{{ section.settings.icon | img_url: '65x60' }}"
-            data-srcset="{{ section.settings.icon | img_url: '130x120' }} 130w"
+            src="{{ section.settings.icon | image_url: width: 65, height: 60 }}"
+            data-srcset="{{ section.settings.icon | image_url: width: 130, height: 120 }} 130w"
             fetchpriority="auto"
             alt=""
             style="object-position: 50.0% 50.0%;"
             sizes="65px"
-            srcset="{{ section.settings.icon | img_url: '130x120' }} 130w"
+            srcset="{{ section.settings.icon | image_url: width: 130, height: 120 }} 130w"
           >
 
           <h3 class="h1 ">

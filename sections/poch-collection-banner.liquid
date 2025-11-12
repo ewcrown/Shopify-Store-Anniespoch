@@ -10,7 +10,7 @@
 
         {% if section.settings.img != blank %}
           <img
-            src="{{ section.settings.img | img_url: 'master' }}"
+            src="{{ section.settings.img | image_url: width: 800 }}"
             alt="Dog with bone"
             style="max-width: 100%; height: auto;"
             width=""

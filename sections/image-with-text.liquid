@@ -2,32 +2,43 @@
 <div
   id="shopify-section-template--18200361664806__8a108edf-3f90-3921-9b28-32f32b54b0e0"
   class="shopify-section section-text-with-icons"
+  role="region"
+  aria-label="Text with icons section"
 >
   <div
-    class="text-with-icons text-with-icons-ai  swipe-on-mobile text-center icon-top icon-xlarge heading-large icon-columns-3 text-with-icons-has-bg--true section-spacing  section-spacing--disable-top section-spacing--disable-bottom"
+    class="text-with-icons text-with-icons-ai swipe-on-mobile text-center icon-top icon-xlarge icon-columns-3 text-with-icons-has-bg--true section-spacing section-spacing--disable-top section-spacing--disable-bottom"
     style="--color-heading: #5c4295;--color-text: #2c2d2e;--color-bg: #ffffff"
   >
-    <div class="text-with-icons__inner" style="--icon-columns: 3">
-      {% for block in section.blocks %}
-        <div class="text-with-icons__block  has-no-content">
-          <div class="text-with-icons__icon">
-            <img
-              data-src="{{ block.settings.image | image_url }}"
-              alt=""
-              width="192"
-              height="188"
-              class=" lazyloaded"
-              src="{{ block.settings.image | image_url }}"
-            >
-          </div>
-          <div class="text-with-icons__block-content">
-            <h6>{{ block.settings.heading }}</h6>
-
-            <p>{{ block.settings.caption }}</p>
-          </div>
-        </div>
-      {% endfor %}
+  <div 
+  class="text-with-icons__inner" 
+  style="--icon-columns: 3; overflow-x: auto;" 
+  tabindex="0" 
+  role="region" 
+  aria-label="Icons and text scrollable section"
+>
+  {% for block in section.blocks %}
+    <div class="text-with-icons__block">
+      <div class="text-with-icons__icon">
+        {% if block.settings.image != blank %}
+          <img
+            src="{{ block.settings.image | image_url }}"
+            alt="{{ block.settings.heading | escape }}"
+            width="192"
+            height="188"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+      <div class="text-with-icons__block-content">
+        <h3 class="text-with-icons__heading">
+          {{ block.settings.heading }}
+        </h3>
+        <p>{{ block.settings.caption }}</p>
+      </div>
     </div>
+  {% endfor %}
+</div>
+
   </div>
 </div>
 

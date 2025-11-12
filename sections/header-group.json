@@ -29,7 +29,7 @@
       "settings": {
         "bg-color": "#ffebba",
         "text-color": "#3e3e3e",
-        "font-size": 9,
+        "font-size": 20,
         "font-weight": 400,
         "animation": "off",
         "marquee-speed": 0
@@ -42,7 +42,7 @@
           "type": "announcement",
           "settings": {
             "svg_icon": "",
-            "announcement_text": "Save 10% Sitewide This Weekend - Northeast Search & Rescue Fundraiser!",
+            "announcement_text": "HOWLOWEEN Sale - Save 20% with code HOWLOWEEN20",
             "link": ""
           }
         }
@@ -51,10 +51,13 @@
         "announcement_DiDnUP"
       ],
       "disabled": true,
+      "custom_css": [
+        "@media only screen and (max-width: 600px) {.announcement-bar--inner {height: 100%; display: block; white-space: normal; text-align: center; }}"
+      ],
       "settings": {
-        "bg-color": "#f4ba5c",
-        "text-color": "#3e3e3e",
-        "font-size": 9,
+        "bg-color": "#5b0081",
+        "text-color": "#08ff5a",
+        "font-size": 25,
         "font-weight": 400,
         "animation": "off",
         "marquee-speed": 0

@@ -1,4 +1,5 @@
 {{ 'section-featured-product.css' | asset_url | stylesheet_tag }}
+{%  assign stock_level = product.metafields.custom.stock_level %}
 <section
   id="shopify-section-template--{{ section.id }}"
   class="shopify-section product-section"
@@ -32,9 +33,9 @@
                         style="--padding-bottom: 89.99999999999999%;"
                       >
                         <a
-                          href="{{ image | img_url  : 'master' }}"
+                          href="{{ image | image_url: width: 1200 }}"
                           class="product-single__media-zoom"
-                          data-msrc="{{ image | img_url  : 'master' }}"
+                          data-msrc="{{ image | image_url: width: 1200 }}"
                           data-h="1080"
                           data-w="1200"
                           target="_blank"
@@ -93,12 +94,12 @@
                           width="1200"
                           height="1080"
                           data-sizes="auto"
-                          src="{{ image | img_url  : 'master' }}"
-                          data-srcset="{{ image | img_url  : 'master' }}"
+                          src="{{ image | image_url: width: 200 }}"
+                          data-srcset="{{ image | image_url: width: 200 }}"
                           fetchpriority="auto"
                           alt=""
                           sizes="80px"
-                          srcset="{{ image | img_url  : 'master' }}"
+                          srcset="{{ image | image_url: width: 200 }}"
                         >
                       </div>
                     {% endfor %}
@@ -269,9 +270,9 @@
                           type="submit"
                           name="add"
                           id="AddToCart"
-                          class="single-add-to-cart-button button accent "
+                          class="single-add-to-cart-button button accent {%  if stock_level == true %}product-disabled{% endif %}"
                         >
-                          <span class="single-add-to-cart-button--text">Add to cart</span>
+                          <span class="single-add-to-cart-button--text">{% if stock_level == true %} Out of stock {% else %} Add to cart {% endif %}</span>
                           <span class="loading-overlay">
                             <svg
                               aria-hidden="true"
@@ -296,9 +297,9 @@
                             <div>
                               <div>
                                 <a
-                                  href="/cart/47225053642998:1"
+                                  href="/cart/{{ product.selected_or_first_available_variant.id }}:1"
                                   type="button"
-                                  class="shopify-payment-button__button "
+                                  class="shopify-payment-button__button {% if stock_level == true %}buy-product-disabled{% endif %}"
                                   id="customBuyNow"
                                 >
                                   Buy it now</a

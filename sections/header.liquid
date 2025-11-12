@@ -1,6 +1,6 @@
 {{ 'nU6IdwHEVoHw.css' | asset_url | stylesheet_tag }}
 
-{% stylesheet %}
+<style>
     --color-header-links:{{ section.settings.primary_color  }} ;
     --font-navigation-scale;{{ section.settings.font-size }};
   .thb-full-menu a,.thb-full-menu>li>a {
@@ -8,34 +8,32 @@
      color: --color-header-links;
      font-size:  --font-navigation-scale
   }
-{% endstylesheet %}
+</style>
 <div
   id="shopify-section-sections--17879067197694__header"
   class="shopify-section shopify-section-group-header-group header-section"
 >
-  <theme-header id="header" class="header style5 header--shadow-small transparent--false header-sticky--active">
+  <!-- Use real header landmark -->
+  <header class="site-header" role="banner">
     <div class="header--inner">
+      
+      <!-- Mobile menu toggle -->
       <div class="thb-header-mobile-left">
-        <details class="mobile-toggle-wrapper">
-          <summary class="mobile-toggle">
+        <details class="mobile-toggle-wrapper active">
+          <summary class="mobile-toggle" aria-label="Toggle mobile menu">
             <span></span>
             <span></span>
             <span></span>
           </summary>
-          <nav id="mobile-menu" class="mobile-menu-drawer" role="dialog" tabindex="-1">
+          <nav id="mobile-menu" class="mobile-menu-drawer" role="navigation" aria-label="Mobile menu">
             <div class="mobile-menu-drawer--inner">
               <ul class="mobile-menu">
                 {% for item in section.settings['mobile-menu'].links %}
                   {% if forloop.first %}
                     <li>
-                      <div
-                        title="{{ item.title }}"
-                        class="ai-menu-item ai-{{ forloop.index }}"
-                        style="display: block;"
-                      >
+                      <div class="ai-menu-item ai-{{ forloop.index }}" title="{{ item.title }}">
                         <div class="mega-div">
-                          <span class="mega-t">{{- item.title -}}</span>
-
+                          <span class="mega-t">{{ item.title }}</span>
                           <span class="ai-arrow">&gt;</span>
                         </div>
                         <div class="mega-menu-div">
@@ -45,53 +43,50 @@
                     </li>
                   {% else %}
                     <li>
-                      <a
-                        href="{{ item.url }}"
-                        title="{{ item.title }}"
-                        class="ai-menu-item ai-{{ forloop.index }}"
-                        style="display: block;"
-                      >
-                        {{- item.title -}}
+                      <a href="{{ item.url }}" class="ai-menu-item ai-{{ forloop.index }}">
+                        {{ item.title }}
                       </a>
                     </li>
                   {% endif %}
                 {% endfor %}
               </ul>
               <div class="thb-mobile-menu-footer">
-                <a class="thb-mobile-account-link" href="/account/login" title="Login">
-                  <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.47368 0C6.56842 0 4.21053 2.35789 4.21053 5.26316C4.21053 8.16842 6.56842 10.5263 9.47368 10.5263C12.3789 10.5263 14.7368 8.16842 14.7368 5.26316C14.7368 2.35789 12.3789 0 9.47368 0ZM9.47368 8.42105C7.72632 8.42105 6.31579 7.01053 6.31579 5.26316C6.31579 3.51579 7.72632 2.10526 9.47368 2.10526C11.2211 2.10526 12.6316 3.51579 12.6316 5.26316C12.6316 7.01053 11.2211 8.42105 9.47368 8.42105ZM18.9474 20V18.9474C18.9474 14.8737 15.6526 11.5789 11.5789 11.5789H7.36842C3.29474 11.5789 0 14.8737 0 18.9474V20H2.10526V18.9474C2.10526 16.0421 4.46316 13.6842 7.36842 13.6842H11.5789C14.4842 13.6842 16.8421 16.0421 16.8421 18.9474V20H18.9474Z" fill="var(--color-header-icons, --color-accent)"></path>
-                  </svg>
-                  Login
+                <a class="thb-mobile-account-link" href="/account/login">
+                  {% render 'icon-account' %} Login
                 </a>
               </div>
             </div>
           </nav>
         </details>
       </div>
-      <a class="logolink text-logo" href="{{ shop.url }}">
-        <img srcset="{{ settings.logo | image_url : width: '200px' }}" width="{{ settings.logo_width  }}" height="auto"
-      ></a>
-      <div class="thb-secondary-area thb-header-right">
+
+      <!-- Logo (home link, no landmark role here) -->
+      <a class="logolink text-logo" href="{{ shop.url }}" aria-label="Home">
+        <img srcset="{{ settings.logo | image_url: width: '200px' }}" 
+             width="{{ settings.logo_width }}" 
+             alt="{{ shop.name }} Home" />
+      </a>
+
+      <!-- Right side (search, account, cart) -->
+      <div class="thb-secondary-area thb-header-right" aria-label="Header tools">
         <div class="thb-secondary-area-item">
           {% render 'header-search' %}
         </div>
-
-        <a
-          class="thb-secondary-area-item thb-secondary-myaccount"
-          href="{% if customer %}{{ routes.account_url}}{% else %}{{ routes.account_login_url }}{% endif %}"
-          title="My Account"
-        >
+        <a class="thb-secondary-area-item thb-secondary-myaccount"
+           href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+           title="My Account">
           {% render 'icon-account' %}
         </a>
         <a class="thb-secondary-area-item thb-secondary-cart" href="/cart" id="cart-drawer-toggle">
-          <div class="thb-secondary-item-icon">
+          <div class="thb-secondary-item-icon" aria-label="Cart status">
             {% render 'cart-icon' %}
             <span class="thb-item-count">0</span>
           </div>
         </a>
       </div>
-      <full-menu class="full-menu">
+
+      <!-- Desktop nav -->
+      <nav class="full-menu" role="navigation" aria-label="Main menu">
         <ul class="thb-full-menu" role="menubar">
           {% for item in section.settings.menu.links %}
             <li role="none" class="menu-item">
@@ -102,16 +97,12 @@
             </li>
           {% endfor %}
         </ul>
-      </full-menu>
+      </nav>
+
     </div>
-    <style data-shopify="">
-      :root {
-        --logo-height: 26px;
-        --logo-height-mobile: 26px;
-      }
-    </style>
-  </theme-header>
+  </header>
 </div>
+
 
 <script
   defer="defer"
@@ -158,7 +149,7 @@
     }
   });
 </script>
-{{ 'header-section.js' | asset_url | script_tag }}
+<script src="{{ 'header-section.js' | asset_url }}" defer></script>
 {% schema %}
 {
   "name": "t:sections.header.name",

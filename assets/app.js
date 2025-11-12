@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeButton = document.querySelector('.side-panel-close');
   const orderNoteToggle = document.getElementById('order-note-toggle');
   const orderNoteContent = document.getElementById('mini-cart-note');
-  const saveButton = orderNoteContent.querySelector('.button.full'); // Save button
+  const saveButton = orderNoteContent?.querySelector('.button.full');
   const noteTextarea = document.getElementById('mini-cart__notes');
 
   if (orderNoteToggle && orderNoteContent) {

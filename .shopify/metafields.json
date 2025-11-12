@@ -169,6 +169,16 @@
         "name": "number_integer",
         "category": "NUMBER"
       }
+    },
+    {
+      "key": "stock_level",
+      "namespace": "custom",
+      "name": "Stock Level",
+      "description": "",
+      "type": {
+        "name": "boolean",
+        "category": "TRUE_FALSE"
+      }
     }
   ],
   "variant": [

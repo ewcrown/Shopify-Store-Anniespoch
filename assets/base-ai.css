@@ -6604,3 +6604,9 @@ input[type=search]:focus::placeholder, input[type=search]::placeholder {
     }
 
 }
+@media only screen and (max-width: 600px) {
+.header--inner {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+}

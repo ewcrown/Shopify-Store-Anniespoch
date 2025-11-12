@@ -1,0 +1,272 @@
+/* Critical CSS - Above the fold styles only */
+/* This file contains only essential styles needed for initial render */
+
+/* Essential typography and layout */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-body, #f5f5f5);
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-body, #2c2d2e);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Essential headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading-family) !important;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-heading, #1a1c1d);
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
+}
+
+h1, .h1, .h1-large, .h1-xlarge {
+  font-size: 2.875rem;
+  line-height: 1.45;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+h2, .h2, blockquote p, blockquote span {
+  font-size: 2.5rem;
+  line-height: 1.45;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+h3, .h3 {
+  font-size: 2.125rem;
+  line-height: 1.45;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+/* Essential body text */
+p {
+  margin-bottom: 1.25rem;
+  font-size: 18px !important;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  word-spacing: 0.001em;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+/* Essential links */
+a {
+  background-color: transparent;
+  line-height: inherit;
+  color: var(--color-body, #2c2d2e);
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: color 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-accent);
+}
+
+/* Essential images */
+img {
+  border-style: none;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* Essential layout containers */
+.ai-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.row {
+  max-width: 1380px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 11px;
+}
+
+.page-width {
+  max-width: 1380px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Essential header styles */
+.header-section {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.header {
+  display: block;
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  padding: 0 15px;
+  background: transparent;
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: -1;
+  background: var(--color-header-bg);
+  opacity: 1;
+  transition: opacity 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+}
+
+.header--inner {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto 1fr;
+  min-height: 60px;
+}
+
+/* Essential logo styles */
+.logolink {
+  display: inline-flex;
+  margin: 20px 0;
+}
+
+.logolink .logoimg {
+  width: auto;
+  height: var(--logo-height-mobile, 30px);
+  object-fit: contain;
+  object-position: left;
+}
+
+/* Essential button styles */
+.button,
+input[type="submit"] {
+  display: inline-flex;
+  cursor: pointer;
+  padding: 7px 30px;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  font-size: 0.9375rem;
+  font-weight: var(--font-body-medium-weight, 500);
+  letter-spacing: var(--button-letter-spacing, 0.02em);
+  background: var(--solid-button-background, var(--color-accent));
+  color: var(--solid-button-label, #fff);
+  border: 0;
+  border-radius: var(--button-border-radius, 6px);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: color 0.25s cubic-bezier(0.104, 0.204, 0.492, 1),
+    background-color 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+}
+
+/* Essential form styles */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  border: 1px solid var(--color-form-border);
+  padding: 12px 17px;
+  height: 50px;
+  margin-bottom: 10px;
+  color: var(--color-body, #2c2d2e);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  background: transparent;
+  max-width: 100%;
+  border-radius: var(--input-border-radius, 6px);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Essential utility classes */
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Essential responsive utilities */
+@media only screen and (min-width: 768px) {
+  .header {
+    padding: 0 50px;
+  }
+  
+  .row {
+    padding: 0 35px;
+  }
+  
+  .header--inner {
+    min-height: 80px;
+  }
+  
+  .logolink .logoimg {
+    height: var(--logo-height, 30px);
+  }
+}
+
+@media only screen and (min-width: 1068px) {
+  .header--inner {
+    min-height: 80px;
+  }
+}

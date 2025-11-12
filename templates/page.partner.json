@@ -37,7 +37,7 @@
         "text_AXtkTV": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>If you are a reputable 501(c)(3) dedicated to animal welfare, Annie’s Pooch Pops wants to work with you! \nWe can support your agency’s mission via a “Shop &amp; Support” program offering a 15% discount on purchases to your supporters and a 20% commission to your agency on the net sales.\n</strong></p><strong>\n\n</strong><p><strong>\ncomplete the questionnaire below</strong>\n</p>",
+            "text": "<p><strong>If you are a reputable 501(c)(3) dedicated to animal welfare, Annie’s Pooch Pops wants to work with you! \nWe can support your agency’s mission via a “Shop &amp; Support” program offering a 15% discount on purchases to your supporters and a 20% commission to your agency on the net sales.\n<\/strong><\/p><strong>\n\n<\/strong><p><strong>\ncomplete the questionnaire below<\/strong>\n<\/p>",
             "text_size": 22,
             "text_color": "#444249"
           }
@@ -59,7 +59,7 @@
         "sign_qc4MBG"
       ],
       "settings": {
-        "image": "shopify://shop_images/image-with-text-overlay.png",
+        "image": "shopify:\/\/shop_images\/image-with-text-overlay.png",
         "width": 44,
         "padding_top": 5,
         "padding_bottom": 5,

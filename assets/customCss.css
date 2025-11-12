@@ -32,7 +32,7 @@ body {
 
 .collection-tabs__list-link {
   background: #f0bd41 !important;
-  color: #fff !important;
+  color: #000 !important;
   font-size: 13px !important;
   font-family: "poppins" !important;
   font-weight: 500 !important;
@@ -85,6 +85,7 @@ body {
   background: #efb93d !important;
   border-radius: 30px;
   font-family: "poppins";
+  color:#000 !important;
 }
 
 .shopify-payment-button__button {

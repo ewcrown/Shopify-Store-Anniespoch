@@ -85,6 +85,8 @@
                         src="{{ item.image | image_url: '300x300' }}"
                         alt="{{ item.image.alt | escape }}"
                         sizes="75px"
+                        width=""
+                        height=""
                       >
                     </div>
                     <div class="product-cart-item-info">
@@ -171,7 +173,7 @@
           </div>
 
           <small class="tax-note caption-large rte">
-            {{ 'sections.cart.taxes_at_checkout' | t }}
+            Taxes and shipping calculated at checkout
           </small>
         </div>
         <div class="cart-drawer-buttons">

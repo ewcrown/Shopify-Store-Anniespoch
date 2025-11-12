@@ -37,7 +37,7 @@
         "text_AXtkTV": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Annie’s Pooch Pops started over 20 years ago</strong> to provide the pet industry with a <strong>super-premium, gourmet treat</strong> that was healthy and aesthetically appealing to both pet and owner. </p><p>\n\n</p><p>The business started with humble roots in the family’s kitchen. As demand increased, Annie’s Pooch Pops rented a kitchen overnight from a local restaurant. Cooking from 10 p.m. to 6 a.m. wasn’t easy but eventually the business moved into its first dedicated facility, a 4,000 square foot barn in northern New Jersey horse country. In 2017, <strong>Annie’s Pooch Pops</strong> settled into a <strong>20,000 square human-grade food facility in Bangor, Pennsylvania.</strong></p>\n\n<p>Our promise to you and your pooch is to make the freshest, best looking, tastiest, handmade treats on the market.</p>",
+            "text": "<p><strong>Annie’s Pooch Pops started over 20 years ago<\/strong> to provide the pet industry with a <strong>super-premium, gourmet treat<\/strong> that was healthy and aesthetically appealing to both pet and owner. <\/p><p>\n\n<\/p><p>The business started with humble roots in the family’s kitchen. As demand increased, Annie’s Pooch Pops rented a kitchen overnight from a local restaurant. Cooking from 10 p.m. to 6 a.m. wasn’t easy but eventually the business moved into its first dedicated facility, a 4,000 square foot barn in northern New Jersey horse country. In 2017, <strong>Annie’s Pooch Pops<\/strong> settled into a <strong>20,000 square human-grade food facility in Bangor, Pennsylvania.<\/strong><\/p>\n\n<p>Our promise to you and your pooch is to make the freshest, best looking, tastiest, handmade treats on the market.<\/p>",
             "text_size": 22,
             "text_color": "#444249"
           }
@@ -45,7 +45,7 @@
         "sign_qc4MBG": {
           "type": "sign",
           "settings": {
-            "sign": "<strong>The McInerney family</strong>",
+            "sign": "<strong>The McInerney family<\/strong>",
             "sign_size": 22,
             "sign_color": "#444249"
           }
@@ -58,7 +58,7 @@
         "sign_qc4MBG"
       ],
       "settings": {
-        "image": "shopify://shop_images/image-with-text-overlay.png",
+        "image": "shopify:\/\/shop_images\/image-with-text-overlay.png",
         "width": 50,
         "padding_top": 5,
         "padding_bottom": 5,
@@ -74,11 +74,11 @@
         "heading": "Welcoming Your<br> Pooch Into Our Family",
         "heading_size": 36,
         "heading_color": "#444249",
-        "description": "Matt McInerney, the current owner of Annie’s Pooch Pops, named his childhood dog 'Annie' in homage to Little Orphan Annie. Annie was a rescued golden retriever/corgi mix with a strawberry-blonde coat. Matt and Annie were inseparable and truly embodied the phrase of man’s best friend. Acquiring the Annie’s Pooch Pops business was the perfect opportunity for Matt to honor the legacy of a revered family member.",
+        "description": "Matt McInerney, the current owner of Annie’s Pooch Pops, named his childhood dog 'Annie' in homage to Little Orphan Annie. Annie was a rescued golden retriever\/corgi mix with a strawberry-blonde coat. Matt and Annie were inseparable and truly embodied the phrase of man’s best friend. Acquiring the Annie’s Pooch Pops business was the perfect opportunity for Matt to honor the legacy of a revered family member.",
         "description_size": 20,
         "description_color": "#333333",
-        "image1": "shopify://shop_images/IMG_5465_Original-scaled_jpg.png",
-        "image2": "shopify://shop_images/IMG_5465_Original-scaled.jpg_1.png",
+        "image1": "shopify:\/\/shop_images\/IMG_5465_Original-scaled_jpg.png",
+        "image2": "shopify:\/\/shop_images\/IMG_5465_Original-scaled.jpg_1.png",
         "background_color": "#ffffff",
         "background_size": "cover",
         "background_position": "center center",
@@ -91,8 +91,8 @@
     "text-with-image": {
       "type": "text-with-image",
       "settings": {
-        "image": "shopify://shop_images/IMG_5465_Original-scaled.jpg_2.png",
-        "text": "<p>\nWe are dedicated to Animal Welfare. Lincoln dutifully serves as the Official Taste Tester at Annie’s Pooch Pops. Rescued as a stray dog from Georgia, his life dramatically changed for the better upon joining the McInerney family in November 2017.\n</p>\n<br>\n<p>\nWhile not all dogs will be as lucky as Lincoln, Annie’s Pooch Pops is eager to work with reputable agencies dedicated to the promotion of pet adoption and other animal welfare initiatives. <a href=\"/pages/partner-with-us\"><strong>Partner With Us</strong></a> to discuss how Annie’s Pooch Pops can support your agency’s mission!</p>",
+        "image": "shopify:\/\/shop_images\/IMG_5465_Original-scaled.jpg_2.png",
+        "text": "<p>\nWe are dedicated to Animal Welfare. Lincoln dutifully serves as the Official Taste Tester at Annie’s Pooch Pops. Rescued as a stray dog from Georgia, his life dramatically changed for the better upon joining the McInerney family in November 2017.\n<\/p>\n<br>\n<p>\nWhile not all dogs will be as lucky as Lincoln, Annie’s Pooch Pops is eager to work with reputable agencies dedicated to the promotion of pet adoption and other animal welfare initiatives. <a href=\"\/pages\/partner-with-us\"><strong>Partner With Us<\/strong><\/a> to discuss how Annie’s Pooch Pops can support your agency’s mission!<\/p>",
         "text_size": 16,
         "text_color": "#333333",
         "reverse_row": false,
@@ -106,7 +106,7 @@
     "custom_liquid_D4JHz7": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<iframe src='https://a61ac457c9634cc8bd469d3a6740217f.elf.site' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"></iframe>",
+        "custom_liquid": "<iframe src='https:\/\/a61ac457c9634cc8bd469d3a6740217f.elf.site' title='Order a Muttkin For Your Pooch' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"><\/iframe>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52

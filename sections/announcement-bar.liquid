@@ -1,23 +1,14 @@
 {{ 'top-bar-ai.css' | asset_url | stylesheet_tag }}
-{% stylesheet %}
-  {% if section.settings.animation %}
-   .announcement-bar--marquee.direction-left>div {
-     animation: none;
-   }
-  {% endif %}
-  --font-announcement-scale: {{ section.settings.font-size }}
-  .announcement-bar--inner {
-    font-size: var(--font-announcement-scale );
-    font-weight: {{ section.settings.font-weight }};
-    }
-{% endstylesheet %}
-<div
+
+<section
   id="shopify-section-sections--{{section.id}}__announcement-bar"
   class="shopify-section shopify-section-group-header-group announcement-bar-section"
+  role="region"
+  aria-label="Store announcement"
 >
   <div
     class="announcement-bar"
-    style="--color-announcement-bar-text: {{section.settings.text-color}}; --color-announcement-bar-bg: {{ section.settings.bg-color }}"
+    style=" --color-announcement-bar-bg: {{ section.settings.bg-color }}"
   >
     <div
       class="announcement-bar--inner direction-left announcement-bar--marquee"
@@ -25,15 +16,22 @@
     >
       <div>
         {% for block in section.blocks %}
-          <div class="announcement-bar--item">
+          <div class="announcement-bar--item" style="color: {{section.settings.text-color}};font-size:{{section.settings.font-size}}px;">
             {{ block.settings.svg_icon }}
-            {{ block.settings.announcement_text }}
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">
+                {{ block.settings.announcement_text }}
+              </a>
+            {% else %}
+              {{ block.settings.announcement_text }}
+            {% endif %}
           </div>
         {% endfor %}
       </div>
     </div>
   </div>
-</div>
+</section>
+
 
 {% schema %}
 {

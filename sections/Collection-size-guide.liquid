@@ -8,9 +8,11 @@
           {% for block in section.blocks %}
             {% if block.settings.img != blank %}
               <img
-                src="{{ block.settings.img | img_url: 'master' }}"
+                src="{{ block.settings.img | image_url: width: 800}}"
                 alt="size guide"
                 class="img-responsive"
+                width=""
+                height=""
               >
             {% endif %}
           {% endfor %}

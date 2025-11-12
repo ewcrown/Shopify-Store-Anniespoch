@@ -84,3 +84,35 @@ button.checkout {
   font-size: 14px;
   vertical-align: super;
 }
+
+.cart-drawer-buttons span {
+  color:#000;
+}
+
+.product-price-container .price {
+  color:#000 !important;
+}
+
+.slideshow__slide-content .button-overflow-container a {
+  color:#000 !important;
+}
+
+.product-disabled {
+  opacity: 0.5;
+  pointer-events:none;
+}
+
+.buy-product-disabled {
+  opacity: 0.5;
+  pointer-events:none;
+  display:none !important;
+}
+
+
+input[data-option-value-id="4220778643702"] + label{
+  display:none !important;
+}
+
+input[data-quantity-variant-id="49265989124342"] {
+    display: none !important;
+}
