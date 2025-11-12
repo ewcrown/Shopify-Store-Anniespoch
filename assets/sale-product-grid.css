@@ -1,0 +1,126 @@
+.sale-product-grid {
+  padding: 60px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-heading {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-subheading {
+  font-size: 18px;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Let theme's grid system handle the layout completely */
+
+.sale-product-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.sale-product-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sale-product-card-wrapper .carousel-slide-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sale-product-add-to-cart-form {
+  margin-top: auto;
+  padding-top: 15px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Button styles are handled by theme's .button class and inline styles in section */
+
+.section-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.no-collection-message {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+@media (max-width: 989px) {
+  .sale-product-grid {
+    padding: 50px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 35px;
+  }
+  
+  .section-heading {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sale-product-grid {
+    padding: 40px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 30px;
+  }
+  
+  .section-heading {
+    font-size: 24px;
+  }
+  
+  .section-subheading {
+    font-size: 16px;
+  }
+  
+  .section-footer {
+    margin-top: 30px;
+  }
+  
+  .section-button {
+    padding: 12px 30px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sale-product-grid {
+    padding: 30px 0;
+  }
+  
+  .section-heading {
+    font-size: 20px;
+  }
+  
+  .section-subheading {
+    font-size: 14px;
+  }
+  
+  .sale-product-add-to-cart-button {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+  
+  .sale-product-add-to-cart-form {
+    padding-top: 12px;
+  }
+}
+
