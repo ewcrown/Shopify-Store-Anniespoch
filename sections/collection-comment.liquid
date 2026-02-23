@@ -1,16 +1,43 @@
+<style>
+  #poch-collection-2-comment {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  .poch-collection-2-comment-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (max-width: 749px) {
+    .poch-collection-2-comment-grid {
+      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr) !important;
+    }
+  }
+</style>
 <section class="poch-collection-2-comment" id="poch-collection-2-comment">
   <div class="poch-collection-2-comment-row">
     <div class="page-width">
-      <div
-        class="poch-collection-2-comment-col "
-        style="background:url({{ section.settings.image | image_url : width : '1000' }})"
-      >
-        <div class="overlay">
-          <h3 class="poch-collection-comment-title">{{ section.settings.comment }}</h3>
-          <p class="poch-collection-comment-txt">{{ section.settings.txt }}</p>
-
-          <p class="poch-collection-comment-author">{{ section.settings.author }}</p>
-        </div>
+      <div class="poch-collection-2-comment-grid" style="grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);">
+        {% for block in section.blocks %}
+          <div
+            class="poch-collection-2-comment-col"
+            {{ block.shopify_attributes }}
+            {% if block.settings.image != blank %}
+              style="background-image: url({{ block.settings.image | image_url: width: 1000 }})"
+            {% endif %}
+          >
+            <div class="overlay">
+              {% if block.settings.comment != blank %}
+                <h3 class="poch-collection-comment-title">{{ block.settings.comment }}</h3>
+              {% endif %}
+              {% if block.settings.txt != blank %}
+                <p class="poch-collection-comment-txt">{{ block.settings.txt }}</p>
+              {% endif %}
+              {% if block.settings.author != blank %}
+                <p class="poch-collection-comment-author">{{ block.settings.author }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -21,32 +48,66 @@
   "name": "Collection Comment",
   "settings": [
     {
-      "type": "richtext",
-      "id": "comment",
-      "label": "Comment",
-      "default":"<p>Our dogs cannot get enough of the Mega Muttkins. They love the biscuit around the middle, but go on to work on the bone for months or even years later. I can’t tell you how many stripped down bones we have all around the house. My husband thinks we don’t need anymore, but I just ordered six more.</p>"
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1,
+      "label": "Columns (Desktop)"
     },
     {
-      "type": "text",
-      "id": "txt",
-      "label": "Text",
-      "default":"Shhh! It’s their favorite treat!"
-    },
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns (Mobile)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    }
+  ],
+  "blocks": [
     {
-      "type": "text",
-      "id": "author",
-      "label": "Author",
-      "default":"– Melissa A"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background"
+      "type": "comment",
+      "name": "Comment",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "comment",
+          "label": "Comment"
+        },
+        {
+          "type": "text",
+          "id": "txt",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Collection Comment"
+      "name": "Collection Comment",
+      "blocks": [
+        {
+          "type": "comment",
+          "settings": {
+            "comment": "<p>Our dogs cannot get enough of the Mega Muttkins.</p>",
+            "txt": "Shhh! It's their favorite treat!",
+            "author": "– Melissa A"
+          }
+        }
+      ]
     }
   ]
 }

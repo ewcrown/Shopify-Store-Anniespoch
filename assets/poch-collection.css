@@ -431,14 +431,26 @@
   padding: 70px 0;
 }
 
+.poch-collection-2-comment {
+  overflow-x: hidden;
+}
+
+.poch-collection-2-comment-grid {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
 .poch-collection-2-comment-col {
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    background-position: 1% 65% !important;
-    padding: 150px;
+    background-position: center !important;
+    padding: 75px;
+    min-width: 0;
+    overflow: visible;
 }
 .poch-collection-2-comment-col {
-  padding: 150px; /* Default padding for large screens */
+  padding: 75px; /* Default padding for large screens */
 }
 
 @media (max-width: 1200px) {
@@ -473,7 +485,8 @@
 
 .poch-collection-2-comment-col .overlay {
     background: rgba(0, 0, 0, 0.5);
-    padding: 1rem;
+    padding: 2rem;
+    height: 100%;
 }
 
 .poch-collection-comment-title {
@@ -484,6 +497,7 @@
   color: #ffffff;
   text-align: center;
   margin-bottom: 2rem;
+  overflow-wrap: break-word;
 }
 
 .poch-collection-comment-txt {
@@ -494,15 +508,38 @@
   text-align: center;
   color: #ffffff;
   margin-bottom: 3rem;
+  overflow-wrap: break-word;
 }
 
 .poch-collection-comment-author {
     font-family: Poppins;
-    font-size: 29.51px !important;
+    font-size: 24px !important;
     font-weight: 700;
     line-height: 40.78px;
     text-align: center;
     color: #ffffff;
+}
+
+@media (max-width: 749px) {
+  .poch-collection-comment-title {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .poch-collection-comment-title p {
+    font-size: 16px !important;
+  }
+  .poch-collection-comment-txt {
+     font-size: 16px !important;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .poch-collection-comment-author {
+    font-size: 14px !important;
+  }
+  .poch-collection-2-comment-col .overlay {
+    padding: 1.25rem;
+  }
 }
 
 .poch-collection-2-faq-row {
@@ -601,7 +638,7 @@
   }
 
   .poch-collection-2-comment-col {
-    padding: 30px;
+    padding: 20px;
   }
 
   .poch-collection-comment-title {

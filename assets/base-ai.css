@@ -6065,7 +6065,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-card .price {
-    font-size: calc(var(--font-product-price-scale, 1) * .9375rem)
+  font-size: 16px;
+  flex-wrap: wrap;
 }
 
 .product-card .price+.product-card-title {
