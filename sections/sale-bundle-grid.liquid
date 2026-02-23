@@ -47,22 +47,19 @@
                 {% if first_variant and first_variant.available and bundle_product.available %}
                   <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="sale-bundle-add-to-cart-form">
                     <input type="hidden" name="id" value="{{ first_variant.id }}">
-                    <button type="submit" class="button button--full-width sale-bundle-add-to-cart-button" name="add">
-                      <span>
-                        {% if block.settings.button_text != blank %}
-                          {{ block.settings.button_text }}
-                        {% elsif section.settings.add_to_cart_text != blank %}
-                          {{ section.settings.add_to_cart_text }}
-                        {% else %}
-                          Add to cart
-                        {% endif %}
-                      </span>
-                      {% render 'loading-spinner', class: 'loading-overlay' %}
+                    <button type="submit" class="sale-bundle-add-to-cart-button" name="add">
+                      {% if block.settings.button_text != blank %}
+                        {{ block.settings.button_text }}
+                      {% elsif section.settings.add_to_cart_text != blank %}
+                        {{ section.settings.add_to_cart_text }}
+                      {% else %}
+                        Add to cart
+                      {% endif %}
                     </button>
                   </form>
                 {% else %}
-                  <button type="button" class="button button--full-width sale-bundle-add-to-cart-button" disabled>
-                    <span>Sold out</span>
+                  <button type="button" class="sale-bundle-add-to-cart-button" disabled>
+                    Sold out
                   </button>
                 {% endif %}
               {% endif %}
@@ -75,18 +72,10 @@
                 <h3 class="bundle-title">{{ block.settings.title }}</h3>
               {% endif %}
               {% if block.settings.description != blank %}
-                <div class="bundle-description-wrapper">
-                  <div class="bundle-description bundle-description-truncated">
-                    {{ block.settings.description }}
-                  </div>
-                  <button type="button" class="read-more-toggle" aria-expanded="false">
-                    <span class="read-more-text">Read more</span>
-                    <span class="read-less-text" style="display: none;">Read less</span>
-                  </button>
-                </div>
+                <p class="bundle-description">{{ block.settings.description }}</p>
               {% endif %}
               {% if block.settings.button_text != blank and block.settings.button_url != blank %}
-                <a href="{{ block.settings.button_url }}" class="button button--full-width bundle-button">{{ block.settings.button_text }}</a>
+                <a href="{{ block.settings.button_url }}" class="bundle-button">{{ block.settings.button_text }}</a>
               {% endif %}
             </div>
           </li>
@@ -132,16 +121,11 @@
         e.preventDefault();
         
         const button = form.querySelector('.sale-bundle-add-to-cart-button');
-        const buttonSpan = button.querySelector('span');
-        const loadingSpinner = button.querySelector('.loading-overlay');
-        const originalText = buttonSpan ? buttonSpan.textContent : button.textContent;
+        const originalText = button.textContent;
         
         // Disable button and show loading state
         button.disabled = true;
         button.classList.add('loading');
-        if (loadingSpinner) {
-          loadingSpinner.classList.remove('hidden');
-        }
         
         const formData = new FormData(form);
         
@@ -157,15 +141,8 @@
             // Error occurred
             alert(data.description || 'An error occurred while adding the product to cart.');
             button.disabled = false;
-            if (buttonSpan) {
-              buttonSpan.textContent = originalText;
-            } else {
-              button.textContent = originalText;
-            }
+            button.textContent = originalText;
             button.classList.remove('loading');
-            if (loadingSpinner) {
-              loadingSpinner.classList.add('hidden');
-            }
             return;
           }
           
@@ -197,82 +174,15 @@
           
           // Reset button
           button.disabled = false;
-          if (buttonSpan) {
-            buttonSpan.textContent = originalText;
-          } else {
-            button.textContent = originalText;
-          }
+          button.textContent = originalText;
           button.classList.remove('loading');
-          if (loadingSpinner) {
-            loadingSpinner.classList.add('hidden');
-          }
           
         } catch (error) {
           console.error('Error adding to cart:', error);
-            alert('An error occurred while adding the product to cart.');
-            button.disabled = false;
-            if (buttonSpan) {
-              buttonSpan.textContent = originalText;
-            } else {
-              button.textContent = originalText;
-            }
-            button.classList.remove('loading');
-            if (loadingSpinner) {
-              loadingSpinner.classList.add('hidden');
-            }
-        }
-      });
-    });
-  })();
-  
-  // Read more/read less functionality
-  (function() {
-    const sectionId = '{{ section.id }}';
-    const descriptionWrappers = document.querySelectorAll(`#sale-bundle-grid-${sectionId} .bundle-description-wrapper`);
-    
-    descriptionWrappers.forEach(wrapper => {
-      const description = wrapper.querySelector('.bundle-description');
-      const toggleButton = wrapper.querySelector('.read-more-toggle');
-      const readMoreText = toggleButton.querySelector('.read-more-text');
-      const readLessText = toggleButton.querySelector('.read-less-text');
-      
-      if (!description || !toggleButton) return;
-      
-      // Set initial height
-      const fullHeight = description.scrollHeight;
-      const lineHeight = parseInt(window.getComputedStyle(description).lineHeight) || 24;
-      const maxLines = 3;
-      const maxHeight = lineHeight * maxLines;
-      
-      // Only show toggle if content exceeds max height
-      if (fullHeight <= maxHeight) {
-        toggleButton.style.display = 'none';
-        description.classList.remove('bundle-description-truncated');
-        return;
-      }
-      
-      // Set truncated height
-      description.style.maxHeight = maxHeight + 'px';
-      description.style.overflow = 'hidden';
-      description.style.transition = 'max-height 0.3s ease';
-      
-      toggleButton.addEventListener('click', function() {
-        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-        
-        if (isExpanded) {
-          // Collapse
-          description.style.maxHeight = maxHeight + 'px';
-          description.classList.add('bundle-description-truncated');
-          readMoreText.style.display = 'inline';
-          readLessText.style.display = 'none';
-          toggleButton.setAttribute('aria-expanded', 'false');
-        } else {
-          // Expand
-          description.style.maxHeight = fullHeight + 'px';
-          description.classList.remove('bundle-description-truncated');
-          readMoreText.style.display = 'none';
-          readLessText.style.display = 'inline';
-          toggleButton.setAttribute('aria-expanded', 'true');
+          alert('An error occurred while adding the product to cart.');
+          button.disabled = false;
+          button.textContent = originalText;
+          button.classList.remove('loading');
         }
       });
     });

@@ -8,21 +8,15 @@
       {% endif %}
       
       {% if section.settings.heading != blank %}
-        <h2 class="promo-heading">{{ section.settings.heading }}</h2>
+        <h1 class="promo-heading">{{ section.settings.heading }}</h1>
       {% endif %}
       
       {% if section.settings.subheading != blank %}
-        <p class="promo-subheading">{{ section.settings.subheading }}</p>
+        <h2 class="promo-subheading">{{ section.settings.subheading }}</h2>
       {% endif %}
       
       {% if section.settings.description != blank %}
-        <div class="promo-description-wrapper">
-          <div class="promo-description promo-description-truncated">{{ section.settings.description }}</div>
-          <button type="button" class="read-more-toggle" aria-expanded="false">
-            <span class="read-more-text">Read more</span>
-            <span class="read-less-text" style="display: none;">Read less</span>
-          </button>
-        </div>
+        <div class="promo-description">{{ section.settings.description }}</div>
       {% endif %}
       
       {% if section.settings.product != blank %}
@@ -37,7 +31,7 @@
       {% endif %}
       
       {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-        <a href="{{ section.settings.button_url }}" class="button promo-button">
+        <a href="{{ section.settings.button_url }}" class="promo-button">
           {{ section.settings.button_text }}
         </a>
       {% endif %}
@@ -74,61 +68,6 @@
     background-color: {{ section.settings.button_hover_bg_color }};
   }
 {% endstyle %}
-
-<script>
-  // Read more/read less functionality
-  (function() {
-    const sectionId = '{{ section.id }}';
-    const descriptionWrappers = document.querySelectorAll(`#sale-promo-banner-${sectionId} .promo-description-wrapper`);
-    
-    descriptionWrappers.forEach(wrapper => {
-      const description = wrapper.querySelector('.promo-description');
-      const toggleButton = wrapper.querySelector('.read-more-toggle');
-      const readMoreText = toggleButton.querySelector('.read-more-text');
-      const readLessText = toggleButton.querySelector('.read-less-text');
-      
-      if (!description || !toggleButton) return;
-      
-      // Set initial height
-      const fullHeight = description.scrollHeight;
-      const lineHeight = parseInt(window.getComputedStyle(description).lineHeight) || 24;
-      const maxLines = 3;
-      const maxHeight = lineHeight * maxLines;
-      
-      // Only show toggle if content exceeds max height
-      if (fullHeight <= maxHeight) {
-        toggleButton.style.display = 'none';
-        description.classList.remove('promo-description-truncated');
-        return;
-      }
-      
-      // Set truncated height
-      description.style.maxHeight = maxHeight + 'px';
-      description.style.overflow = 'hidden';
-      description.style.transition = 'max-height 0.3s ease';
-      
-      toggleButton.addEventListener('click', function() {
-        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-        
-        if (isExpanded) {
-          // Collapse
-          description.style.maxHeight = maxHeight + 'px';
-          description.classList.add('promo-description-truncated');
-          readMoreText.style.display = 'inline';
-          readLessText.style.display = 'none';
-          toggleButton.setAttribute('aria-expanded', 'false');
-        } else {
-          // Expand
-          description.style.maxHeight = fullHeight + 'px';
-          description.classList.remove('promo-description-truncated');
-          readMoreText.style.display = 'none';
-          readLessText.style.display = 'inline';
-          toggleButton.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  })();
-</script>
 
 {% schema %}
 {

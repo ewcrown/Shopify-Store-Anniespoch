@@ -32,21 +32,35 @@
           "settings": {}
         },
         "paywhirl_subscriptions_paywhirl_plan_selector_QAMXMn": {
-          "type": "shopify:\/\/apps\/paywhirl-subscriptions\/blocks\/paywhirl-plan-selector\/41e95d60-82cf-46e8-84de-618d7e4c37b7",
+          "type": "shopify://apps/paywhirl-subscriptions/blocks/paywhirl-plan-selector/41e95d60-82cf-46e8-84de-618d7e4c37b7",
           "settings": {
-            "font_scale": 100,
             "theme": "default",
+            "font_scale": 100,
             "show_prices": "default",
             "show_per_delivery_prices": "default",
+            "show_save_badge": "default",
             "selling_plans_first": false,
             "theme_color": "#334fb4",
+            "sleek_theme_color_preset": "default",
+            "sleek_color_background": "",
+            "sleek_color_primary_button": "",
+            "sleek_color_primary_button_label": "",
+            "sleek_color_primary_button_icon": "",
+            "sleek_color_secondary_button": "",
+            "sleek_color_secondary_button_label": "",
+            "sleek_color_secondary_button_icon": "",
+            "sleek_color_text": "",
+            "color_badge": "",
+            "color_badge_label": "",
+            "one_time_purchase_icon": "default",
+            "subscription_icon": "default",
             "product": "{{product}}"
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
@@ -143,7 +157,7 @@
           "type": "column",
           "settings": {
             "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -152,7 +166,7 @@
           "type": "column",
           "settings": {
             "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -187,14 +201,14 @@
         "head": "Unlock 15% SAVINGS on your first order!",
         "desc": "And a BONUS offer your dog's Birthday!",
         "btn_txt": "Get The Discount",
-        "img": "shopify:\/\/shop_images\/APP-Opt-in-image.png",
-        "bg-img": "shopify:\/\/shop_images\/Annie_s_Milk_Street-2020-Huberts_Graphic_Design_Spread-2020-A7304978_1.jpg"
+        "img": "shopify://shop_images/APP-Opt-in-image.png",
+        "bg-img": "shopify://shop_images/Annie_s_Milk_Street-2020-Huberts_Graphic_Design_Spread-2020-A7304978_1.jpg"
       }
     },
     "custom_liquid_emJqxj": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<iframe src='https:\/\/a61ac457c9634cc8bd469d3a6740217f.elf.site' title='Order a Muttkin For Your Pooch' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"><\/iframe>",
+        "custom_liquid": "<iframe src='https://a61ac457c9634cc8bd469d3a6740217f.elf.site' title='Order a Muttkin For Your Pooch' width='100%' height='500' frameborder='0' style=\"    padding: 1rem;\n\"></iframe>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
@@ -206,19 +220,19 @@
         "video_NC3egm": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/Sally Compton.mov"
+            "video": "shopify://files/videos/Sally Compton.mov"
           }
         },
         "video_MtpC4i": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/rawvideo.mov"
+            "video": "shopify://files/videos/rawvideo.mov"
           }
         },
         "video_xawagc": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/SarahGrimm_subtitles.mp4"
+            "video": "shopify://files/videos/SarahGrimm_subtitles.mp4"
           }
         },
         "video_Aey9dL": {
@@ -239,7 +253,7 @@
       "type": "featured-col-p",
       "settings": {
         "button_text": "View All",
-        "button_url": "shopify:\/\/collections\/happy-dog-meals",
+        "button_url": "shopify://collections/happy-dog-meals",
         "collection": "muttkins"
       }
     },

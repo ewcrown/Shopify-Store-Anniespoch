@@ -10,7 +10,7 @@ body{font-size:18px !important}
 body, p, span, li, a, input, textarea, button {
     font-family: var(--font-body-family);
 }
-
+#customBuyNow{display:none}
 /* Heading font applied to all heading tags */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading-family) !important;

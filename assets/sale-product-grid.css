@@ -45,11 +45,79 @@
   z-index: 10;
 }
 
-/* Button styles are handled by theme's .button class and inline styles in section */
+.sale-product-add-to-cart-button {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.sale-product-add-to-cart-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sale-product-add-to-cart-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #999999;
+}
+
+.sale-product-add-to-cart-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.sale-product-add-to-cart-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .section-footer {
   text-align: center;
   margin-top: 40px;
+}
+
+.section-button {
+  display: inline-block;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.section-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .no-collection-message {

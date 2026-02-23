@@ -18,14 +18,14 @@
               height="1080"
               data-sizes="auto"
               srcset="
-                {%- if product.featured_image.width >= 300 -%}{{ product.featured_image | image_url: width: 300 }} 300w,{%- endif -%}
-                {%- if product.featured_image.width >= 750 -%}{{ product.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if product.featured_image.width >= 1000 -%}{{ product.featured_image | image_url: width: 1000 }} 300w,{%- endif -%}
+                {%- if product.featured_image.width >= 1000 -%}{{ product.featured_image | image_url: width: 1000 }} 750w,{%- endif -%}
                 {%- if product.featured_image.width >= 1000 -%}{{ product.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
                 {%- if product.featured_image.width >= 1500 -%}{{ product.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
                 {%- if product.featured_image.width >= 3000 -%}{{ product.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
                 {{ product.featured_image | image_url }} {{ product.featured_image.width }}w
               "
-              src="{{ product.featured_image | image_url: width: 1000 }}"
+              src="{{ product.featured_image | image_url: width: 3000 }}"
               alt="{{ product.featured_image.alt | escape }}"
               fetchpriority="auto"
               sizes="(min-width: 768px) 25vw, 100vw"

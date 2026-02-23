@@ -71,7 +71,7 @@
                   <div
                     class="slideshow__slide-content"
                     style="
-                      {% if section.settings.border_radius %}border-radius:{{ section.settings.border_radius | append:"px" }}{% endif %};{% if section.settings.overlay-width %}width:{{ section.settings.overlay-width | append : "%" }};{% endif %}
+                      {% if section.settings.overlay-width %}width:{{ section.settings.overlay-width | append : "%" }};{% endif %}
                       {% if section.settings.padding_top %}
                         padding-top: {{ section.settings.padding_top | append: "%" }};
                         {% endif %}

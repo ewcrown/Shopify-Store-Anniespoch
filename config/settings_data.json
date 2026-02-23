@@ -157,6 +157,16 @@
         "type": "shopify://apps/upcart-cart-drawer/blocks/app-embed/af3da5fb-f5f7-40ec-8273-41bf50059d4b",
         "disabled": false,
         "settings": {}
+      },
+      "12107416968155278870": {
+        "type": "shopify://apps/paywhirl-subscriptions/blocks/paywhirl-customer-portal/41e95d60-82cf-46e8-84de-618d7e4c37b7",
+        "disabled": false,
+        "settings": {
+          "show_subscriptions_link": true,
+          "show_customer_login_note": true,
+          "show_address_change_note": true,
+          "container_selector": "main"
+        }
       }
     },
     "color_schemes": {

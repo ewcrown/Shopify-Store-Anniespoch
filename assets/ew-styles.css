@@ -116,3 +116,7 @@ input[data-option-value-id="4220778643702"] + label{
 input[data-quantity-variant-id="49265989124342"] {
     display: none !important;
 }
+
+.slideshow {
+    border-radius: 0 !important;
+}

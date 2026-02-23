@@ -51,49 +51,58 @@
   z-index: 10;
 }
 
-/* Read more/read less button */
-.bundle-description-wrapper {
-  position: relative;
-}
-
-.read-more-toggle {
-  background: none;
+.sale-bundle-add-to-cart-button {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #000000;
+  color: #ffffff;
   border: none;
-  color: var(--color-accent, #000);
-  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
   font-size: 14px;
-  font-weight: 600;
-  margin-top: 10px;
-  padding: 0;
-  text-decoration: underline;
-  transition: opacity 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
 }
 
-.read-more-toggle:hover {
-  opacity: 0.7;
+.sale-bundle-add-to-cart-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.read-more-toggle:focus {
-  outline: 2px solid var(--color-accent, #000);
-  outline-offset: 2px;
+.sale-bundle-add-to-cart-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #999999;
 }
 
-.bundle-description-truncated {
+.sale-bundle-add-to-cart-button.loading {
   position: relative;
+  color: transparent;
 }
 
-.bundle-description-truncated::after {
+.sale-bundle-add-to-cart-button.loading::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
-  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.6s linear infinite;
 }
 
-/* Button styles are handled by theme's .button class and inline styles in section */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* Legacy styles for placeholder cards */
 .bundle-card-placeholder {

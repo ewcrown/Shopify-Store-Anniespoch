@@ -16,10 +16,10 @@
     >
       <div>
         {% for block in section.blocks %}
-          <div class="announcement-bar--item" style="color: {{section.settings.text-color}};font-size:{{section.settings.font-size}}px;">
+          <div class="announcement-bar--item" style="color: {{section.settings.text-color}} !important;font-size:{{section.settings.font-size}}px;">
             {{ block.settings.svg_icon }}
             {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link }}">
+              <a href="{{ block.settings.link }}" style="color: {{section.settings.text-color}} !important">
                 {{ block.settings.announcement_text }}
               </a>
             {% else %}

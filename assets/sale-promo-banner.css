@@ -71,52 +71,22 @@
   color: #ff0000;
 }
 
-/* Read more/read less button */
-.promo-description-wrapper {
-  position: relative;
-}
-
-.read-more-toggle {
-  background: none;
-  border: none;
-  color: var(--color-accent, #000);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 10px;
-  padding: 0;
-  text-decoration: underline;
-  transition: opacity 0.2s ease;
-}
-
-.read-more-toggle:hover {
-  opacity: 0.7;
-}
-
-.read-more-toggle:focus {
-  outline: 2px solid var(--color-accent, #000);
-  outline-offset: 2px;
-}
-
-.promo-description-truncated {
-  position: relative;
-}
-
-.promo-description-truncated::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
-  pointer-events: none;
-}
-
-/* Button styles are handled by theme's .button class and inline styles in section */
-
 .promo-button {
+  display: inline-block;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
   margin-top: 20px;
+}
+
+.promo-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .promo-image-wrapper {
@@ -136,7 +106,7 @@
   }
   
   .promo-heading {
-    font-size: 28px;
+    font-size: 35px;
   }
   
   .promo-description {
@@ -160,7 +130,7 @@
   }
   
   .promo-heading {
-    font-size: 22px !important;
+    font-size: 35px !important;
     margin-bottom: 12px;
   }
   
@@ -201,7 +171,7 @@
 
 @media (max-width: 480px) {
   .promo-heading {
-    font-size: 20px !important;
+    font-size: 35px !important;
   }
   
   .promo-subheading {

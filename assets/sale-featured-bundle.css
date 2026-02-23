@@ -26,52 +26,10 @@
   font-weight: 600;
 }
 
-.bundle-description-wrapper {
-  position: relative;
-}
-
 .bundle-description {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 25px;
-}
-
-/* Read more/read less button */
-.read-more-toggle {
-  background: none;
-  border: none;
-  color: var(--color-accent, #000);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 10px;
-  padding: 0;
-  text-decoration: underline;
-  transition: opacity 0.2s ease;
-}
-
-.read-more-toggle:hover {
-  opacity: 0.7;
-}
-
-.read-more-toggle:focus {
-  outline: 2px solid var(--color-accent, #000);
-  outline-offset: 2px;
-}
-
-.bundle-description-truncated {
-  position: relative;
-}
-
-.bundle-description-truncated::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
-  pointer-events: none;
 }
 
 .bundle-features {
@@ -121,7 +79,62 @@
   color: #ff0000;
 }
 
-/* Button styles are handled by theme's .button class and inline styles in section */
+.bundle-button, .bundle-form .bundle-button {
+    padding: 15px 30px;
+    background-color: #efb93d !important;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color .3s ease;
+    display: inline-block;
+    font-family: Poppins;
+    font-size: 16.72px;
+    font-weight: 500;
+    line-height: 26.75px;
+    text-align: center;
+}
+
+
+.bundle-button:hover,
+.bundle-form .bundle-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.bundle-button:disabled,
+.bundle-form .bundle-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bundle-button.loading,
+.bundle-form .bundle-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.bundle-button.loading::after,
+.bundle-form .bundle-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .bundle-image-wrapper a {
   display: block;
@@ -251,4 +264,8 @@
     font-size: 14px;
   }
 }
-
+@media (max-width: 750px) {
+  .bundle-heading {
+    font-size: 25px !important;
+}
+}

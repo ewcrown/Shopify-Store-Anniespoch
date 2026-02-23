@@ -79,7 +79,7 @@
         "txt": "Champion Chewers, Meet Your Match",
         "desc": "<p>Muttkins™ satisfies your tough chewer with a bone marrow base that can withstand hours of chomping fun.</p><p>No rawhide here! Muttkins™ are made with a beef marrow bone base to keep your tough chewer satisfied.</p><p>Feel grr-eat about how you’re treating your pooch! Muttkins™ are hand-made with human-grade ingredients sourced in the USA.<br/></p>",
         "btn_txt": "Order a Muttkin™",
-        "btn_url": "#shopify-section-template--18379327471862__product-grid",
+        "btn_url": "#muttkins-collection",
         "img": "shopify://shop_images/ScoutMuttkin_Fix_png.png"
       }
     },
@@ -234,8 +234,8 @@
         "faqs_wbVbm3": {
           "type": "faqs",
           "settings": {
-            "ques": "Do I need to freeze a Muttkin™?",
-            "ans": "A Muttkin™ is a perishable product since we keep the Tasty Bits on the bone to maximize flavor. When you receive your delivery, we ask that you either freeze the bone for future use or give it to your pooch within 1-2 days. After your pooch chews off the Tasty Bits and Peanut Butter Biscuit, you can leave the Muttkin™ out for your pooch to chew at his/her leisure."
+            "ques": "Do I need to freeze a Muttkin™?  Does my dog need to finish the entire bone within two days?",
+            "ans": "A Muttkin™ is a perishable product since we keep the Tasty Bits on the bone to maximize flavor. When you receive your delivery, we ask that you either freeze the bone for future use or give it to your pooch within 1-2 days. After your pooch chews off the Tasty Bits and Peanut Butter Biscuit, you do not need to re-freeze and can leave the Muttkin™ out for your pooch to chew at his/her leisure.  However, we recommend limiting chew sessions to 30-45 minutes at a time to reduce the amount of bone marrow consumed in one sitting."
           }
         },
         "faqs_htnXVD": {
@@ -248,8 +248,8 @@
         "faqs_dw4NrB": {
           "type": "faqs",
           "settings": {
-            "ques": "Do you ship nationwide?",
-            "ans": "We ship throughout the continental US during the fall and winter. However, due to the perishable nature of a Muttkin™, during warmer summer months we only ship to locations within a 2-3 day delivery area from our bakery in Eastern Pennsylvania."
+            "ques": "Why are there Shipping Surcharges?",
+            "ans": "We ship throughout the continental US. However, due to the perishable nature of a Muttkin™, orders may be subject to additional shipping surcharges: Express Shipping Surcharge - locations beyond a 2-day ground delivery area from our bakery in Eastern Pennsylvania are subject to a $10  surcharge due to the additional cost to ship via 2-3 UPS Express.  Muttkin Surcharge $<50 Order - Muttkins ship via UPS Ground (or express if beyond a 2-day ground range from our bakery in eastern PA).  The additional $5 surcharge is the difference in rates charged to us to ship via UPS  versus a slower, cheaper service such as USPS."
           }
         }
       },

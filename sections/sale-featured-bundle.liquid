@@ -1,4 +1,18 @@
 {{ 'sale-featured-bundle.css' | asset_url | stylesheet_tag }}
+{% style %}
+.bundle-description-wrapper {
+  position: relative;
+}
+.bundle-read-more {
+  background: none;
+  border: none;
+  color: {{ section.settings.button_bg_color }};
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+  font-weight: bold;
+}
+{% endstyle %}
 
 <section class="sale-featured-bundle sale-featured-bundle-{{ section.id }}" id="sale-featured-bundle-{{ section.id }}">
   <div class="page-width">
@@ -47,27 +61,19 @@
           <p class="bundle-subheading">{{ display_subheading }}</p>
         {% endif %}
         
-        {% if section.settings.description != blank %}
-          <div class="bundle-description-wrapper">
-            <div class="bundle-description bundle-description-truncated">
-              {{ section.settings.description }}
-            </div>
-            <button type="button" class="read-more-toggle" aria-expanded="false">
-              <span class="read-more-text">Read more</span>
-              <span class="read-less-text" style="display: none;">Read less</span>
-            </button>
-          </div>
-        {% elsif bundle_product != blank and bundle_product.description != blank %}
-          <div class="bundle-description-wrapper">
-            <div class="bundle-description bundle-description-truncated">
-              {{ bundle_product.description }}
-            </div>
-            <button type="button" class="read-more-toggle" aria-expanded="false">
-              <span class="read-more-text">Read more</span>
-              <span class="read-less-text" style="display: none;">Read less</span>
-            </button>
-          </div>
-        {% endif %}
+        {% assign full_description = section.settings.description | default: bundle_product.description %}
+            {% if full_description != blank %}
+              <div class="bundle-description-wrapper">
+                <div class="bundle-description-short">
+                  {{ full_description | strip_html | truncate: 200 }}
+                </div>
+                <div class="bundle-description-full" style="display:none;">
+                  {{ full_description }}
+                </div>
+                <button type="button" class="bundle-read-more">Read More</button>
+              </div>
+            {% endif %}
+
         
         {% if section.settings.features != blank %}
           <div class="bundle-features">
@@ -97,19 +103,16 @@
         {% if bundle_product != blank %}
           <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="bundle-form">
             <input type="hidden" name="id" value="{{ bundle_product.selected_or_first_available_variant.id }}">
-            <button type="submit" class="button bundle-button" name="add">
-              <span>
-                {% if section.settings.button_text != blank %}
-                  {{ section.settings.button_text }}
-                {% else %}
-                  Add to cart
-                {% endif %}
-              </span>
-              {% render 'loading-spinner', class: 'loading-overlay' %}
+            <button type="submit" class="bundle-button" name="add">
+              {% if section.settings.button_text != blank %}
+                {{ section.settings.button_text }}
+              {% else %}
+                Add to cart
+              {% endif %}
             </button>
           </form>
         {% elsif section.settings.button_url != blank %}
-          <a href="{{ section.settings.button_url }}" class="button bundle-button">
+          <a href="{{ section.settings.button_url }}" class="bundle-button">
             {% if section.settings.button_text != blank %}
               {{ section.settings.button_text }}
             {% else %}
@@ -151,15 +154,10 @@
         e.preventDefault();
         
         const button = bundleForm.querySelector('.bundle-button');
-        const buttonSpan = button.querySelector('span');
-        const loadingSpinner = button.querySelector('.loading-overlay');
         
         // Disable button and show loading state
         button.disabled = true;
         button.classList.add('loading');
-        if (loadingSpinner) {
-          loadingSpinner.classList.remove('hidden');
-        }
         
         const formData = new FormData(bundleForm);
         
@@ -176,9 +174,6 @@
             alert(data.description || 'An error occurred while adding the product to cart.');
             button.disabled = false;
             button.classList.remove('loading');
-            if (loadingSpinner) {
-              loadingSpinner.classList.add('hidden');
-            }
             return;
           }
           
@@ -212,74 +207,31 @@
           // Reset button
           button.disabled = false;
           button.classList.remove('loading');
-          if (loadingSpinner) {
-            loadingSpinner.classList.add('hidden');
-          }
           
         } catch (error) {
           console.error('Error adding to cart:', error);
           alert('An error occurred while adding the product to cart.');
           button.disabled = false;
           button.classList.remove('loading');
-          if (loadingSpinner) {
-            loadingSpinner.classList.add('hidden');
-          }
         }
       });
     }
   })();
-  
-  // Read more/read less functionality
+
   (function() {
-    const sectionId = '{{ section.id }}';
-    const descriptionWrappers = document.querySelectorAll(`#sale-featured-bundle-${sectionId} .bundle-description-wrapper`);
-    
-    descriptionWrappers.forEach(wrapper => {
-      const description = wrapper.querySelector('.bundle-description');
-      const toggleButton = wrapper.querySelector('.read-more-toggle');
-      const readMoreText = toggleButton.querySelector('.read-more-text');
-      const readLessText = toggleButton.querySelector('.read-less-text');
-      
-      if (!description || !toggleButton) return;
-      
-      // Set initial height
-      const fullHeight = description.scrollHeight;
-      const lineHeight = parseInt(window.getComputedStyle(description).lineHeight) || 24;
-      const maxLines = 3;
-      const maxHeight = lineHeight * maxLines;
-      
-      // Only show toggle if content exceeds max height
-      if (fullHeight <= maxHeight) {
-        toggleButton.style.display = 'none';
-        description.classList.remove('bundle-description-truncated');
-        return;
-      }
-      
-      // Set truncated height
-      description.style.maxHeight = maxHeight + 'px';
-      description.style.overflow = 'hidden';
-      description.style.transition = 'max-height 0.3s ease';
-      
-      toggleButton.addEventListener('click', function() {
-        const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-        
-        if (isExpanded) {
-          // Collapse
-          description.style.maxHeight = maxHeight + 'px';
-          description.classList.add('bundle-description-truncated');
-          readMoreText.style.display = 'inline';
-          readLessText.style.display = 'none';
-          toggleButton.setAttribute('aria-expanded', 'false');
-        } else {
-          // Expand
-          description.style.maxHeight = fullHeight + 'px';
-          description.classList.remove('bundle-description-truncated');
-          readMoreText.style.display = 'none';
-          readLessText.style.display = 'inline';
-          toggleButton.setAttribute('aria-expanded', 'true');
-        }
+    const wrapper = document.querySelector('#sale-featured-bundle-{{ section.id }} .bundle-description-wrapper');
+    if (wrapper) {
+      const shortDesc = wrapper.querySelector('.bundle-description-short');
+      const fullDesc = wrapper.querySelector('.bundle-description-full');
+      const button = wrapper.querySelector('.bundle-read-more');
+
+      button.addEventListener('click', function() {
+        const isVisible = fullDesc.style.display === 'block';
+        fullDesc.style.display = isVisible ? 'none' : 'block';
+        shortDesc.style.display = isVisible ? 'block' : 'none';
+        button.textContent = isVisible ? 'Read More' : 'Read Less';
       });
-    });
+    }
   })();
 </script>
 
